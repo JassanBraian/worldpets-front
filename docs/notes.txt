@@ -1,7 +1,7 @@
 Estructura de folders y files en root:
 1. docs: archivos media, manual y anotaciones
 2. public: archivos estaticos
-3. src: 
+3. src: source donde se almacena codigo fuente del app
 4. env: variables de entorno
 5. db.json: file para apuntar con json-server
 
@@ -15,3 +15,6 @@ Estructura de folder y files en src:
 7. services: funcionalidades separadas por comunes y por documentos
 8. types: tambien llamado actions (parte de context y reducer)
 9. App.jsx: inicio de app con enrutamiento
+
+Detalle:
+1. No prestar atencion a archivos "borrar.txt"
