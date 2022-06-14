@@ -1,0 +1,17 @@
+Estructura de folders y files en root:
+1. docs: archivos media, manual y anotaciones
+2. public: archivos estaticos
+3. src: 
+4. env: variables de entorno
+5. db.json: file para apuntar con json-server
+
+Estructura de folder y files en src:
+1. components: componentes react separado por comunes y por documentos
+2. context: separado por documentos y c/u por sus 3 partes (context y reducer)
+3. css: ordenado por comp comunes y los documentos
+4. hooks: hooks personalizados
+5. pages: comp que no pertenecen a documentos
+6. routes: privadas y demas referentes a auth
+7. services: funcionalidades separadas por comunes y por documentos
+8. types: tambien llamado actions (parte de context y reducer)
+9. App.jsx: inicio de app con enrutamiento
