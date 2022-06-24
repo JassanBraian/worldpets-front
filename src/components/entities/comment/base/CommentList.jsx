@@ -1,38 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Table } from 'react-bootstrap';
 import CommentFunc from './CommentFunc';
+import CommentContext from '../../../../context/comment/CommentContext';
 
 const CommentList = () => {
-
-    const initialValue = {
-        id: 0,
-        description: '',
-        isprivate: '',
-        publication: 0,
-        usersend: 0
-    }
-
-    const [comments, setComments] = useState([initialValue]);
-
-    useEffect(() => {
-        const comment1 = {
-            id: 1,
-            description: 'asd',
-            isprivate: 'asd',
-            publication: 1,
-            usersend: 1
-        };
-        const comment2 = {
-            id: 2,
-            description: 'asd',
-            isprivate: 'asd',
-            publication: 2,
-            usersend: 2
-        };
-
-        setComments([...comments, comment1, comment2]);
-
-    }, [])
+    const { comments } = useContext(CommentContext);
 
     return (
         <>
@@ -57,7 +29,7 @@ const CommentList = () => {
                                 <td>{comment.publication}</td>
                                 <td>{comment.usersend}</td>
                                 <td className='text-center'>
-                                    {<CommentFunc commentId={comment.id}/>}
+                                    {<CommentFunc commentId={comment.id} />}
                                 </td>
                             </tr>
                         ))

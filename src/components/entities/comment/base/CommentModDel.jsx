@@ -4,7 +4,7 @@ import { Modal, Button, ButtonGroup } from 'react-bootstrap';
 const CommentModDel = ({ showModDel, setShowModDel, commentId }) => {
 
     const handleConfirmDelete = () => {
-
+        
     }
 
     return (
