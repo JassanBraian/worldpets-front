@@ -1,4 +1,4 @@
-import {useState, useContext , React} from 'react'
+import {useState, useContext} from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../context/user/AuthContext'
 
@@ -19,9 +19,9 @@ const ForgotPassword = () => {
         forgotPass(form);
     }
 
-  return (
+    return (
     <div>
-        <h1>Enviar contraseña al email</h1>
+        <h1>Reestablecer Contraseña</h1>
         <Link to='/'>Volver al Home</Link>
         <form onSubmit={handleOnSubmit}>
             <div>
@@ -35,9 +35,8 @@ const ForgotPassword = () => {
             </div>
             <button type="submit">Enviar email</button>
         </form>
-        <Link to='/reset-password' className='mt-4'> ¿Quiere cambiar su contraseña? </Link>
         {
-            successMsg && <p>{successMsg}</p>
+            successMsg && <p>{successMsg}</p>   /* Aqui hacer que se muestre loading de carga */
         }
     </div>
   )

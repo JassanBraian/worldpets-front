@@ -1,4 +1,5 @@
 import AuthState from './context/user/AuthState';
+import PrivateRoute from './context/user/PrivateRoute';
 
 //Dependencies
 import {Routes, Route} from 'react-router-dom';
@@ -14,9 +15,13 @@ function App() {
 
       <AuthState>
         <Routes>
-          <Route path="/user-menu" element={<UserMenu/>}/>
-          <Route path="/forgot-password" element={<ForgotPassword/>}/>
-          <Route path="/reset-password" element={<ResetPassword/>}/>
+          <Route path="/user-menu" element={
+
+            <UserMenu/> 
+            
+          }/>
+          <Route path="/forgotPassword" element={<ForgotPassword/>}/>
+          <Route path="/reset/:token" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
         </Routes>
       </AuthState>
 

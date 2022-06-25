@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState, useContext } from 'react'
 import '../css/entities/user/UserMenu.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/user/AuthContext' /* PARA TRAER AL USER EN LUGAR DE USAR INITIAL VALUES Y USESTATE DE USERINFO */
 
 const UserMenu = () => {

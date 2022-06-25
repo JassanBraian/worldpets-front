@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect, React} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../context/user/AuthContext';
 
@@ -27,7 +27,7 @@ const ResetPassword = () => {
 
   return (
     <div>
-        <h1>Reiniciar Contraseña</h1>
+        <h1>Cambiar Contraseña</h1>
         <form onSubmit={handleOnSubmit}>
             <div>
                 <label>Ingrese Contraseña Nueva</label>
@@ -47,7 +47,7 @@ const ResetPassword = () => {
                         onChange={handleOnChange}
                     />
             </div>
-            <button>Enviar</button>
+            <button>Cambiar Contraseña</button>
         </form>
     </div>
   )

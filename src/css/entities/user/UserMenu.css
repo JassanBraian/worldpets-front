@@ -20,12 +20,14 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-body {
-  font-family: "Poppins-Regular";
-  font-size: 13px;
-  color: #808080;
-  margin: 0;
-  font-weight: 400; }
+
+  body{
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image:  linear-gradient(#D1A12A 1px, transparent 1px), 
+linear-gradient(to right, #D1A12A 1px, #e5e5f7 1px);
+    background-size: 20px 20px;
+}
 
 :focus {
   outline: none; }
@@ -68,9 +70,7 @@ img {
   max-width: 100%;
   vertical-align: middle; }
 
-body {
-  background: url("../../../../public/fondo.jpg");
-  background-size: cover; }
+
 
 .wrapper {
   max-width: 1400px;
@@ -84,6 +84,7 @@ body {
   display: none; }
 
 #wizard {
+  opacity: 1;
   position: relative;
   background: #fff;
   height: auto;
