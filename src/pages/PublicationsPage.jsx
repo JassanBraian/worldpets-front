@@ -30,12 +30,28 @@ const PublicationsPage = () => {
       <Button size='sm' className="addBtn" onClick={() => setModalOpen(true)}>
         Add Publication
       </Button>
+
+      <table className="table table-bordered border-dark">
+        <thead className="table-dark text-center">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Ubication</th>
+            <th scope="col">Category</th>
+            <th scope="col">User</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {
+              publications.map((publication) => (
+                <AdminList key={publication.id} data={publication} />
+              ))
+            }
+        </tbody>
+      </table>
     
-        {
-          publications.map((publication) => (
-            <AdminList key={publication.id} data={publication} />
-          ))
-        }
       
       <ModCreatePublication
         show={modalOpen}
