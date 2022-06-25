@@ -34,12 +34,16 @@ textarea {
   resize: none; }
 
 input, textarea, select, button {
-  font-family: "Poppins-Regular";
+  font-family: "Poppins", sans-serif;
   font-size: 13px;
   color: #333; }
 
 p, h1, h2, h3, h4, h5, h6, ul {
   margin: 0; }
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  }
 
 ul {
   padding: 0;
@@ -259,4 +263,4 @@ body {
   .steps {
     display: none; } }
 
-/*# sourceMappingURL=style.css.map */
+

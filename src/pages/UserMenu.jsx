@@ -2,7 +2,6 @@
 import React from 'react'
 import { useState, useContext } from 'react'
 import '../css/entities/user/UserMenu.css'
-import { Form, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/user/AuthContext' /* PARA TRAER AL USER EN LUGAR DE USAR INITIAL VALUES Y USESTATE DE USERINFO */
 
@@ -79,7 +78,7 @@ const UserMenu = () => {
 									  	id="file-1" 
                       data-multiple-caption="{count} files selected" 
 									  />
-									  <label for="file-1">
+									  <label htmlFor="file-1">
                       <i className="zmdi zmdi-camera"></i>
                       <span>Choose Picture</span>
 									  </label>
