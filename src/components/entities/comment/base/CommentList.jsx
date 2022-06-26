@@ -25,11 +25,11 @@ const CommentList = () => {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{comment.description}</td>
-                                <td>{comment.isprivate}</td>
+                                <td>{comment.isprivate ? 'Yes' : 'No'}</td>
                                 <td>{comment.publication}</td>
                                 <td>{comment.usersend}</td>
                                 <td className='text-center'>
-                                    {<CommentFunc commentId={comment.id} />}
+                                    {<CommentFunc commentId={comment._id} />}
                                 </td>
                             </tr>
                         ))

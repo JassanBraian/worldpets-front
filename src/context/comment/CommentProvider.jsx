@@ -14,15 +14,16 @@ import {
 const CommentProvider = ({ children }) => {
 
     useEffect(() => {
-        getCommnets();
+        getComments();
     }, [])
 
     const initialState = {
-        comments: []
+        comments: [],
+        comment: {}
     }
     const [state, dispatch] = useReducer(CommentReducer, initialState);
 
-    const getCommnets = async () => {
+    const getComments = async () => {
         try {
             // const res = await clientAxios.get('/api/v1/comment');
             const res = await clientAxios.get('http://localhost:4000/api/v1/comment');
@@ -32,10 +33,21 @@ const CommentProvider = ({ children }) => {
         }
     }
 
+    const getComment = async commentId => {
+        try {
+            // const res = await clientAxios.get('/api/v1/comment');
+            const res = await clientAxios.get(`http://localhost:4000/api/v1/comment/${commentId}`);
+            res && dispatch({ type: GET_COMMENT, payload: res.data.comment });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     return (
         <CommentContext.Provider value={{
             ...state,
-            getCommnets
+            getComments,
+            getComment
         }}>
             {children}
         </CommentContext.Provider>

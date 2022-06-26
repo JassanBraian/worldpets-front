@@ -1,4 +1,4 @@
-import { 
+import {
     GET_COMMENT,
     GET_COMMENTS,
     CREATE_COMMENT,
@@ -12,6 +12,12 @@ const CommentReducer = (state, action) => {
             return {
                 ...state,
                 comments: action.payload,
+
+            }
+        case GET_COMMENT:
+            return {
+                ...state,
+                comment: action.payload,
 
             }
         default:

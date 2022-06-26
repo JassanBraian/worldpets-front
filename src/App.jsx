@@ -1,11 +1,11 @@
 import { Routes, Route, } from 'react-router-dom';
-import CommentProvider from './context/comment/CommentProvider';
+import FatherContext from './context/FatherContext';
 import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
 
 function App() {
   return (
-    <CommentProvider>
+    <FatherContext>
       <Routes>
         <Route
           path='/'
@@ -16,7 +16,7 @@ function App() {
           element={<CommentPage />}
         ></Route>
       </Routes>
-    </CommentProvider>
+    </FatherContext>
   );
 }
 
