@@ -129,7 +129,7 @@ const UserMenu = () => {
 
                 <button type="submit" className='submit-button'>Enviar</button>
 
-                <Link to='/forgot-password' className='forgot-link'> ¿Ha olvidado su contraseña? </Link>
+                <Link to='/forgotPassword' className='forgot-link'> Cambiar contraseña </Link>
 
               </div>
 

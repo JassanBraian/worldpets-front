@@ -21,7 +21,7 @@ function App() {
             
           }/>
           <Route path="/forgotPassword" element={<ForgotPassword/>}/>
-          <Route path="/reset/:token" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
+          <Route path="/resetPassword" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
         </Routes>
       </AuthState>
 
