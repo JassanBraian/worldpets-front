@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Modal, Form, Button, ButtonGroup } from 'react-bootstrap';
 import CommentContext from '../../../../context/comment/CommentContext';
 
-const CommentModView = ({ showModView, setShowModView, commentId }) => {
+const CommentModView = ({ showModView, setShowModView }) => {
 
-    const { comment, getComment } = useContext(CommentContext);
+    const { comment } = useContext(CommentContext);
 
     const initialValue = {
         description: '',
@@ -16,12 +16,9 @@ const CommentModView = ({ showModView, setShowModView, commentId }) => {
     const { description, isprivate, publication, usersend } = formComment;
 
     useEffect(() => {
-        getComment(commentId);
         setFormComment(comment);
-    }, []);
-
-    useEffect(() => {
-        setFormComment(comment);
+        console.log(comment)
+        console.log('a2')
     }, [comment]);
 
     return (

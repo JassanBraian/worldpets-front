@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Modal, Form, Button, ButtonGroup } from 'react-bootstrap';
 import CommentContext from '../../../../context/comment/CommentContext';
 
-const CommentModUpd = ({ showModUpd, setShowModUpd, commentId }) => {
+const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
 
-    const { comment, getComment, updateComment } = useContext(CommentContext);
+    const { comment, updateComment } = useContext(CommentContext);
 
     const initialValue = {
         description: '',
@@ -16,17 +16,13 @@ const CommentModUpd = ({ showModUpd, setShowModUpd, commentId }) => {
     const { description, isprivate, publication, usersend } = formComment;
 
     useEffect(() => {
-        getComment(commentId);
-        setFormComment(comment);
-    }, []);
-
-    useEffect(() => {
         setFormComment(comment);
     }, [comment]);
 
     const handleOnSubmit = e => {
         e.preventDefault();
         updateComment(formComment);
+        setShowModUpd(false);
     }
 
     const handleOnChange = e => {
@@ -59,7 +55,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd, commentId }) => {
                                 type="text"
                                 placeholder="Enter description"
                                 value={description}
-                                onChange={() => handleOnChange}   
+                                onChange={() => handleOnChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
