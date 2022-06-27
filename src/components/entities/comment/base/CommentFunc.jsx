@@ -20,7 +20,6 @@ const CommentFunc = ({ commentId }) => {
                     variant="info"
                     onClick={() => {
                         getComment(commentId);
-                        console.log(commentId)
                         setShowModView(true);
                     }}
                 >Detail</Button>

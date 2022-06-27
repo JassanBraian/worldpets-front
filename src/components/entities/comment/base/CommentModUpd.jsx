@@ -54,8 +54,8 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                                 name="description"
                                 type="text"
                                 placeholder="Enter description"
-                                value={description}
-                                onChange={() => handleOnChange}
+                                defaultValue={description}
+                                onChange={handleOnChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -63,7 +63,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                             <Form.Select
                                 name="isprivate"
                                 defaultValue={isprivate}
-                                onSelect={() => handleOnChange}
+                                onChange={handleOnChange}
                             >
                                 <option value={true}>True</option>
                                 <option value={false}>False</option>
@@ -74,7 +74,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                             <Form.Control
                                 name="publication"
                                 type="text"
-                                value={publication}
+                                defaultValue={publication}
                                 disabled />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -82,14 +82,14 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                             <Form.Control
                                 name="usersend"
                                 type="text"
-                                value={usersend}
+                                defaultValue={usersend}
                                 disabled />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <ButtonGroup>
-                        <Button variant='success' onSubmit={handleOnSubmit}>Save</Button>
+                        <Button variant='success' onClick={handleOnSubmit}>Save</Button>
                         <Button variant='danger' onClick={() => setShowModUpd(false)}>Close</Button>
                     </ButtonGroup>
                 </Modal.Footer>

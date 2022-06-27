@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { Table } from 'react-bootstrap';
 import CommentFunc from './CommentFunc';
 import CommentContext from '../../../../context/comment/CommentContext';

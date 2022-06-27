@@ -17,8 +17,6 @@ const CommentModView = ({ showModView, setShowModView }) => {
 
     useEffect(() => {
         setFormComment(comment);
-        console.log(comment)
-        console.log('a2')
     }, [comment]);
 
     return (

@@ -33,7 +33,7 @@ const CommentReducer = (state, action) => {
             return {
                 ...state,
                 comments: state.comments.filter(comment => 
-                    comment.id === action.payload_id),
+                    comment._id !== action.payload),
             }
         default:
             return state;

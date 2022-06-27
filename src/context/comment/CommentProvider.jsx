@@ -67,7 +67,7 @@ const CommentProvider = ({ children }) => {
         try {
             // const res = await clientAxios.get('/api/v1/comment');
             const res = await clientAxios.delete(`http://localhost:4000/api/v1/comment/${commentId}`);
-            res && dispatch({ type: DELETE_COMMENT, payload: res.data.commentId });
+            res && dispatch({ type: DELETE_COMMENT, payload: commentId });
         } catch (error) {
             throw error;
         }
