@@ -1,10 +1,40 @@
-import React from 'react';
-import { Modal, Button, ButtonGroup, Form } from 'react-bootstrap';
+import React, { useEffect, useState, useContext } from 'react';
+import { Modal, Form, Button, ButtonGroup } from 'react-bootstrap';
+import CommentContext from '../../../../context/comment/CommentContext';
 
 const CommentModUpd = ({ showModUpd, setShowModUpd, commentId }) => {
 
-    const onSubmitSave = () => {
+    const { comment, getComment, updateComment } = useContext(CommentContext);
 
+    const initialValue = {
+        description: '',
+        isprivate: false,
+        publication: 0,
+        usersend: 0
+    }
+    const [formComment, setFormComment] = useState(initialValue);
+    const { description, isprivate, publication, usersend } = formComment;
+
+    useEffect(() => {
+        getComment(commentId);
+        setFormComment(comment);
+    }, []);
+
+    useEffect(() => {
+        setFormComment(comment);
+    }, [comment]);
+
+    const handleOnSubmit = e => {
+        e.preventDefault();
+        updateComment(formComment);
+    }
+
+    const handleOnChange = e => {
+        e.preventDefault();
+        setFormComment({
+            ...formComment,
+            [e.target.name]: e.target.value
+        });
     }
 
     return (
@@ -15,7 +45,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd, commentId }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton={() => { setShowModUpd(false) }}>
+                <Modal.Header>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Edit Comment
                     </Modal.Title>
@@ -24,28 +54,46 @@ const CommentModUpd = ({ showModUpd, setShowModUpd, commentId }) => {
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control type="text" placeholder="Enter description" />
+                            <Form.Control
+                                name="description"
+                                type="text"
+                                placeholder="Enter description"
+                                value={description}
+                                onChange={() => handleOnChange}   
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Private</Form.Label>
-                            <Form.Select>
-                                <option>True</option>
-                                <option>False</option>
+                            <Form.Select
+                                name="isprivate"
+                                defaultValue={isprivate}
+                                onSelect={() => handleOnChange}
+                            >
+                                <option value={true}>True</option>
+                                <option value={false}>False</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Publication</Form.Label>
-                            <Form.Control type="text" disabled />
+                            <Form.Control
+                                name="publication"
+                                type="text"
+                                value={publication}
+                                disabled />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>User</Form.Label>
-                            <Form.Control type="text" disabled />
+                            <Form.Control
+                                name="usersend"
+                                type="text"
+                                value={usersend}
+                                disabled />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <ButtonGroup>
-                        <Button variant='success' onSubmit={onSubmitSave}>Save</Button>
+                        <Button variant='success' onSubmit={handleOnSubmit}>Save</Button>
                         <Button variant='danger' onClick={() => setShowModUpd(false)}>Close</Button>
                     </ButtonGroup>
                 </Modal.Footer>

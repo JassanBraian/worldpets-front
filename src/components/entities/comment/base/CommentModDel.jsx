@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Modal, Button, ButtonGroup } from 'react-bootstrap';
+import CommentContext from '../../../../context/comment/CommentContext';
 
 const CommentModDel = ({ showModDel, setShowModDel, commentId }) => {
 
-    const handleConfirmDelete = () => {
-        
+    const {deleteComment, getComments} = useContext(CommentContext);    
+
+    const handleConfirmDelete = (e) => {
+        e.preventDefault();
+        deleteComment(commentId);
+        getComments();
+        setShowModDel(false);
     }
 
     return (
         <>
-            <Modal show={showModDel}>
-                <Modal.Header closeButton>
+            <Modal show={showModDel} centered>
+                <Modal.Header>
                     <Modal.Title>Delete Comment</Modal.Title>
                 </Modal.Header>
 

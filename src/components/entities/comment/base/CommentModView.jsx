@@ -18,12 +18,10 @@ const CommentModView = ({ showModView, setShowModView, commentId }) => {
     useEffect(() => {
         getComment(commentId);
         setFormComment(comment);
-        console.log('a8', comment)
     }, []);
 
     useEffect(() => {
         setFormComment(comment);
-        console.log('a9', comment)
     }, [comment]);
 
     return (
@@ -46,29 +44,29 @@ const CommentModView = ({ showModView, setShowModView, commentId }) => {
                             <Form.Control
                                 type="text"
                                 placeholder="Enter description"
-                                value={description}
+                                defaultValue={description}
                                 disabled
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Private</Form.Label>
-                            <Form.Select disabled>
-                                <option defaultValue={isprivate}>True</option>
-                                <option defaultValue={!isprivate}>False</option>
+                            <Form.Select defaultValue={isprivate} disabled>
+                                <option value={true}>True</option>
+                                <option value={false}>False</option>
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Publication</Form.Label>
                             <Form.Control
                                 type="text"
-                                value={publication}
+                                defaultValue={publication}
                                 disabled />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>User</Form.Label>
                             <Form.Control
                                 type="text"
-                                value={usersend}
+                                defaultValue={usersend}
                                 disabled />
                         </Form.Group>
                     </Form>
