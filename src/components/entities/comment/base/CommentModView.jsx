@@ -16,7 +16,8 @@ const CommentModView = ({ showModView, setShowModView }) => {
     const { description, isprivate, publication, usersend } = formComment;
 
     useEffect(() => {
-        setFormComment(comment);
+        Object.keys(comment).length > 0
+            && setFormComment(comment);
     }, [comment]);
 
     return (
@@ -39,13 +40,13 @@ const CommentModView = ({ showModView, setShowModView }) => {
                             <Form.Control
                                 type="text"
                                 placeholder="Enter description"
-                                defaultValue={description}
+                                value={description}
                                 disabled
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Private</Form.Label>
-                            <Form.Select defaultValue={isprivate} disabled>
+                            <Form.Select value={isprivate} disabled>
                                 <option value={true}>True</option>
                                 <option value={false}>False</option>
                             </Form.Select>
@@ -54,14 +55,14 @@ const CommentModView = ({ showModView, setShowModView }) => {
                             <Form.Label>Publication</Form.Label>
                             <Form.Control
                                 type="text"
-                                defaultValue={publication}
+                                value={publication}
                                 disabled />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>User</Form.Label>
                             <Form.Control
                                 type="text"
-                                defaultValue={usersend}
+                                value={usersend}
                                 disabled />
                         </Form.Group>
                     </Form>

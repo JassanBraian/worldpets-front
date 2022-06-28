@@ -16,7 +16,8 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
     const { description, isprivate, publication, usersend } = formComment;
 
     useEffect(() => {
-        setFormComment(comment);
+        Object.keys(comment).length > 0
+            && setFormComment(comment);
     }, [comment]);
 
     const handleOnSubmit = e => {
@@ -26,7 +27,6 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
     }
 
     const handleOnChange = e => {
-        e.preventDefault();
         setFormComment({
             ...formComment,
             [e.target.name]: e.target.value
@@ -54,7 +54,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                                 name="description"
                                 type="text"
                                 placeholder="Enter description"
-                                defaultValue={description}
+                                value={description}
                                 onChange={handleOnChange}
                             />
                         </Form.Group>
@@ -62,7 +62,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                             <Form.Label>Private</Form.Label>
                             <Form.Select
                                 name="isprivate"
-                                defaultValue={isprivate}
+                                value={isprivate}
                                 onChange={handleOnChange}
                             >
                                 <option value={true}>True</option>
@@ -74,7 +74,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                             <Form.Control
                                 name="publication"
                                 type="text"
-                                defaultValue={publication}
+                                value={publication}
                                 disabled />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -82,7 +82,7 @@ const CommentModUpd = ({ showModUpd, setShowModUpd }) => {
                             <Form.Control
                                 name="usersend"
                                 type="text"
-                                defaultValue={usersend}
+                                value={usersend}
                                 disabled />
                         </Form.Group>
                     </Form>
