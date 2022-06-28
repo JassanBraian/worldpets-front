@@ -2,13 +2,15 @@ import { useContext } from 'react';
 import { Table } from 'react-bootstrap';
 import CommentFunc from './CommentFunc';
 import CommentContext from '../../../../context/comment/CommentContext';
+import '../../../../css/entities/comment/comment-list.css'
 
 const CommentList = () => {
     const { comments } = useContext(CommentContext);
 
     return (
         <>
-            <Table striped bordered hover>
+        <div className='app'>
+            <Table striped bordered hover className='table'>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -36,6 +38,7 @@ const CommentList = () => {
                     }
                 </tbody>
             </Table>
+            </div>
         </>
     );
 };
