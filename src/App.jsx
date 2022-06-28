@@ -15,6 +15,9 @@ function App() {
           path='/comment'
           element={<CommentPage />}
         ></Route>
+        <Route 
+        path='/publications-page' 
+        element={ <PublicationsPage /> }/>
       </Routes>
     </FatherContext>
   );
