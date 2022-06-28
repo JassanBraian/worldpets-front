@@ -2,3 +2,7 @@ label{
   display: flex;
   align-self: center;
 }
+
+.errorMsg{
+  color: red;
+}

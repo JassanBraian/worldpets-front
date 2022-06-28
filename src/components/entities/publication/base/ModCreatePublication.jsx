@@ -1,78 +1,109 @@
 import React from 'react'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import '../../../../css/entities/admin/ModCreatePublication.css';
 import { useState } from 'react';
 
 const ModCreatePublication = (props) => {
 
-  const [ title, setTitle ] = useState('');
-  const [ description, setDescription ] = useState('');
+  const initialFormValues = {
+    title: '',
+    description: '',
+    ubication: '',
+    user: ''
+  }
+  
+  const [ form, setForm ] = useState(initialFormValues);
+
+  const [ error, setError ] = useState(null);
 
   const handeChange = e => {
-    setTitle(e.target.value)
-  }
+    setForm({
+      ...form,
+      [e.target.name] : e.target.value
+    });
+  };
 
   const handleSubmit = e =>{
     e.preventDefault();
-    setTitle('');
-  }
+    if(form.title === '' || form.description === '' || form.ubication === '' || form.user === ''){
+      setError('Todos los campos son obligatorios');
+      return;
+    }
+    console.log('enviando', form);
+    setError(null);
+    setForm(initialFormValues);
+  };
 
-  return (
-    <Modal
-    {...props}
-    size="sm"
-    aria-labelledby="contained-modal-title-vcenter"
-    centered
-    >
-    <Modal.Header closeButton>
-      <Modal.Title id="contained-modal-title-vcenter">
-        Add Publication
-      </Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      <form className='d-flex flex-column'>
-      
-          <label htmlFor="title">Title</label>
-            <input type="text" 
-            name="tit" 
-            id="tit"
-            placeholder="Insert publication title..." 
-            value={title}
-            onChange={handeChange} />
-        
-          <label htmlFor="desc">Description</label>
-            <textarea name="desc" 
-            id="desc" 
-            cols="10" 
-            rows="8"
-            placeholder="What's your publication about..."></textarea>
-        
-          <label htmlFor="ubi">Ubication</label>
-            <input type="text" 
-            name="ubi" 
-            id='ubi'
-            placeholder="Where are you publishing from?"/>
-       
-          <label htmlFor="cat">Category</label>
-            <select name="cat" id="cat">
-              <option value="lost">Lost</option>
-              <option value="found">Found</option>
-              <option value="adopt">Adoption</option>
-            </select>
-        
-          <label htmlFor="user">User</label>
-            <input type="text" 
-            name="user" 
-            id="user" 
-            placeholder="Your username"/>
-
-      </form>
-    </Modal.Body>
-    <Modal.Footer>
-      <Button size='sm' onClick={props.onHide}>Close</Button>
-      <Button size='sm' type='submit' onSubmit={handleSubmit}>Submit</Button>
-    </Modal.Footer>
-  </Modal>
+  return ( <>
+      <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Add Publication
+        </Modal.Title>
+      </Modal.Header>
+      <Form onSubmit={handleSubmit}>
+        <Modal.Body>
+          <Form.Group className="mb-3">
+              <Form.Label>Title</Form.Label>
+              <Form.Control 
+              name="title"
+              type="text" 
+              placeholder="Your title" 
+              value={form.title} 
+              onChange={handeChange}/>
+          </Form.Group>
+          <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control 
+              name="description"
+              type="text" 
+              placeholder="What's your publication about..." 
+              value={form.description} 
+              onChange={handeChange}/>
+          </Form.Group>
+          <Form.Group className="mb-3">
+              <Form.Label>Ubication</Form.Label>
+              <Form.Control 
+              name="ubication"
+              type="text" 
+              placeholder="Where are you publishing from?" 
+              value={form.ubication} 
+              onChange={handeChange}/>
+          </Form.Group>
+          <Form.Group className="mb-3">
+              <Form.Label>Category</Form.Label>
+              <Form.Select>
+                  <option>Lost</option>
+                  <option>Found</option>
+                  <option>Adoption</option>
+              </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-3">
+              <Form.Label>User</Form.Label>
+              <Form.Control
+              name="user"
+              type="text" 
+              value={form.user} 
+              onChange={handeChange}/>
+          </Form.Group>
+          <div>
+            {
+              error && (<p className='errorMsg'>{error}</p>)
+            }
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button size='sm' variant='danger' onClick={props.onHide}>Close</Button>
+          <Button size='sm' type='submit'>Send</Button>
+        </Modal.Footer>
+      </Form>
+   </Modal>
+  </>
   )
 }
 
