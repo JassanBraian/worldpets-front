@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body{
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: linear-gradient(#D1A12A 1px, transparent 1px), 
+        linear-gradient(to right, #D1A12A 1px, #e5e5f7 1px);
+    background-size: 20px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+ .app {
+    max-width: 1200px;
+    width: 100%;
+    margin: 100px auto;
+    box-shadow: 0 0 5px #ccc;
+}
+
+/* 
+.table{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    background-color: white;
+}  */
+
+.table{
+    padding: 30px 0;
+    background-color: white;
+}

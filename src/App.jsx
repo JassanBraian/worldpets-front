@@ -1,12 +1,22 @@
-import Card from './components/entities/publication/cards/Card';
-import './css/common/layout/layout.css';
-import Category from './pages/Category';
+import { Routes, Route, } from 'react-router-dom';
+import FatherContext from './context/FatherContext';
+import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
-
 
 function App() {
   return (
-    <Home />
+    <FatherContext>
+      <Routes>
+        <Route
+          path='/'
+          element={<Home />}
+        ></Route>
+        <Route
+          path='/comment'
+          element={<CommentPage />}
+        ></Route>
+      </Routes>
+    </FatherContext>
   );
 }
 
