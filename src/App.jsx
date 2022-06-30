@@ -1,22 +1,24 @@
 import { Routes, Route, } from 'react-router-dom';
-import FatherContext from './context/FatherContext';
+import ParentContext from './context/ParentContext';
 import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
-    <FatherContext>
+    <ParentContext>
       <Routes>
-        <Route
-          path='/'
-          element={<Home />}
-        ></Route>
-        <Route
-          path='/comment'
-          element={<CommentPage />}
-        ></Route>
+        <Route path='/' element={<Home />} />
+        <Route path='/comment' element={<CommentPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/reset/:token" element={<ResetPassword />} />
       </Routes>
-    </FatherContext>
+    </ParentContext>
   );
 }
 
