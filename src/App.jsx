@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/new-single-product" element={<SinglePublication/>}/>
+        <Route path="/single-product" element={<SinglePublication/>}/>
       </Routes>
     </>
   );
