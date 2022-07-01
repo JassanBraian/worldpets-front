@@ -1,34 +1,30 @@
-import {useState, useContext, useEffect} from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import AuthContext from '../context/user/AuthContext';
-import '../css/entities/user/ResetPassword.css'
-
+import AuthContext from '../context/auth/AuthContext';
 
 const ResetPassword = () => {
     const navigate = useNavigate();
-    const {token} = useParams();
-    const {resetPass, isAuth} = useContext(AuthContext);
+    const { token } = useParams();
+    const { resetPassword, isAuth } = useContext(AuthContext);
     const [form, setForm] = useState({
         password: '',
         passwordConfirm: ''
     })
-    const {password, passwordConfirm} = form;
-    const handleOnChange = e => setForm({...form, [e.target.name]: e.target.value});
+    const { password, passwordConfirm } = form;
+
+    const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleOnSubmit = e => {
         e.preventDefault();
-        resetPass(token, form);
+        resetPassword(token, form);
     }
 
     useEffect(() => {
-        if (isAuth) {
-            navigate('/private');
-        }
-    }, [isAuth])
+        isAuth && navigate('/private');
+    }, [isAuth]);
 
-  return (
-
-    <div className="wrapper">
+    return (
+        <div className="wrapper">
             <form onSubmit={handleOnSubmit}>
                 <div id="wizard">
 	                <section>
@@ -72,10 +68,7 @@ const ResetPassword = () => {
             </form>
 
 		</div>
+    );
+};
 
-
-
-  )
-}
-
-export default ResetPassword
+export default ResetPassword;

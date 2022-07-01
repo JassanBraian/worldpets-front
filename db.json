@@ -9,10 +9,52 @@
     ],
     "publication":[
         {
-            "id": 1
+            "petName": "tito",
+            "petDescription": "cachorro",
+            "isFavorite": true,
+            "isHighlighted": true,
+            "image": "./",
+            "id":1
         },
         {
-            "id": 2
+            "petName": "eyla",
+            "petDescription": "negra",
+            "isFavorite": false,
+            "isHighlighted": false,
+            "image": "pet2",
+            "id":2
+        },
+        {
+            "petName": "mila",
+            "petDescription": "adulta",
+            "isFavorite": false,
+            "isHighlighted": false,
+            "image": "./",
+            "id":3
+        },
+        {
+            "petName": "chatran",
+            "petDescription": "blanco",
+            "isFavorite": false,
+            "isHighlighted": false,
+            "image": "pet4",
+            "id":4
+        },
+        {
+            "petName": "zamba",
+            "petDescription": "pelo corto",
+            "isFavorite": false,
+            "isHighlighted": false,
+            "image": "pet4",
+            "id":5
+        },
+        {
+            "petName": "mishi",
+            "petDescription": "naranja",
+            "isFavorite": false,
+            "isHighlighted": false,
+            "image": "pet4",
+            "id":6
         }
 
     ],
