@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import SearchII from "./pages/SearchII";
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/reset/:token" element={<ResetPassword />} />
+        <Route path="/search-page" element={<SearchII/>}/>
       </Routes>
     </ParentContext>
-  );
-}
+  )
+  }
 
 export default App;
