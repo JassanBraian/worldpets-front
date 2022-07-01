@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../../css/common/SearchBar/Card.css'
-import { Link } from '@mui/material'
 
 const Card = (props) => {
     const {movie} = props

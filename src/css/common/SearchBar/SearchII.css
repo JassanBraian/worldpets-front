@@ -37,6 +37,10 @@ h1 {
   padding-left: 8px;
 }
 
+.no-results {
+margin-top: 90px;  
+}
+
 @media (min-width: 576px) {
   .input {
     width: 510px;

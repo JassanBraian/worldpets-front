@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+import '../../../css/common/SearchBar/CardList.css'
 
 const CardList = ({ results }) => {
 
@@ -14,9 +15,14 @@ const CardList = ({ results }) => {
 
     <div className='row justify-content-center'> 
         
-            {data.map((item) => (
-                <Card key={item.imdbID} movie={item}/> /* imdbID es la id que tenemos en el objeto */
-            ))}
+    {
+      data.length!=0 ? 
+      data.map((item) => (
+        <Card key={item.imdbID} movie={item}/>
+      )) 
+      :
+        <h2 className='text-center no-results'>Not Results found</h2>
+    }
         
     </div>
     </section>
