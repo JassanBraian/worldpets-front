@@ -4,14 +4,22 @@ import '../css/common/pages/home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import Category from './Category';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+
+
 
 
 const Home = () => {
+    const navigate = useNavigate();
+    const goToCategory = ()=>{
+      navigate('/Category')
+    };
+
     return (
         <div>
          <section>
             <Category title='Destacadas'/>
-            <button className='seeMoreButton'>
+            <button onClick={goToCategory} className='seeMoreButton'>
             <FontAwesomeIcon icon={faCirclePlus} />
                 Ver más
             </button>

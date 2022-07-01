@@ -13,42 +13,48 @@ const listaInicial= [
         petDescription: 'cachorro',
         isFavorite: true,
         isHighlighted: true,
-        image: pet1
+        image: pet1,
+        id: 1
     },
     {
         petName: 'eyla',
         petDescription: 'negra',
         isFavorite: false,
         isHighlighted: false,
-        image: pet2
+        image: pet2,
+        id: 2
     },
     {
         petName: 'mila',
         petDescription: 'adulta',
         isFavorite: false,
         isHighlighted: false,
-        image: pet3
+        image: pet3,
+        id: 3
     },
     {
         petName: 'chatran',
         petDescription: 'blanco',
         isFavorite: false,
         isHighlighted: false,
-        image: pet4
+        image: pet4,
+        id: 4
     },
     {
         petName: 'chatran',
         petDescription: 'blanco',
         isFavorite: false,
         isHighlighted: false,
-        image: pet4
+        image: pet4,
+        id: 5
     },
     {
         petName: 'chatran',
         petDescription: 'blanco',
         isFavorite: false,
         isHighlighted: false,
-        image: pet4
+        image: pet4,
+        id: 6
     }
 ];
 
