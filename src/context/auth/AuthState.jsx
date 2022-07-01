@@ -7,6 +7,7 @@ import authToken from '../../config/token';
 import {
   IS_LOADING,
   GET_USER,
+  UPDATE_SUCCESS,
   REGISTER_ERROR,
   REGISTER_SUCCESS,
   LOGOUT,
@@ -44,6 +45,14 @@ const AuthState = ({ children }) => {
       dispatch({ type: GET_USER, payload: response.data })
     } catch (error) {
       console.log(error)
+    }
+  }  
+  const updateUser = async (data) => {
+    try {
+        const response = await clientAxios.put('/api/v1/users', data);
+        dispatch({type: UPDATE_SUCCESS, payload: response.data.data});
+    } catch (error) {
+        console.log(error)
     }
   }
   const login = async (data) => {
@@ -83,6 +92,7 @@ const AuthState = ({ children }) => {
       ...state,
       registerUser,
       getUser,
+      updateUser,
       logout,
       login,
       forgotPassword,

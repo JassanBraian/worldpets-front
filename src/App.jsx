@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import SearchII from "./pages/SearchII";
+import UserMenu from './pages/UserMenu';
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/reset/:token" element={<ResetPassword />} />
+        <Route path="/resetPassword" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
         <Route path="/search-page" element={<SearchII/>}/>
+        <Route path="/user-menu" element={<UserMenu/>}/> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
       </Routes>
     </ParentContext>
   )
