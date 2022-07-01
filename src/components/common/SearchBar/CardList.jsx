@@ -8,10 +8,11 @@ const CardList = ({ results }) => {
         data = results.data.Search || [];
     }
 
+
   return (
     <section className='container'>
 
-    <div className='row justify-content-center'> {/* row-cols-1 row-cols-xs-3 row-cols-sm-3 row-cols-lg-5 g-3 */}
+    <div className='row justify-content-center'> 
         
             {data.map((item) => (
                 <Card key={item.imdbID} movie={item}/> /* imdbID es la id que tenemos en el objeto */

@@ -1,9 +1,9 @@
-import CardList from "./CardList";
-import SearchBarII from "./SearchBarII";
+import CardList from "../components/common/SearchBar/CardList";
+import SearchBarII from "../components/common/SearchBar/SearchBarII";
 
-import "../../../css/common/SearchBar/SearchII.css"
+import "../css/common/SearchBar/SearchII.css"
 
-import MovieSource from "./API/MovieSource";
+import MovieSource from "../components/common/SearchBar/API/MovieSource";
 import React, { useState } from "react";
 
 const SearchII = () => {

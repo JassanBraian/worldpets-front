@@ -4,7 +4,6 @@ import { Link } from '@mui/material'
 
 const Card = (props) => {
     const {movie} = props
-    console.log(movie)
   return (
 
     <div className='col-11 col-md-6 col-lg-3 card m-3 p-0'>
