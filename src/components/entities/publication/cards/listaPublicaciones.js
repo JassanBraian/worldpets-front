@@ -7,7 +7,7 @@ import pet2 from '../../../../assets/img/pet2.jpg'
 import pet3 from '../../../../assets/img/pet3.jpg'
 import pet4 from '../../../../assets/img/pet4.jpg'
 
-const listaInicial= [
+const listaInicial = [
     {
         petName: 'tito',
         petDescription: 'cachorro',
@@ -57,17 +57,27 @@ const ListaPublicaciones = () => {
     const toggle = (i) => {
         setPublicaciones([
             ...publicaciones.slice(0, i),
-            {...publicaciones[i], isFavorite: !publicaciones[i].isFavorite},
+            { ...publicaciones[i], isFavorite: !publicaciones[i].isFavorite },
             ...publicaciones.slice(i + 1),
         ]);
     }
-    
-  return (
-    <section className='container-fluid'>
-        <div className='row'>
-                 {publicaciones.map((pub, i) => <Card title= {pub.petName} description={pub.petDescription} favorite={pub.isFavorite} image={pub.image} isHighlighted={pub.isHighlighted} onToggleFavorite={() => toggle(i)}/>)}    
-        </div>
-    </section>
-  )
+
+    return (
+        <section className='container-fluid'>
+            <div className='row'>
+                {publicaciones.map((pub, i) =>
+                    <Card
+                        key={i}
+                        title={pub.petName}
+                        description={pub.petDescription}
+                        favorite={pub.isFavorite}
+                        image={pub.image}
+                        isHighlighted={pub.isHighlighted}
+                        onToggleFavorite={() => toggle(i)}
+                    />
+                )}
+            </div>
+        </section>
+    )
 }
 export default ListaPublicaciones;
