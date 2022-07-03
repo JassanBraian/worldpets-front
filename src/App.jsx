@@ -6,18 +6,21 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import Layout from './components/common/layout/Layout';
 
 function App() {
   return (
     <ParentContext>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/comment' element={<CommentPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/reset/:token" element={<ResetPassword />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/comment' element={<CommentPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/reset/:token" element={<ResetPassword />} />
+        </Routes>
+      </Layout>
     </ParentContext>
   );
 }
