@@ -9,6 +9,7 @@ import ResetPassword from './pages/ResetPassword';
 import SearchII from "./pages/SearchII";
 import UserMenu from './pages/UserMenu';
 import SinglePublication from './pages/SinglePublication';
+import ProfileImage from './pages/ProfileImage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
         <Route path="/search-page" element={<SearchII/>}/>
         <Route path="/user-menu" element={<UserMenu/>}/> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
+        <Route path='/profile-image'element={<ProfileImage/>}/>
         <Route path="/single-product" element={<SinglePublication/>}/>
       </Routes>
     </ParentContext>
