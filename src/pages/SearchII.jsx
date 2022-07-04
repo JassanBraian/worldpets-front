@@ -1,5 +1,6 @@
 import CardList from "../components/common/SearchBar/CardList";
 import SearchBarII from "../components/common/SearchBar/SearchBarII";
+import AuthContext from "../context/auth/AuthContext";
 
 import "../css/common/SearchBar/SearchII.css"
 
@@ -24,6 +25,7 @@ const SearchII = () => {
         })
     } 
 
+   /*  const getPublications = useContext(AuthContext) */
 
 /*     const onSearch = async(text) => {
         const results = getPublications
