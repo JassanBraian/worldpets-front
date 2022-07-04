@@ -13,7 +13,8 @@ import {
   LOGOUT,
   LOGIN_SUCCESS,
   FORGOT_PASS_SUCCESS,
-  RESET_PASSWORD_SUCCESS
+  RESET_PASSWORD_SUCCESS,
+  GET_PUBLICATION
 } from '../../types/auth';
 
 const AuthState = ({ children }) => {
@@ -87,6 +88,16 @@ const AuthState = ({ children }) => {
       console.log(error);
     }
   }
+
+  const getPublication = async () => {
+    try {
+      const response = await clientAxios.get('/api/v1/'); /* COMPLETAR */
+      dispatch({ type: GET_PUBLICATION, payload: response.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <AuthContext.Provider value={{
       ...state,
@@ -96,7 +107,8 @@ const AuthState = ({ children }) => {
       logout,
       login,
       forgotPassword,
-      resetPassword
+      resetPassword,
+      getPublication
     }}>
       {children}
     </AuthContext.Provider>

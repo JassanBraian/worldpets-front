@@ -6,7 +6,8 @@ import {
     LOGOUT,
     LOGIN_SUCCESS,
     FORGOT_PASS_SUCCESS,
-    RESET_PASSWORD_SUCCESS
+    RESET_PASSWORD_SUCCESS,
+    GET_PUBLICATION
 } from '../../types/auth';
 
 const AuthReducer = (state, action) => {
@@ -41,6 +42,11 @@ const AuthReducer = (state, action) => {
                 ...state,
                 user: null,
                 isAuth: false,
+                loading: false
+            }
+        case GET_PUBLICATION:
+             return {
+                ...state,
                 loading: false
             }
         default:

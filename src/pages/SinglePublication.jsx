@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import '../css/entities/publication/comments.css'
 import "../css/entities/publication/SingleProduct.css"
 import Comments from '../components/entities/publication/SinglePage/comments/Comments'
+import AuthContext from "../context/auth/AuthContext";
 
 export default function SingleProduct() {
 
@@ -23,26 +24,16 @@ const InitialValues = {
 
 const [publication, setPublication] = useState(InitialValues);
 
-/* const [index, setIndex] = useState(0); */
+/* const getPublication = useContext(AuthContext) */
 
 const {title, photos, ubication, description, category} = publication;
 
-const [currentImg, setCurrentImg] = useState('http://flogfotos.miarroba.st/5/0/6/5779506/822.jpg');
+const [currentImg, setCurrentImg] = useState(photos[0].img);
+
+/* const [currentImg, setCurrentImg] = useState('photos[0].img'); */
 
 const myRef = useRef();
 
-/* useEffect(() => {
-    myRef.current.children[index].className = "active";
-}, []); */
-
-/* const handleTab = (index) => {
-    setIndex(index);
-    const images = myRef.current.children;
-    for (let i = 0; i < images.length; i++) {
-        images[i].className = images[i].className.replace("active", "");
-    }
-    images[index].className = "active";
-}; */
 
 return (
 <>

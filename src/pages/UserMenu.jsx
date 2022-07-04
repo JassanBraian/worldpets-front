@@ -23,7 +23,7 @@ const UserMenu = () => {
   const [userInfo, setUserInfo] = useState(InitialValues)
 
 
-  const {user, updateUser} = useContext(AuthContext) /* PARA TRAER LOS DATOS DEL USER EN LUGAR DE USAR INITAIL VALUES Y USESTATE DE USERINFO*/
+  const {user, updateUser} = useContext(AuthContext) /* PARA TRAER LOS DATOS DEL USER EN LUGAR DE USAR INITAIL VALUES Y USESTATE DE USERINFO --¿Seria user o getuser? ---*/
   const [form, setForm] = useState({
     email: userInfo.email || '',
     name: userInfo.name || '',
