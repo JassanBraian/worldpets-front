@@ -27,9 +27,10 @@ const PublicationCreate = () => {
 
     return (
         <>
-            <Form >
+            <Form>
+                <h2>Carga nueva publicación</h2>
                 <Form.Group className="mb-3">
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label>Title</Form.Label>localhost:3000
                     <Form.Control
                         name="title"
                         type="text"
