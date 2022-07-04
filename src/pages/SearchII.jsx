@@ -24,6 +24,15 @@ const SearchII = () => {
         })
     } 
 
+
+/*     const onSearch = async(text) => {
+        const results = getPublications
+
+        setState(prevState => {
+            return {...prevState, results:results}
+        })
+    }  */
+
   return (
     <div className="SearchII">
         <div className="container searchII">

@@ -14,7 +14,8 @@ import {
   LOGIN_SUCCESS,
   FORGOT_PASS_SUCCESS,
   RESET_PASSWORD_SUCCESS,
-  GET_PUBLICATION
+  GET_PUBLICATION,
+  GET_PUBLICATIONS
 } from '../../types/auth';
 
 const AuthState = ({ children }) => {
@@ -98,6 +99,15 @@ const AuthState = ({ children }) => {
     }
   }
 
+  const getPublications = async () => {
+    try {
+      const response = await clientAxios.get('/api/v1/'); /* COMPLETAR */
+      dispatch({ type: GET_PUBLICATIONS, payload: response.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <AuthContext.Provider value={{
       ...state,
@@ -108,7 +118,8 @@ const AuthState = ({ children }) => {
       login,
       forgotPassword,
       resetPassword,
-      getPublication
+      getPublication,
+      getPublications
     }}>
       {children}
     </AuthContext.Provider>
