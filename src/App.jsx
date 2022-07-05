@@ -1,5 +1,7 @@
-import { Routes, Route, } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import FavoriteList from './components/entities/favorites/FavoriteList';
 import FatherContext from './context/FatherContext';
+import Category from './pages/Category';
 import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
 
@@ -15,6 +17,7 @@ function App() {
           path='/comment'
           element={<CommentPage />}
         ></Route>
+        <Route path='/Category' element={<Category/>} title= 'Destacadas'/>
       </Routes>
     </FatherContext>
   );
