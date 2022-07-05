@@ -12,7 +12,7 @@ import Spinner from '../components/common/spinner/Spinner';
 import CategoryButtons from '../components/common/categoryButtons/CategoryButtons';
 
 
-export const data = [
+const data = [
     {
         categoryTitle: "Se perdió",
         posts: [ Posts[0],Posts[1], Posts[2]]

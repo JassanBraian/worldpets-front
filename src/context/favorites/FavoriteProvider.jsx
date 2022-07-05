@@ -15,35 +15,43 @@ const FavoriteProvider = ({children}) => {
     }, [])
 
     const initialState ={
-        favorites: []
+        favorites: [
+            {
+                id:1,
+                postId: 11,
+                userId: 1,
+
+            }
+        ]
     } ;
 
    const [state, dispatch] = useReducer(FavoriteReducer, initialState);
 
 
    const getFavorites = async (userId) => {
-    return dispatch({ type: SET_FAVORITES, payload: [1] });
+    // return dispatch({ type: SET_FAVORITES, payload: [1] });
     try {
-        const res = await clientAxios.get(`http://localhost:4000/api/v1/users/${userId}/favorites`);
+        const res = await clientAxios.get(`http://localhost:4000/api/v1/favorites/${userId}`);
         res && dispatch({ type: SET_FAVORITES, payload: res.data.favorites });
     } catch (error) {
         throw error;
     }
 }
 
-   const addToFavorites = async (userId, postId)=>{
-       return dispatch({type: ADD_TO_FAVORITES, payload: postId});
+   const addToFavorites = async (postId)=>{
+    //    return dispatch({type: ADD_TO_FAVORITES, payload: postId});
         try{
-            await clientAxios.post(`http://localhost:4000/api/v1/users/${userId}/favorites`);
+            const res = await clientAxios.post(`http://localhost:4000/api/v1/favorites/${postId}`);
+            res && dispatch({type: ADD_TO_FAVORITES, payload: res.data.favorite});
         } catch (error) {
             dispatch({type: REMOVE_FROM_FAVORITES, payload: postId})
         }
 }
 
-   const removeFromFavorites =  async (userId, postId) => {
-       return dispatch({type: REMOVE_FROM_FAVORITES, payload: postId});
+   const removeFromFavorites =  async (postId) => {
+    //    return dispatch({type: REMOVE_FROM_FAVORITES, payload: postId});
        try {
-        const res = await clientAxios.delete(`http://localhost:4000/api/v1/users/${userId}/favorites/${postId}`);
+        const res = await clientAxios.delete(`http://localhost:4000/api/v1/favorites/${postId}`);
         res && dispatch({ type: REMOVE_FROM_FAVORITES, payload: postId});
     } catch (error) {
         throw error;

@@ -13,6 +13,8 @@ function App() {
           path='/'
           element={<Home />}
         ></Route>
+        <Route path='/favorites' 
+        element={<FavoriteList />} />
         <Route
           path='/comment'
           element={<CommentPage />}
