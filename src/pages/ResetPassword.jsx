@@ -20,7 +20,7 @@ const ResetPassword = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate('/private');
+        isAuth && navigate('/user-menu');
     }, [isAuth]);
 
     return (
