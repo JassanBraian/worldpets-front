@@ -2,6 +2,7 @@ import { Routes, Route, } from 'react-router-dom';
 import FatherContext from './context/FatherContext';
 import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
+import PublicationsPage from '../src/pages/PublicationsPage';
 
 function App() {
   return (

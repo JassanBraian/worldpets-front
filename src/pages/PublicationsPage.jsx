@@ -1,37 +1,48 @@
 //HOOKS
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { useState } from 'react';
 // COMPONENTS
-import { Button } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import React from 'react'
 import AdminList from '../components/entities/publication/base/AdminList'
-import ModCreatePublication from '../components/entities/publication/base/ModCreatePublication';
+import ModViewPublication from '../components/entities/publication/base/ModViewPublication';
+import ModEditPublication from '../components/entities/publication/base/ModEditPublication';
+import PublicationContext from '../context/publication/PublicationContext';
 // CSS
 import '../css/entities/admin/PublicationsPage.css';
+import ModDeletePublication from '../components/entities/publication/base/ModDeletePublication';
+
 
 
 const PublicationsPage = () => {
   
+  const { publications } = useContext(PublicationContext)
+ 
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [editModalOpen, setEditModalOpen] = useState(false);
+
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+
+
+  const openViewModal = () =>{
+    setModalOpen(true);
+  }
   
-  const API_URL = 'http://localhost:4000/publications';
-  const [ publications, setPublications ] = useState([])
-
-  const getPublications = async () =>{
-    const response = await fetch(API_URL);
-    const data = await response.json();
-    setPublications(data);
-  };
-
-  useEffect(()=>{
-    getPublications();
-  }, [])
-
+  const openEditModal = () =>{
+    setEditModalOpen(true);
+  }
+  
+  const openDeleteModal = () =>{
+    setDeleteModalOpen(true);
+  }
+  
   return (<>
-      <Button size='sm' className="addBtn" onClick={() => setModalOpen(true)}>
+      <Button size='lg' className="addBtn" onClick={() => setModalOpen(true)}>
         Add Publication
       </Button>
 
-      <table className="table table-bordered border-dark">
+      <Table size='sm' className="table-bordered border-dark">
         <thead className="table-dark text-center">
           <tr>
             <th scope="col">#</th>
@@ -45,17 +56,29 @@ const PublicationsPage = () => {
         </thead>
         <tbody>
             {
-              publications.map((publication) => (
-                <AdminList key={publication.id} data={publication} />
+              publications.map((element, index) => (
+                <AdminList key={index} 
+                data={element} 
+                editModal={openEditModal}
+                viewModal={openViewModal}
+                deleteConfirmModal={openDeleteModal}
+                />
               ))
             }
         </tbody>
-      </table>
-    
-      
-      <ModCreatePublication
+      </Table>
+
+      <ModViewPublication
         show={modalOpen}
         onHide={() => setModalOpen(false)}/>
+      
+      <ModEditPublication 
+        show={editModalOpen}
+        onHide={()=> setEditModalOpen(false)}/>
+
+      <ModDeletePublication
+        show={deleteModalOpen}
+        onHide={()=> setDeleteModalOpen(false)}/>
     </>
   )
 }

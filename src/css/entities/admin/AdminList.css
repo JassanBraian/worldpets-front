@@ -1,8 +1,4 @@
-thead{
-  font-size: 0.7rem
+.adminData{
+  gap: 12px !important;
+  justify-content: center !important;
 }
-
-tbody{
-  font-size: 0.7rem;
-}
-

@@ -1,22 +1,26 @@
 import React from 'react'
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../../../../css/entities/admin/ModCreatePublication.css';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import PublicationContext from '../../../../context/publication/PublicationContext';
 
-const ModCreatePublication = (props) => {
+const ModViewPublication = ({ show, onHide }) => {
+
+  const { CurrentPublication } = useContext(PublicationContext);
 
   const initialFormValues = {
     title: '',
     description: '',
     ubication: '',
+    category: '',
     user: ''
-  }
+  };
   
   const [ form, setForm ] = useState(initialFormValues);
 
   const [ error, setError ] = useState(null);
 
-  const handeChange = e => {
+  const handleChange = e => {
     setForm({
       ...form,
       [e.target.name] : e.target.value
@@ -28,22 +32,27 @@ const ModCreatePublication = (props) => {
     if(form.title === '' || form.description === '' || form.ubication === '' || form.user === ''){
       setError('Todos los campos son obligatorios');
       return;
-    }
-    console.log('enviando', form);
-    setError(null);
+    };
+    
     setForm(initialFormValues);
+    onHide(true);
+    setError(null);
   };
+
+  useEffect(()=>{
+    setForm(CurrentPublication);
+  }, [CurrentPublication]);
 
   return ( <>
       <Modal
-      {...props}
-      size="sm"
+      show={show}
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
       >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add Publication
+          Publication
         </Modal.Title>
       </Modal.Header>
       <Form onSubmit={handleSubmit}>
@@ -55,7 +64,8 @@ const ModCreatePublication = (props) => {
               type="text" 
               placeholder="Your title" 
               value={form.title} 
-              onChange={handeChange}/>
+              onChange={handleChange}
+              disabled/>
           </Form.Group>
           <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
@@ -64,7 +74,8 @@ const ModCreatePublication = (props) => {
               type="text" 
               placeholder="What's your publication about..." 
               value={form.description} 
-              onChange={handeChange}/>
+              onChange={handleChange}
+              disabled/>
           </Form.Group>
           <Form.Group className="mb-3">
               <Form.Label>Ubication</Form.Label>
@@ -73,14 +84,19 @@ const ModCreatePublication = (props) => {
               type="text" 
               placeholder="Where are you publishing from?" 
               value={form.ubication} 
-              onChange={handeChange}/>
+              onChange={handleChange}
+              disabled/>
           </Form.Group>
           <Form.Group className="mb-3">
               <Form.Label>Category</Form.Label>
-              <Form.Select>
-                  <option>Lost</option>
-                  <option>Found</option>
-                  <option>Adoption</option>
+              <Form.Select
+                  name="category"
+                  onChange={handleChange}
+                  value={form.category} 
+                  disabled>
+                  <option value={'missing'}>Missing</option>
+                  <option value={'found'}>Found</option>
+                  <option value={'up for adoption'}>Up for adoption</option>
               </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
@@ -89,7 +105,8 @@ const ModCreatePublication = (props) => {
               name="user"
               type="text" 
               value={form.user} 
-              onChange={handeChange}/>
+              onChange={handleChange}
+              disabled/>
           </Form.Group>
           <div>
             {
@@ -98,8 +115,8 @@ const ModCreatePublication = (props) => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button size='sm' variant='danger' onClick={props.onHide}>Close</Button>
-          <Button size='sm' type='submit'>Send</Button>
+          <Button size='sm' variant='danger' onClick={onHide}>Close</Button>
+          <Button size='sm' type='submit' disabled>Send</Button>
         </Modal.Footer>
       </Form>
    </Modal>
@@ -107,4 +124,4 @@ const ModCreatePublication = (props) => {
   )
 }
 
-export default ModCreatePublication;
+export default ModViewPublication;
