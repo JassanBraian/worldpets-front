@@ -62,29 +62,33 @@ const AuthState = ({ children }) => {
     try {
       const response = await clientAxios.post('http://localhost:4000/api/v1/auth/login', data); 
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
-      console.log(response.data)
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('emailUser', response.data.data.user.userEmail )
     } catch (error) {
       console.log(error);
     } 
   }
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('emailUser');
     dispatch({ type: LOGOUT })
   };
 
   const forgotPassword = async (data) => {
     try {
-      const response = await clientAxios.post('/api/v1/auth/forgotPassword', data);
-      localStorage.setItem('token', response.data.token); //VER SI ESTO ES NECESARIO LUEGO !!!
+      const response = await clientAxios.post('http://localhost:4000/api/v1/auth/forgotPassword', data);
+      console.log(response)
+      /* localStorage.setItem('token', response.data.token);  *///VER SI ESTO ES NECESARIO LUEGO !!!
       dispatch({ type: FORGOT_PASS_SUCCESS, payload: response.data });
+      console.log("paso")
     } catch (error) {
       console.log(error);
     }
   }
   const resetPassword = async (token, data) => {
     try {
-      const response = await clientAxios.post(`/api/v1/auth/resetPassword/${token}`, data);
+      const response = await clientAxios.post(`http://localhost:4000/api/v1/auth/resetPassword/${token}`, data);
+      console.log(response)
       localStorage.setItem('token', response.data.token);
       dispatch({ type: RESET_PASSWORD_SUCCESS, payload: response.data });
     } catch (error) {
