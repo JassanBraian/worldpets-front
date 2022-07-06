@@ -29,7 +29,7 @@ function App() {
         <Route path='/profile-image'element={<ProfileImage/>}/>
         <Route path="/single-product" element={<SinglePublication/>}/>         
         <Route path='/user' element={<UserPage />}/>
-        </Routes>
+        </Routes> 
       </Layout>
     </ParentContext>
   )

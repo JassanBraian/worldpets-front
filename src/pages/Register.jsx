@@ -8,11 +8,12 @@ const Register = () => {
     const { registerUser, isAuth } = useContext(AuthContext);
     const [form, setForm] = useState({
         name: '',
+        surname: '',
         email: '',
         password: '',
         passwordConfirm: ''
     });
-    const { name, email, password, confirmPassword } = form;
+    const { name, surname, email, password, confirmPassword } = form;
 
     const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -48,7 +49,18 @@ const Register = () => {
                                     name="name"
                                     value={name}
                                     onChange={handleOnChange}
-                                    placeholder="Ingrese su nombre completo"
+                                    placeholder="Ingrese su nombre"
+                                    className="form-control mt-2"
+                                />
+                            </div>
+                            <div className='form-holder'>
+                                <label>Apellido</label>
+                                <input
+                                    type="text"
+                                    name="surname"
+                                    value={surname}
+                                    onChange={handleOnChange}
+                                    placeholder="Ingrese su nombre apellido"
                                     className="form-control mt-2"
                                 />
                             </div>

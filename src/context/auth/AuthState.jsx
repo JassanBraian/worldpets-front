@@ -30,7 +30,8 @@ const AuthState = ({ children }) => {
 
   const registerUser = async (data) => {
     try {
-      const response = await clientAxios.post('/api/v1/auth/signup', data);
+      const response = await clientAxios.post('http://localhost:4000/api/v1/auth/signup', data);
+      console.log(response.data.token)
       dispatch({ type: REGISTER_SUCCESS, payload: response.data });
       localStorage.setItem('token', response.data.token);
       console.log(response);
@@ -59,12 +60,13 @@ const AuthState = ({ children }) => {
   }
   const login = async (data) => {
     try {
-      const response = await clientAxios.post('/api/v1/auth/login', data);
+      const response = await clientAxios.post('http://localhost:4000/api/v1/auth/login', data); 
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+      console.log(response.data) 
       localStorage.setItem('token', response.data.token);
     } catch (error) {
       console.log(error);
-    }
+    } 
   }
   const logout = () => {
     localStorage.removeItem('token');
