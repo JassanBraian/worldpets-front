@@ -24,17 +24,3 @@ body{
     margin: 100px auto;
     box-shadow: 0 0 5px #ccc;
 }
-
-/* 
-.table{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 30px 0;
-    background-color: white;
-}  */
-
-.table{
-    padding: 30px 0;
-    background-color: white;
-}

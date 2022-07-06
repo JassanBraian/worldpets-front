@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ButtonGroup, Button, Form } from 'react-bootstrap';
 
-const PublicationCreate = () => {
+const PubliFormCreate = () => {
 
     const initialState = {
         title: '',
@@ -12,6 +12,8 @@ const PublicationCreate = () => {
     }
     const [formPubli, setFormPubli] = useState(initialState);
     const { title, description, ubication, category, user } = formPubli;
+
+    const [error, setError] = useState([]);
 
     const handleOnChange = e => {
         setFormPubli({
@@ -27,10 +29,10 @@ const PublicationCreate = () => {
 
     return (
         <>
-            <Form>
-                <h2>Carga nueva publicación</h2>
-                <Form.Group className="mb-3">
-                    <Form.Label>Title</Form.Label>localhost:3000
+            <Form className='formCreate'>
+                <h2>Nueva publicación</h2>
+                <Form.Group className="mb-3 mt-4">
+                    <Form.Label>Title</Form.Label>
                     <Form.Control
                         name="title"
                         type="text"
@@ -42,7 +44,7 @@ const PublicationCreate = () => {
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                         name="description"
-                        type="text"
+                        type="textarea"
                         placeholder="What's your publication about..."
                         value={description}
                         onChange={handleOnChange} />
@@ -75,17 +77,21 @@ const PublicationCreate = () => {
                         value={user}
                         onChange={handleOnChange} />
                 </Form.Group>
-                {/* <div>
+                <div>
                     {
                         error && (<p className='errorMsg'>{error}</p>)
                     }
-                </div> */}
+                </div>
                 <ButtonGroup>
-                    <Button variant='success' onClick={handleOnSubmit}>Save</Button>
+                    <Button
+                        variant='success'
+                        className='btnSave'
+                        onClick={handleOnSubmit}
+                    >Save</Button>
                 </ButtonGroup>
             </Form>
         </>
     );
 };
 
-export default PublicationCreate;
+export default PubliFormCreate;

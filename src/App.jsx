@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
-import PublicationCreate from './components/entities/publication/base/PublicationCreate';
+import PublicationNew from './pages/PublicationNew';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/reset/:token" element={<ResetPassword />} />
-        <Route path='/publication-new' element={<PublicationCreate />} />
+        <Route path='/publication-new' element={<PublicationNew />} />
       </Routes>
     </ParentContext>
   );
