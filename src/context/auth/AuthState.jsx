@@ -62,7 +62,7 @@ const AuthState = ({ children }) => {
     try {
       const response = await clientAxios.post('http://localhost:4000/api/v1/auth/login', data); 
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
-      console.log(response.data) 
+      console.log(response.data)
       localStorage.setItem('token', response.data.token);
     } catch (error) {
       console.log(error);

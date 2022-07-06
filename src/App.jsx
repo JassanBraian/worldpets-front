@@ -12,6 +12,7 @@ import SinglePublication from './pages/SinglePublication';
 import ProfileImage from './pages/ProfileImage';
 import Layout from './components/common/layout/Layout';
 import UserPage from './pages/UserPage';
+import PublicationsPage from './pages/PublicationsPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/profile-image'element={<ProfileImage/>}/>
         <Route path="/single-product" element={<SinglePublication/>}/>         
         <Route path='/user' element={<UserPage />}/>
+        <Route path='/publications-page' element={ <PublicationsPage /> }/>
         </Routes> 
       </Layout>
     </ParentContext>
