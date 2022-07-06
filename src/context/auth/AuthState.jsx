@@ -7,12 +7,15 @@ import authToken from '../../config/token';
 import {
   IS_LOADING,
   GET_USER,
+  UPDATE_SUCCESS,
   REGISTER_ERROR,
   REGISTER_SUCCESS,
   LOGOUT,
   LOGIN_SUCCESS,
   FORGOT_PASS_SUCCESS,
-  RESET_PASSWORD_SUCCESS
+  RESET_PASSWORD_SUCCESS,
+  GET_PUBLICATION,
+  GET_PUBLICATIONS
 } from '../../types/auth';
 
 const AuthState = ({ children }) => {
@@ -27,7 +30,8 @@ const AuthState = ({ children }) => {
 
   const registerUser = async (data) => {
     try {
-      const response = await clientAxios.post('/api/v1/auth/signup', data);
+      const response = await clientAxios.post('http://localhost:4000/api/v1/auth/signup', data);
+      console.log(response.data.token)
       dispatch({ type: REGISTER_SUCCESS, payload: response.data });
       localStorage.setItem('token', response.data.token);
       console.log(response);
@@ -45,15 +49,24 @@ const AuthState = ({ children }) => {
     } catch (error) {
       console.log(error)
     }
+  }  
+  const updateUser = async (data) => {
+    try {
+        const response = await clientAxios.put('/api/v1/users', data);
+        dispatch({type: UPDATE_SUCCESS, payload: response.data.data});
+    } catch (error) {
+        console.log(error)
+    }
   }
   const login = async (data) => {
     try {
-      const response = await clientAxios.post('/api/v1/auth/login', data);
+      const response = await clientAxios.post('http://localhost:4000/api/v1/auth/login', data); 
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+      console.log(response.data)
       localStorage.setItem('token', response.data.token);
     } catch (error) {
       console.log(error);
-    }
+    } 
   }
   const logout = () => {
     localStorage.removeItem('token');
@@ -78,15 +91,37 @@ const AuthState = ({ children }) => {
       console.log(error);
     }
   }
+
+  const getPublication = async () => {
+    try {
+      const response = await clientAxios.get('/api/v1/'); /* COMPLETAR */
+      dispatch({ type: GET_PUBLICATION, payload: response.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getPublications = async () => {
+    try {
+      const response = await clientAxios.get('/api/v1/'); /* COMPLETAR */
+      dispatch({ type: GET_PUBLICATIONS, payload: response.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <AuthContext.Provider value={{
       ...state,
       registerUser,
       getUser,
+      updateUser,
       logout,
       login,
       forgotPassword,
-      resetPassword
+      resetPassword,
+      getPublication,
+      getPublications
     }}>
       {children}
     </AuthContext.Provider>
