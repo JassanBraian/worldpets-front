@@ -23,7 +23,7 @@ const Card = (props) => {
                 Marcar como favorito
             </button>
             : <button className="favouriteButton" onClick={props.onToggleFavorite}>
-            <FontAwesomeIcon size= '1.5x' icon={faTrashCan} />
+            <FontAwesomeIcon size= '1x' icon={faTrashCan} className='mx-2'/>
                 Eliminar de mis favoritos
             </button>}
         </div>

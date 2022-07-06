@@ -1,7 +1,6 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import CommentReducer from "./CommentReducer";
 import CommentContext from "./CommentContext";
-import { useEffect } from "react";
 import clientAxios from "../../config/axios";
 import {
     GET_COMMENT,

@@ -10,10 +10,13 @@ import SearchII from "./pages/SearchII";
 import UserMenu from './pages/UserMenu';
 import SinglePublication from './pages/SinglePublication';
 import ProfileImage from './pages/ProfileImage';
+import Layout from './components/common/layout/Layout';
+import UserPage from './pages/UserPage';
 
 function App() {
   return (
     <ParentContext>
+      <Layout>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/comment' element={<CommentPage />} />
@@ -24,8 +27,10 @@ function App() {
         <Route path="/search-page" element={<SearchII/>}/>
         <Route path="/user-menu" element={<UserMenu/>}/> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
         <Route path='/profile-image'element={<ProfileImage/>}/>
-        <Route path="/single-product" element={<SinglePublication/>}/>
-      </Routes>
+        <Route path="/single-product" element={<SinglePublication/>}/>         
+        <Route path='/user' element={<UserPage />}/>
+        </Routes>
+      </Layout>
     </ParentContext>
   )
   }
