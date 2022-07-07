@@ -95,11 +95,11 @@ const UserMenu = () => {
 							  </div>
 						  </div>
 
-              <div className='d-flex justify-content-between'>
+              <div className='d-flex justify-content-end'>
 
                 <button type="submit" className='submit-button'>Enviar</button>
 
-                <Link to='/forgotPassword' className='forgot-link'> Cambiar contraseña </Link>
+
 
               </div>
 

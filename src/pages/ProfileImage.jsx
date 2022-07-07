@@ -13,12 +13,12 @@ const ProfileImage = () => {
     photo: "https://png.pngtree.com/png-vector/20191018/ourmid/pngtree-user-icon-isolated-on-abstract-background-png-image_1824979.jpg"
   }
 
-  const [userInfo, setUserInfo] = useState(InitialValues)
+  const [userInfo, setUserInfo] = useState(InitialValues) /* Borrar esto */
 
 
   const {user, updateUser} = useContext(AuthContext) /* PARA TRAER LOS DATOS DEL USER EN LUGAR DE USAR INITAIL VALUES Y USESTATE DE USERINFO*/
   const [form, setForm] = useState({
-    photo: userInfo.photo || ''
+    photo: userInfo.photo || '' /* Reemplazar userInfo por user */
   })
   
   const {photo} = userInfo
@@ -28,9 +28,9 @@ const ProfileImage = () => {
     const photo = e.target.files[0];
     setForm({...form, photo})
   }
-
+/* 
   const handleChange = e => setForm({...form, [e.target.name]: e.target.value});
-
+ */
   const handleSubmit = e => {
     e.preventDefault();
     const formData = new FormData();
