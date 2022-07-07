@@ -5,6 +5,7 @@ import clientAxios from "../../config/axios";
 import {
     GET_COMMENT,
     GET_COMMENTS,
+    GET_PUBLICOMMENTS,
     CREATE_COMMENT,
     UPDATE_COMMENT,
     DELETE_COMMENT
@@ -12,13 +13,10 @@ import {
 
 const CommentProvider = ({ children }) => {
 
-    useEffect(() => {
-        getComments();
-    }, [])
-
     const initialState = {
         comments: [],
-        comment: {}
+        comment: {},
+        publiComments: []
     }
     const [state, dispatch] = useReducer(CommentReducer, initialState);
 
@@ -37,6 +35,16 @@ const CommentProvider = ({ children }) => {
             // const res = await clientAxios.get('/api/v1/comment');
             const res = await clientAxios.get(`http://localhost:4000/api/v1/comment/${commentId}`);
             res && dispatch({ type: GET_COMMENT, payload: res.data.comment });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    const getCommentsByPubliId = async publiId => {
+        try {
+            // const res = await clientAxios.get('/api/v1/comment');
+            const res = await clientAxios.get('http://localhost:4000/api/v1/comment', { publiId: publiId });
+            res && dispatch({ type: GET_PUBLICOMMENTS, payload: res.data.comments });
         } catch (error) {
             throw error;
         }
@@ -77,6 +85,7 @@ const CommentProvider = ({ children }) => {
             ...state,
             getComments,
             getComment,
+            getCommentsByPubliId,
             createComment,
             updateComment,
             deleteComment

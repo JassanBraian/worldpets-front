@@ -58,7 +58,7 @@ return (
                           <img
                               src={item.img}
                               alt=""
-                              key={photos.index}
+                              key={index}
                               onClick={() => setCurrentImg(item.img)}
                              /*  onClick={() => handleTab(index)} */
                           />
@@ -71,7 +71,7 @@ return (
           </div>
   </div>
   <div>
-    <Comments currentUserId="10"/> {/* Paso el id para que solo los usuarios que esten conectados puedan dejar un comentario. El id provendria desde el backend desde .windows o API req . En este caso paso el currentUserId estadico para ser comparado con el userId del comentario*/}
+    <Comments currentUserId="62c5e6abb4ef5f01a437d2b0"/> {/* Paso el id para que solo los usuarios que esten conectados puedan dejar un comentario. El id provendria desde el backend desde .windows o API req . En este caso paso el currentUserId estadico para ser comparado con el userId del comentario*/}
   </div>
 </>
 )

@@ -1,6 +1,7 @@
 import {
     GET_COMMENT,
     GET_COMMENTS,
+    GET_PUBLICOMMENTS,
     CREATE_COMMENT,
     UPDATE_COMMENT,
     DELETE_COMMENT
@@ -18,6 +19,11 @@ const CommentReducer = (state, action) => {
                 ...state,
                 comment: action.payload,
             }
+        case GET_PUBLICOMMENTS:
+            return {
+                ...state,
+                publiComments: action.payload,
+            }
         case CREATE_COMMENT:
             return {
                 ...state,
@@ -26,13 +32,13 @@ const CommentReducer = (state, action) => {
         case UPDATE_COMMENT:
             return {
                 ...state,
-                comments: state.comments.map(comment => 
+                comments: state.comments.map(comment =>
                     comment._id === action.payload._id ? action.payload : comment),
             }
         case DELETE_COMMENT:
             return {
                 ...state,
-                comments: state.comments.filter(comment => 
+                comments: state.comments.filter(comment =>
                     comment._id !== action.payload),
             }
         default:

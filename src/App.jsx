@@ -28,7 +28,7 @@ function App() {
         <Route path="/search-page" element={<SearchII/>}/>
         <Route path="/user-menu" element={<UserMenu/>}/> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
         <Route path='/profile-image'element={<ProfileImage/>}/>
-        <Route path="/single-product" element={<SinglePublication/>}/>         
+        <Route path="/single-publication" element={<SinglePublication/>}/>         
         <Route path='/user' element={<UserPage />}/>
         <Route path='/publications-page' element={ <PublicationsPage /> }/>
         </Routes> 
