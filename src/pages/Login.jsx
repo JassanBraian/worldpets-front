@@ -20,7 +20,7 @@ const Login = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate('/private');
+        isAuth && navigate('/user-menu');
     }, [isAuth]);
 
     return (
