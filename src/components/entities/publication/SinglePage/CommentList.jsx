@@ -6,10 +6,10 @@ import {
     deleteComment as deleteCommentApi,
     updateComment as updateCommentApi
 } from './api';
-import Comment from './Comment';
+import CommentItem from './CommentItem';
 import CommentForm from './CommentForm';
 
-const Comments = ({currentUserId}) => { /* currentUserId proviene desde el padre */
+const CommentList = ({currentUserId}) => { /* currentUserId proviene desde el padre */
     const [backendComments, setBackendComments] = useState([]) /* Colocamos un array vacio porque no tenemos ninguna data y esta data tendria que venir desde el backend */
     const [activeComment, setActiveComment] = useState(null) /* Escuchara a dos objetos diferentes cuando tengamos un activeComment:
         {type: 'editing', id: '1'}
@@ -71,7 +71,7 @@ const Comments = ({currentUserId}) => { /* currentUserId proviene desde el padre
         </div>
         <div className="comments-container">
             {rootComments.map(rootComment => (  /* Con esto hago un .map para traer a los comentarios padres que indique en rootComments */
-                <Comment 
+                <CommentItem 
                     key={rootComment.id} 
                     comment={rootComment} 
                     replies={getReplies(rootComment.id)} /* Con esto recolecto todos los comment replies cuando se renderiza el comment */
@@ -88,4 +88,4 @@ const Comments = ({currentUserId}) => { /* currentUserId proviene desde el padre
   )
 }
 
-export default Comments;
+export default CommentList;
