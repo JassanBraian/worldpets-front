@@ -1,0 +1,16 @@
+.buttonContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.categoryButton{
+    height: 200px;
+    width: 300px;
+    margin: 50px 30px;
+    background-color: #D3B72A;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: #D3B72A;
+}
+.title{
+    font-family: 'Poppins';
+    font-size: 2rem;
+}
