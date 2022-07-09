@@ -5,9 +5,9 @@ import '../css/common/pages/category.css'
 const Category = (props) => {
   return (
     <>
-    <h2 className='titulo'>{props.title}</h2>
+    <h2 className='titulo'>{props.category}</h2>
     <div className='card-group'>
-      <ListaCards posts={props.posts} />
+      <ListaCards posts={props.publication} />
     </div>
     </>
   )

@@ -4,45 +4,19 @@ import '../css/common/pages/home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import Category from './Category';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Posts from '../components/entities/publication/base/posts';
 import { useEffect } from 'react';
 import Spinner from '../components/common/spinner/Spinner';
 import CategoryButtons from '../components/common/categoryButtons/CategoryButtons';
-
-
-const data = [
-    {
-        categoryTitle: "Se perdió",
-        posts: [ Posts[0],Posts[1], Posts[2]]
-    },
-    {
-        categoryTitle: "Destacados",
-        posts: [ Posts[0],Posts[1], Posts[2]]
-
-    },
-    {
-        categoryTitle: "En adopción",
-        posts: [ Posts[0],Posts[1], Posts[2]]
-    }
-]
+import FavoriteList from '../components/entities/favorites/FavoriteList';
+import clientAxios from '../config/axios';
 
 const Home = () => {
-    const [categories, setCategories] = useState([]);
+   
     const [loading, setLoading] = useState(false);
-    useEffect( ()=>{
-        loadData()
-    }, []);
-    const loadData= async ()=>{
-        setLoading(true)
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setLoading(false)
-        setCategories(data)
 
-    };
-
-
+    
     const navigate = useNavigate();
     const goToCategory = ()=>{
       navigate('/Category')
@@ -53,10 +27,11 @@ const Home = () => {
     }
     return (
         <div>
-        {categories.map(cat => {
+        <FavoriteList />
+        {publications.map((publication, index) => {
             return (
             <section>
-                <Category title={cat.categoryTitle} posts={cat.posts}/>
+                <Category key={index} title={publication.category} posts={publication} />
                 <button onClick={goToCategory} className='seeMoreButton'>
                 <FontAwesomeIcon icon={faCirclePlus} />
                 Ver todos
