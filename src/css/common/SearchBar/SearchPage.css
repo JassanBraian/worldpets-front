@@ -35,11 +35,13 @@ h1 {
   padding-top: 8px;
   width: 40px;
   padding-left: 8px;
+  cursor: pointer;
 }
 
 .no-results {
 margin-top: 90px;  
 }
+
 
 @media (min-width: 576px) {
   .input {

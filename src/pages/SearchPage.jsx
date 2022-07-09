@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import clientAxios from '../config/axios';
+import "../css/common/SearchBar/SearchPage.css"
+import { Link } from 'react-router-dom';
+import Spinner from '../components/common/spinner/Spinner';
+
+
 
 const SearchPage = () => {
     const [publications, setPublications] = useState([]);
-
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleFilter = (event) => {
         const searchWord = event.target.value;
@@ -29,9 +34,10 @@ const SearchPage = () => {
     
 const getPublications = async () =>{
         try{
+        setLoading(true)
         const response = await clientAxios.get('http://localhost:4000/api/v1/publication/');
         setPublications(response.data.publications);
-
+        setLoading(false)
         } catch (error){
             throw error
         }
@@ -40,6 +46,10 @@ const getPublications = async () =>{
     useEffect(() => {
         getPublications()
     }, [])
+
+    if(loading){
+        return <Spinner />
+    }
 
   return (
     <>
@@ -78,11 +88,19 @@ const getPublications = async () =>{
                                 <p className="card-text">{publication.description}</p>
                             </div>
                         </div>
+                        <Link to="/single-product" className="stretched-link"></Link>
                         </div>
                         );
                         })
                 :
-                <h2 className='text-center no-results'>No se encontraron resultados</h2>
+                <div>
+                    <h2 className='text-center no-results'>No se encontraron resultados</h2>
+                    <div className='d-flex justify-content-center'>
+                    <button type="submit" className='submit-button mb-5 mt-4'>
+                        <Link to="/" className='text-decoration-none text-dark'>Volver a inicio</Link> 
+                        </button>
+                    </div>
+                </div>
                 }
             
         </div>

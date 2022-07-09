@@ -28,8 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetPassword/:token" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
-
-        <Route path="/search" element={<SearchPage/>}/>
+        <Route path="/search-page" element={<SearchPage/>}/>
         <Route path="/user-menu" element={
 
 
