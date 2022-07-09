@@ -25,20 +25,15 @@ const SearchII = () => {
         })
     } 
 
-    const getPublications = async () =>{
-        try{
-        setLoading(true)
-        const response = await clientAxios.get('http://localhost:4000/api/v1/publication/');
-        setPublications(response.data.publications);
-        setLoading(false)
-        } catch (error){
-            throw error
-        }
-    };
+   /*  const getPublications = useContext(AuthContext) */
 
-    useEffect(()=>{
-        getPublications();
-    }, []);
+/*     const onSearch = async(text) => {
+        const results = getPublications
+
+        setState(prevState => {
+            return {...prevState, results:results}
+        })
+    }  */
 
   return (
     <div className="SearchII">
@@ -46,7 +41,7 @@ const SearchII = () => {
             <h1 className="title text-center">
                 ¿Que estas buscando?
             </h1>
-            <SearchBarII onSearch={getPublications}/>
+            <SearchBarII onSearch={onSearch}/>
             <CardList results={state.results}/>
         </div>
     </div>
