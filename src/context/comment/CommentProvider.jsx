@@ -12,10 +12,6 @@ import {
 
 const CommentProvider = ({ children }) => {
 
-    useEffect(() => {
-        getComments();
-    }, [])
-
     const initialState = {
         comments: [],
         comment: {}
