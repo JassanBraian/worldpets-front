@@ -60,10 +60,8 @@ const FavoriteProvider = ({children}) => {
    const getFavorites = async (userId) => {
        try {
            const res = await clientAxios.get(`http://localhost:4000/api/v1/favourite`);
-           console.log(res.data)
            res && dispatch({ type: SET_FAVORITES, payload: res.data.favourites });
         } catch (error) {
-            console.log(error)
             throw error
         }
     }
