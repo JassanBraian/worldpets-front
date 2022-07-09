@@ -2,7 +2,7 @@ import React from 'react'
 
 import CommentForm from './CommentForm';
 
-const Comment = ({
+const CommentItem = ({
     comment, 
     currentUserId, 
     deleteComment,
@@ -65,4 +65,4 @@ const Comment = ({
   )
 }
 
-export default Comment;
+export default CommentItem;

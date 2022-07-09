@@ -1,5 +1,5 @@
 {
-    "user":[
+    "users":[
         {
             "id": 1
         },
@@ -7,13 +7,14 @@
             "id": 2
         }
     ],
-    "publication":[
+    "publications":[
         {
             "petName": "tito",
             "petDescription": "cachorro",
             "isFavorite": true,
             "isHighlighted": true,
             "image": "./",
+            "category": "en adopcion",
             "id":1
         },
         {
@@ -22,6 +23,7 @@
             "isFavorite": false,
             "isHighlighted": false,
             "image": "pet2",
+            "category": "en adopcion",
             "id":2
         },
         {
@@ -30,6 +32,7 @@
             "isFavorite": false,
             "isHighlighted": false,
             "image": "./",
+            "category": "en adopcion",
             "id":3
         },
         {
@@ -38,14 +41,16 @@
             "isFavorite": false,
             "isHighlighted": false,
             "image": "pet4",
+            "category": "perdido",
             "id":4
         },
         {
             "petName": "zamba",
             "petDescription": "pelo corto",
             "isFavorite": false,
-            "isHighlighted": false,
+            "isHighlighted": true,
             "image": "pet4",
+            "category": "perdido",
             "id":5
         },
         {
@@ -54,11 +59,12 @@
             "isFavorite": false,
             "isHighlighted": false,
             "image": "pet4",
+            "category": "lo encontramos",
             "id":6
         }
 
     ],
-    "comment":[
+    "comments":[
         {
             "id": 1
         },
@@ -67,13 +73,33 @@
         }
 
     ],
-    "favourite":[
+    "favorites":[
         {
-            "id": 1
+            "id": 1,
+            "postId":1,
+            "userId": 2
         },
         {
-            "id": 2
+            "id": 2,
+            "postId":1,
+            "userId": 2
+        },
+        {
+            "id": 3,
+            "postId":2,
+            "userId": 2
+        },
+        {
+            "id": 4,
+            "postId":3,
+            "userId": 2
+        },
+        {
+            "id": 5,
+            "postId":4,
+            "userId": 3
         }
+
 
     ]
 }
