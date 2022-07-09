@@ -13,8 +13,7 @@ const UserProvider = ({ children }) => {
     const getUsers = async () => {
         try {
             // const res = await clientAxios.get('/api/v1/user');
-            const res = await clientAxios.get('http://localhost:4000/api/v1/auth/login');
-            console.log(res.data.users);
+            const res = await clientAxios.get('http://localhost:4000/api/v1/user');
             res && setState({ ...state, users: res.data.users });
         } catch (error) {
             throw error;

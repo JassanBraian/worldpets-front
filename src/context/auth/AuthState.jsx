@@ -31,12 +31,10 @@ const AuthState = ({ children }) => {
   const registerUser = async (data) => {
     try {
       const response = await clientAxios.post('http://localhost:4000/api/v1/auth/signup', data);
-      console.log(response.data.token)
       dispatch({ type: REGISTER_SUCCESS, payload: response.data });
       localStorage.setItem('token', response.data.token);
-      console.log(response);
     } catch (error) {
-      console.log(error);
+      throw error;
 
     }
   }
@@ -49,27 +47,32 @@ const AuthState = ({ children }) => {
       console.log(response.data)
       dispatch({ type: GET_USER, payload: response.data })
     } catch (error) {
-      console.log(error)
+      throw error;
     }
-  }  
+  }
   const updateUser = async (data) => {
     try {
+<<<<<<< HEAD
         const response = await clientAxios.put('http://localhost:4000/api/v1/user', data);
         console.log(response.data)
         dispatch({type: UPDATE_SUCCESS, payload: response.data.data});
+=======
+      const response = await clientAxios.put('/api/v1/users', data);
+      dispatch({ type: UPDATE_SUCCESS, payload: response.data.data });
+>>>>>>> 40c8902f42545d2e9bb81eaf8e0d7b5345614a0f
     } catch (error) {
-        console.log(error)
+      throw error;
     }
   }
   const login = async (data) => {
     try {
-      const response = await clientAxios.post('http://localhost:4000/api/v1/auth/login', data); 
+      const response = await clientAxios.post('http://localhost:4000/api/v1/auth/login', data);
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('emailUser', response.data.data.user.userEmail )
+      localStorage.setItem('emailUser', response.data.data.user.userEmail)
     } catch (error) {
-      console.log(error);
-    } 
+      throw error;
+    }
   }
   const logout = () => {
     localStorage.removeItem('token');
@@ -80,22 +83,19 @@ const AuthState = ({ children }) => {
   const forgotPassword = async (data) => {
     try {
       const response = await clientAxios.post('http://localhost:4000/api/v1/auth/forgotPassword', data);
-      console.log(response)
       /* localStorage.setItem('token', response.data.token);  *///VER SI ESTO ES NECESARIO LUEGO !!!
       dispatch({ type: FORGOT_PASS_SUCCESS, payload: response.data });
-      console.log("paso")
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
   const resetPassword = async (token, data) => {
     try {
       const response = await clientAxios.post(`http://localhost:4000/api/v1/auth/resetPassword/${token}`, data);
-      console.log(response)
       localStorage.setItem('token', response.data.token);
       dispatch({ type: RESET_PASSWORD_SUCCESS, payload: response.data });
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -104,7 +104,7 @@ const AuthState = ({ children }) => {
       const response = await clientAxios.get('http://localhost:4000/api/v1/'); /* COMPLETAR */
       dispatch({ type: GET_PUBLICATION, payload: response.data })
     } catch (error) {
-      console.log(error)
+      throw error;
     }
   }
 
@@ -113,7 +113,7 @@ const AuthState = ({ children }) => {
       const response = await clientAxios.get('http://localhost:4000/api/v1/'); /* COMPLETAR */
       dispatch({ type: GET_PUBLICATIONS, payload: response.data })
     } catch (error) {
-      console.log(error)
+      throw error;
     }
   }
 
