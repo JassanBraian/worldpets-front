@@ -54,6 +54,7 @@ const UserMenu = () => {
     formData.append('name', name);
     formData.append('surname', surname);
     formData.append('email', email); */
+    console.log(form);
     updateUser(form)
   }
 

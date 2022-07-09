@@ -102,7 +102,7 @@ const ProfileImage = () => {
                         )
                         } */}
                         {/* <img src="https://firebasestorage.googleapis.com/v0/b/fir-9-3d634.appspot.com/o/userProfilePic%2Fvale.alexis18%40gmail.com.jpg?alt=media&token=fe5552ae-d727-4fc5-80d1-9648f284751d"/> */}
-                        <img src={image} alt="" />
+                        <img className='rounded-circle' src={image} alt="" />
                         <div className="avartar-picker d-flex justify-content-center">
                             <input 
                                 type="file"
@@ -119,6 +119,7 @@ const ProfileImage = () => {
                             </label>
                         </div>
 				    </div>
+      <h3 className='text-center'>Uploaded {progress}%</h3>
                 </div>
                 <div className='d-flex justify-content-between'>
                     <button type="submit" className='submit-button'>Enviar</button>
@@ -128,7 +129,6 @@ const ProfileImage = () => {
 	        </section>            			
         </div>
       </form>
-      <h3>Uploaded {progress}%</h3>
     </div>
   )
 }

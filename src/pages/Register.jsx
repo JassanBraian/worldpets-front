@@ -23,7 +23,7 @@ const Register = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate('/private');
+        isAuth && navigate('/user-menu');
     }, [isAuth])
 
     return (
