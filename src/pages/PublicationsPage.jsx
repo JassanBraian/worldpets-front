@@ -42,9 +42,6 @@ const PublicationsPage = () => {
   }
   
   return (<>
-      <Button size='lg' className="addBtn" onClick={() => setModalOpen(true)}>
-        Add Publication
-      </Button>
 
       <Table size='sm' className="table-bordered border-dark">
         <thead className="table-dark text-center">
