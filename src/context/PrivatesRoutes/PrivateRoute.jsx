@@ -7,9 +7,8 @@ const PrivateRoute = ({children}) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      if(isAuth && token) {
+      if(!isAuth && token) {
         getUser()
-        console.log(getUser())
       }
     }, [])
 

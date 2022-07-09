@@ -15,7 +15,8 @@ import ProfileImage from './pages/ProfileImage';
 import Layout from './components/common/layout/Layout';
 import UserPage from './pages/UserPage';
 import PublicationsPage from './pages/PublicationsPage';
-import PrivateRoute from './context/user/PrivateRoute';
+import PrivateRoute from './context/PrivatesRoutes/PrivateRoute';
+import AdminRoute from './context/PrivatesRoutes/AdminRoute';
 
 function App() {
   return (
@@ -27,16 +28,19 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/resetPassword/:token" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
+        <Route path="/resetPassword/:token" element={<ResetPassword/>}/>
         <Route path="/search-page" element={<SearchPage/>}/>
         <Route path="/user-menu" element={
-
-
+          <PrivateRoute>
             <UserMenu/>
-
-        }/> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
+          </PrivateRoute>
+        }/>
         <Route path='/profile-image'element={<ProfileImage/>}/>
-        <Route path="/single-product" element={<SinglePublication/>}/>         
+        <Route path="/single-product" element={
+
+            <SinglePublication/>
+
+        }/>         
         <Route path='/user' element={<UserPage />}/>
         <Route path='/publications-page' element={ <PublicationsPage /> }/>
         <Route path='/Category' element={<Category/>} title= 'Destacadas'/>
