@@ -1,10 +1,10 @@
 //HOOKS
 import { useContext } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // COMPONENTS
 import { Button, Table } from 'react-bootstrap';
 import React from 'react'
-import AdminList from '../components/entities/publication/base/AdminList'
+import AdminList from '../components/entities/publication/base/AdminListItem'
 import ModViewPublication from '../components/entities/publication/base/ModViewPublication';
 import ModEditPublication from '../components/entities/publication/base/ModEditPublication';
 import PublicationContext from '../context/publication/PublicationContext';
@@ -16,13 +16,17 @@ import ModDeletePublication from '../components/entities/publication/base/ModDel
 
 const PublicationsPage = () => {
   
-  const { publications } = useContext(PublicationContext)
+  const { publications, getPublications } = useContext(PublicationContext)
  
   const [modalOpen, setModalOpen] = useState(false);
 
   const [editModalOpen, setEditModalOpen] = useState(false);
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  useEffect(()=>{
+    getPublications();
+  }, [])
 
 
   const openViewModal = () =>{
@@ -38,9 +42,6 @@ const PublicationsPage = () => {
   }
   
   return (<>
-      <Button size='lg' className="addBtn" onClick={() => setModalOpen(true)}>
-        Add Publication
-      </Button>
 
       <Table size='sm' className="table-bordered border-dark">
         <thead className="table-dark text-center">
@@ -58,6 +59,7 @@ const PublicationsPage = () => {
             {
               publications.map((element, index) => (
                 <AdminList key={index} 
+                index={index+1}
                 data={element} 
                 editModal={openEditModal}
                 viewModal={openViewModal}
