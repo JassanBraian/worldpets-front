@@ -4,10 +4,6 @@ import clientAxios from "../../config/axios";
 
 const UserProvider = ({ children }) => {
 
-    useEffect(() => {
-        //getUsers();
-    }, []);
-
     const initialState = {
         users: [],
         user: {}

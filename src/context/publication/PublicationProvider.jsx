@@ -3,32 +3,9 @@ import PublicationContext from './PublicationContext';
 
 const PublicationProvider = ({ children }) => {
   
-  const initialValue = [
-    {
-      "id": 1,
-      "title": "buscamos a Tina",
-      "description": "estamos buscando a Tina",
-      "ubication": "s.m de Tucuman",
-      "category": "lost",
-      "user": "lucianocolin"
-    }, 
-    {
-      "id": 2,
-      "title": "encontramos a Lola",
-      "description": "la encontramos en Barrio Norte",
-      "ubication": "s.m de Tucuman",
-      "category": "found",
-      "user": "jonyarriazu"
-    },
-    {
-      "id": 3,
-      "title": "Luna en adopción",
-      "description": "Blanca, de tamaño pequeño, 2 años",
-      "ubication": "s.m de Tucuman",
-      "category": "adoption",
-      "user": "braianjassan"
-    }
-  ]
+  const initialValue = {
+    publications: [],
+  }
 
   const [publications, setPublications] = useState(initialValue);
   const [CurrentPublication, setCurrentPublication] = useState({});
