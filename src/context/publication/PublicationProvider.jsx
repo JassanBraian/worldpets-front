@@ -1,65 +1,59 @@
 import { useState } from 'react';
 import PublicationContext from './PublicationContext';
+import clientAxios from '../../config/axios';
 
 const PublicationProvider = ({ children }) => {
   
-  const initialValue = [
-    {
-      "id": 1,
-      "title": "buscamos a Tina",
-      "description": "estamos buscando a Tina",
-      "ubication": "s.m de Tucuman",
-      "category": "lost",
-      "user": "lucianocolin"
-    }, 
-    {
-      "id": 2,
-      "title": "encontramos a Lola",
-      "description": "la encontramos en Barrio Norte",
-      "ubication": "s.m de Tucuman",
-      "category": "found",
-      "user": "jonyarriazu"
-    },
-    {
-      "id": 3,
-      "title": "Luna en adopción",
-      "description": "Blanca, de tamaño pequeño, 2 años",
-      "ubication": "s.m de Tucuman",
-      "category": "adoption",
-      "user": "braianjassan"
+  const initialValue = {
+    publications: [],
+    publication: {}
+  }
+
+  const [values, setValues] = useState(initialValue);
+
+  const getPublications = async () => {
+    try {
+        const res = await clientAxios.get('http://localhost:4000/api/v1/publication');
+        res && setValues({ ...values, publications: res.data.publications });
+    } catch (error) {
+        throw error;
     }
-  ]
+  }
 
-  const [publications, setPublications] = useState(initialValue);
-  const [CurrentPublication, setCurrentPublication] = useState({});
-  const [CurrentEditPublication, setCurrentEditPublication] = useState({});
+  const getPublication = async publicationId => {
+    try {
+        const res = await clientAxios.get(`http://localhost:4000/api/v1/publication/${publicationId}`);
+        res && setValues({ ...values, publication: res.data.publication });
+    } catch (error) {
+        throw error;
+    }
+  }
 
-  const getPublication = (id) =>{
-    initialValue.map((publication)=>{
-      if(publication.id === id){
-        setCurrentPublication(publication)
-      }
-  })
-  };
+  const updatePublication = async publication => {
+    try {
+        const res = await clientAxios.put(`http://localhost:4000/api/v1/publication/${publication._id}`, publication);
+        res && await getPublications();
+    } catch (error) {
+        throw error;
+    }
+  }
 
-  const getEditPublication = (id) =>{
-    initialValue.map((publication)=>{
-      if(publication.id === id){
-        setCurrentEditPublication(publication)
-      }
-    })
-  };
+  const deletePublication = async publicationId => {
+    try {
+        const res = await clientAxios.delete(`http://localhost:4000/api/v1/publication/${publicationId}`);
+        res && await getPublications();
+    } catch (error) {
+        throw error;
+    }
+}
   
   return (
     <PublicationContext.Provider value={{
-      publications,
-      setPublications,
-      CurrentPublication,
-      setCurrentPublication,
+      ...values,
+      getPublications,
       getPublication,
-      CurrentEditPublication,
-      setCurrentEditPublication,
-      getEditPublication
+      updatePublication,
+      deletePublication
     }}>
       {children}
     </PublicationContext.Provider>

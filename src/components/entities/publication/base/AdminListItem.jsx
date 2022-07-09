@@ -1,17 +1,17 @@
 import { Button } from 'react-bootstrap';
 import React from 'react';
-import PublicationContext from '../../../../context/publication/PublicationContext';
-import { useContext } from 'react';
 import '../../../../css/entities/admin/AdminList.css';
+import { useContext } from 'react';
+import PublicationContext from '../../../../context/publication/PublicationContext';
 
-const AdminList = ({ data, editModal, viewModal, deleteConfirmModal }) => {
+const AdminListItem = ({ data, editModal, viewModal, deleteConfirmModal, index }) => {
 
-  const { getPublication, getEditPublication } = useContext(PublicationContext)
+  const { getPublication } = useContext(PublicationContext)
 
   return (
     <>
           <tr>
-            <td>{data.id}</td>
+            <td>{index}</td>
             <td>{data.title}</td>
             <td>{data.description}</td>
             <td>{data.ubication}</td>
@@ -22,20 +22,21 @@ const AdminList = ({ data, editModal, viewModal, deleteConfirmModal }) => {
               variant='warning' 
               size='sm'
               onClick={()=>{
-                getPublication(data.id);
+                getPublication(data._id);
                 viewModal();
               }}
               >Open</Button>
               <Button 
               size='sm'
               onClick={()=> {
-                getEditPublication(data.id)
+                getPublication(data._id)
                 editModal();
                 }}>Editar</Button>
               <Button 
               variant='danger' 
-              size='sm' 
+              size='sm'
               onClick={()=>{
+                getPublication(data._id);
                 deleteConfirmModal();
                 }}>Eliminar</Button>
             </td>
@@ -44,4 +45,4 @@ const AdminList = ({ data, editModal, viewModal, deleteConfirmModal }) => {
   )
 }
 
-export default AdminList
+export default AdminListItem;

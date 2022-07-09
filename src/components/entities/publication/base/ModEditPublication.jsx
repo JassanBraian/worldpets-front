@@ -5,7 +5,7 @@ import PublicationContext from '../../../../context/publication/PublicationConte
 
 const ModEditPublication = ({ show, onHide }) => {
 
-  const { CurrentEditPublication } = useContext(PublicationContext);
+  const { updatePublication, publication } = useContext(PublicationContext);
 
   const initialFormValues = {
     title: '',
@@ -18,6 +18,11 @@ const ModEditPublication = ({ show, onHide }) => {
   const [ form, setForm ] = useState(initialFormValues);
 
   const [ error, setError ] = useState(null);
+
+  useEffect(()=>{
+    Object.keys(publication).length > 0
+    && setForm(publication)
+  }, [publication])
   
   const handleChange = e => {
     setForm({
@@ -32,13 +37,14 @@ const ModEditPublication = ({ show, onHide }) => {
         setError('Todos los campos son obligatorios');
         return;
     }
+    updatePublication(form);
+    onHide(true);
     setError(null);
-    setForm(initialFormValues);
     };
 
-    useEffect(()=>{
+/*     useEffect(()=>{
       setForm(CurrentEditPublication)
-    }, [CurrentEditPublication]);
+    }, [CurrentEditPublication]); */
 
   return (
     <Modal
@@ -98,7 +104,7 @@ const ModEditPublication = ({ show, onHide }) => {
               name="user"
               type="text" 
               value={form.user} 
-              onChange={handleChange}/>
+              disabled/>
           </Form.Group>
           <div>
             {
