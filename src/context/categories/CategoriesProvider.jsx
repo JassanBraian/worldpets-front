@@ -19,7 +19,7 @@ const CategoriesProvider = ({children}) => {
     useEffect(() => {
       getPostsCategory('se perdio')
     }, []);
-    console.log(categoriesList)
+   
     
   return (
 
