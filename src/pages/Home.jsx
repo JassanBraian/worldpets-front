@@ -13,33 +13,33 @@ import FavoriteList from '../components/entities/favorites/FavoriteList';
 import clientAxios from '../config/axios';
 
 const Home = () => {
-   
-    const [loading, setLoading] = useState(false);
 
-    
+    const [loading, setLoading] = useState(false);
+    const [publications, setpublications] = useState([]);
+
     const navigate = useNavigate();
-    const goToCategory = ()=>{
-      navigate('/Category')
+    const goToCategory = () => {
+        navigate('/Category')
     };
 
-    if(loading){
+    if (loading) {
         return <Spinner />
     }
     return (
         <div>
-        <FavoriteList />
-        {publications.map((publication, index) => {
-            return (
-            <section>
-                <Category key={index} title={publication.category} posts={publication} />
-                <button onClick={goToCategory} className='seeMoreButton'>
-                <FontAwesomeIcon icon={faCirclePlus} />
-                Ver todos
-                </button>
-            </section>
-            )
-        })}
-        <CategoryButtons/>
+            <FavoriteList />
+            {publications.map((publication, index) => {
+                return (
+                    <section>
+                        <Category key={index} title={publication.category} posts={publication} />
+                        <button onClick={goToCategory} className='seeMoreButton'>
+                            <FontAwesomeIcon icon={faCirclePlus} />
+                            Ver todos
+                        </button>
+                    </section>
+                )
+            })}
+            <CategoryButtons />
         </div>
     );
 };
