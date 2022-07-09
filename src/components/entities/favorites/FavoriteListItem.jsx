@@ -6,7 +6,6 @@ import '../../../css/entities/favorites/favoriteList.css'
 
 const FavoriteListItem = ({data}) => {
   const {removeFromFavorites } = useContext(FavoriteContext);
-  console.log(data)
   let{_id, user, publication, petName, petDescription} = data;
   return (
     <div className="listItemContainer">

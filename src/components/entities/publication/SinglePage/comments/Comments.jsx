@@ -27,7 +27,6 @@ const Comments = ({currentUserId}) => { /* currentUserId proviene desde el padre
     };
 
     const addComment = (text, parentId) => { /* colocamos el parentId porque luego cuando hagamos un reply esto quiere decir que estamos creando un comentario que es hijo de otro comentario, entonces por eso es que nuestro comment Form nos debe proporcionar el parentId para que en base a esto podamos hacer el comment reply (children) */
-        console.log('addComment', text, parentId)
         createCommentApi(text, parentId).then(comment => {
             setBackendComments([comment, ...backendComments])
             setActiveComment(null)
