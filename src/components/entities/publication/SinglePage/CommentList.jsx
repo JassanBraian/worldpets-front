@@ -17,12 +17,10 @@ const CommentList = () => {
     const { publication } = useContext(PublicationContext);
 
     useEffect(() => {
-        console.log(publication._id)
         getCommentsByPubliId(publication._id);
     }, [publication._id])
 
     useEffect(() => {
-        console.log(commentsPubli);
     }, [commentsPubli])
 
 
