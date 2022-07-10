@@ -52,7 +52,7 @@ export default function SingleProduct() {
 
             <p>{description}</p>
 
-            <div className="thumb" ref={myRef}>
+            <div className="thumb d-flex justify-content-center" ref={myRef}>
               {photos.map((item, index) => (
                 <img
                   src={item.img}

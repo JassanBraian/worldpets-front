@@ -25,10 +25,11 @@ const Login = () => {
 
     return (
         <>
-            <h1>Login</h1>
+            
             <div className='wrapper'>
                 <form onSubmit={handleOnSubmit}>
                     <div id="wizard">
+                    <h1 className='text-center login-title'>Login</h1>
                     <Link to='/' className='forgot-link'> Volver a inicio </Link>
                     <section>
                         <div className="form-header">
@@ -63,9 +64,9 @@ const Login = () => {
                             </div>
                                     
                         </div>
-                        <div className='d-flex justify-content-between'>
-                            <button type="submit" className='submit-button'>Iniciar sesion</button>
-                            <Link to='/register' className='forgot-link'> ¿No tiene cuenta? </Link>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <Link to='/register' className='login-forgot-link'> ¿No tiene cuenta? </Link>
+                            <button type="submit" className='login-submit-button'>Iniciar sesion</button>
                         </div>
                     </section>
                     </div>

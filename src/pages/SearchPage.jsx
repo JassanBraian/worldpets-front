@@ -96,7 +96,7 @@ const getPublications = async () =>{
                 <div>
                     <h2 className='text-center no-results'>No se encontraron resultados</h2>
                     <div className='d-flex justify-content-center'>
-                    <button type="submit" className='submit-button mb-5 mt-4'>
+                    <button type="submit" className='search-page-submit-button mb-5 mt-4'>
                         <Link to="/" className='text-decoration-none text-dark'>Volver a inicio</Link> 
                         </button>
                     </div>

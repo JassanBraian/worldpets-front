@@ -63,7 +63,7 @@ const UserMenu = () => {
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
         <div id="wizard">
-	        <h1>Datos de usuario</h1>
+	        <h1 className='text-center'>Datos de usuario</h1>
 	          <section>
 						  <div className="form-group">
 							  <div className="form-holder">

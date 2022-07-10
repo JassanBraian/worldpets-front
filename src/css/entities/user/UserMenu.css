@@ -25,6 +25,10 @@ h1 {
   font-family: 'Pacifico', cursive;
   }
 
+h2 {
+  font-family: 'Poppins', sans-serif;
+}
+  
 
 img {
   max-width: 100%;
@@ -87,7 +91,7 @@ img {
   padding-left: 26px;
   margin-bottom: 25px; }
   .form-holder:before {
-    margin-top: 0px;
+    margin-top: 10px;
     content: "";
     position: absolute;
     top: 50%;
@@ -114,24 +118,17 @@ img {
 
 .submit-button {
   background-color: #D3B72A;
-    color: black;
-    border: #D3B72A;
+  color: black;
+  border: #D3B72A;
+  width: 80px;
+  height: 40px;
+  font-weight: bold;
 }
 
 .submit-button:hover {
   background-color: #f1d12f;
 }
 
-/* .forgot-link {
-  color: #D3B72A;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.forgot-link:hover {
-  text-decoration: none;
-  color: #f1d12f;
-} */
 
 @media (max-width: 767px) {
   body{

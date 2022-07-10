@@ -37,8 +37,10 @@ function App() {
         }/>
         <Route path='/profile-image'element={<ProfileImage/>}/>
         <Route path="/single-product" element={
+          <AdminRoute>
 
             <SinglePublication/>
+          </AdminRoute>
 
         }/>         
         <Route path='/user' element={<UserPage />}/>
