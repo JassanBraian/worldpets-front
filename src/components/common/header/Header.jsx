@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Cart from "./cart/Cart";
 import Profile from "./profile/Profile";
 import Hamburger from "./hamburger/Hamburger";
+import SearchBar from "./searchbar/SearchBar";
 // import { profile } from "console";
 
 const Header = () => {
@@ -33,17 +34,19 @@ const Header = () => {
           <img onClick={showSidebar} className='iconMenu' src={menuIcon} alt="menu"></img>
         </div>
         <div className='center'></div>
+        <SearchBar />
         <div className='right'>
-          <Link to={"/cartproduct"}>
+
+          <Link to={"/CartPublications"}>
             <Cart />
           </Link>
           {showLogin &&
             <>
               <Link to={"/login"}>
-                <button>Login</button>
+                <button>Ingresá</button>
               </Link>
               <Link to={"/register"}>
-                <button>Sign up</button>
+                <button>Registrate</button>
               </Link>
             </>
           }
