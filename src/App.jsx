@@ -1,6 +1,6 @@
 
 import ParentContext from './context/ParentContext';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Category from './pages/Category';
 import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
@@ -36,13 +36,7 @@ function App() {
           </PrivateRoute>
         }/>
         <Route path='/profile-image'element={<ProfileImage/>}/>
-        <Route path="/single-product" element={
-          <AdminRoute>
-
-            <SinglePublication/>
-          </AdminRoute>
-
-        }/>         
+        <Route path="/single-product" element={<SinglePublication/>}/>         
         <Route path='/user' element={<UserPage />}/>
         <Route path='/publications-page' element={ <PublicationsPage /> }/>
         <Route path='/Category' element={<Category/>} title= 'Destacadas'/>
@@ -50,6 +44,6 @@ function App() {
       </Layout>
     </ParentContext>
   )
-  }
+}
 
 export default App;
