@@ -10,7 +10,7 @@ const ResetPassword = () => {
         password: '',
         passwordConfirm: ''
     })
-    const { password, confirmPassword } = form;
+    const { password, passwordConfirm } = form;
 
     const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -20,36 +20,54 @@ const ResetPassword = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate('/private');
+        isAuth && navigate('/user-menu');
     }, [isAuth]);
 
     return (
-        <>
-            <h1>Reset Password  </h1>
-            <Link to="/"> Volver al Home</Link>
-            <Link to='/forgotPassword'>   Olvido su Contraseña...</Link>
+        <div className="wrapper">
             <form onSubmit={handleOnSubmit}>
-                <div>
-                    <label>Change Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={handleOnChange}
-                    />
+                <div id="wizard">
+	                <section>
+	                    <div className="form-header">
+	             	        <div className="avartar mb-2">
+                                <img src="https://www.creativefabrica.com/wp-content/uploads/2021/04/10/Pet-shop-animals-logo-template-Graphics-10636868-1-1-580x386.png" alt="logo"/>
+							</div>
+	                    </div>
+						<div className="form-group">
+                                <h2 className='text-center'>Configure su nueva contraseña</h2>
+							<div className="form-holder">
+                              <label>Ingrese su nueva contraseña</label>
+                                <input 
+                                    type="password"
+                                    name='password'
+                                    value={password}
+                                    onChange={handleOnChange}
+                                    placeholder="email@email.com"
+                                    className="form-control mt-2"
+                                />
+                            </div>
+                            <div className="form-holder">
+                                <label>Confirme su nueva contraseña</label>
+                                <input 
+                                    type="password"
+                                    name='passwordConfirm'
+                                    value={passwordConfirm}
+                                    onChange={handleOnChange}
+                                    placeholder="email@email.com"
+                                    className="form-control mt-2"
+                                />
+                            </div>
+	                    </div>
+
+                        <div className='d-flex justify-content-between'>
+                             <button type="submit" className='submit-button'>Enviar</button>
+                                <Link to='/' className='forgot-link'> Volver a inicio </Link>
+                        </div>
+        	        </section>      				
                 </div>
-                <div>
-                    <label>Confirm Password</label>
-                    <input
-                        type="password"
-                        name="passwordConfirm"
-                        value={confirmPassword}
-                        onChange={handleOnChange}
-                    />
-                </div>
-                <button>Change Password</button>
             </form>
-        </>
+
+		</div>
     );
 };
 

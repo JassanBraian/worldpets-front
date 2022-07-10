@@ -29,11 +29,17 @@ const Hamburger = (props) => {
                     </Link>
                     <h6 className='divider'>Administración</h6>
                     <hr className='solid'></hr>
-                    <Link to={'/CommentPage'} className='link'>
+                    <Link to={'/comment'} className='link'>
                         <p onClick={props.cancel}>Comentarios</p>
                     </Link>
                     <Link to={'/user'} className='link'>
                         <p onClick={props.cancel}>Usuarios</p>
+                    </Link>
+                    <Link to={'/publications'} className='link'>
+                        <p onClick={props.cancel}>Publicaciones</p>
+                    </Link>
+                    <Link to={'/fav'} className='link'>
+                        <p onClick={props.cancel}>Favoritos</p>
                     </Link>
                 </div>
             </div>
