@@ -13,16 +13,12 @@ import PublicationContext from '../../../../context/publication/PublicationConte
 
 const CommentList = () => {
 
-    const { commentsPubli, getCommentsByPubliId } = useContext(CommentContext);
+    const { commentsPubli, getCommentsByPubliId, createComment } = useContext(CommentContext);
     const { publication } = useContext(PublicationContext);
 
     useEffect(() => {
         getCommentsByPubliId(publication._id);
     }, [publication._id])
-
-    useEffect(() => {
-    }, [commentsPubli])
-
 
     const [backendComments, setBackendComments] = useState([]) /* Colocamos un array vacio porque no tenemos ninguna data y esta data tendria que venir desde el backend */
     const [activeComment, setActiveComment] = useState(null) /* Escuchara a dos objetos diferentes cuando tengamos un activeComment:
@@ -41,10 +37,23 @@ const CommentList = () => {
     };
 
     const addComment = (text, parentId) => { /* colocamos el parentId porque luego cuando hagamos un reply esto quiere decir que estamos creando un comentario que es hijo de otro comentario, entonces por eso es que nuestro comment Form nos debe proporcionar el parentId para que en base a esto podamos hacer el comment reply (children) */
-        createCommentApi(text, parentId).then(comment => {
-            setBackendComments([comment, ...backendComments])
-            setActiveComment(null)
-        })
+        
+        createComment({
+            description: text,
+            isprivate: false,
+            publication: {
+                title: publication.title,
+                publiid: publication._id
+            },
+            token: localStorage.getItem('token'),
+            usersend: {
+                name: 'Braian',
+                userid: "62c58e857cd619b966029b71",
+                mail: 'braianjassan@gmail.com'
+            }
+        });
+
+        setActiveComment(null)
     }
 
     const deleteComment = (commentId) => {
@@ -88,8 +97,6 @@ const CommentList = () => {
                         key={index + 1}
                         comment={comment}
                         replies={getReplies(comment.id)} /* Con esto recolecto todos los comment replies cuando se renderiza el comment */
-                        deleteComment={deleteComment}
-                        updateComment={updateComment}
                         activeComment={activeComment}
                         setActiveComment={setActiveComment}
                         addComment={addComment}
