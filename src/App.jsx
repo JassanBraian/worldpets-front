@@ -32,7 +32,7 @@ function App() {
           <Route path='/profile-image' element={<ProfileImage />} />
           <Route path="/single-publication" element={<SinglePublication />} />
           <Route path='/user' element={<UserPage />} />
-          <Route path='/publications-page' element={<PublicationsPage />} />
+          <Route path='/publication' element={<PublicationsPage />} />
           <Route path='/Category' element={<Category />} title='Destacadas' />
         </Routes>
       </Layout>

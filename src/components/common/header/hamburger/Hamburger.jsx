@@ -35,7 +35,7 @@ const Hamburger = (props) => {
                     <Link to={'/user'} className='link'>
                         <p onClick={props.cancel}>Usuarios</p>
                     </Link>
-                    <Link to={'/publications'} className='link'>
+                    <Link to={'/publication'} className='link'>
                         <p onClick={props.cancel}>Publicaciones</p>
                     </Link>
                     <Link to={'/fav'} className='link'>
