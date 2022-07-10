@@ -18,8 +18,8 @@ const CommentList = () => {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Description</th>
-                            <th>Private</th>
+                            <th>Descripcion</th>
+                            <th>Privado</th>
                             <th>Publication</th>
                             <th>User</th>
                             <th className='text-center'>Actions</th>
@@ -32,8 +32,8 @@ const CommentList = () => {
                                     <td>{index + 1}</td>
                                     <td>{comment.description}</td>
                                     <td>{comment.isprivate ? 'Yes' : 'No'}</td>
-                                    <td>{comment.publication}</td>
-                                    <td>{comment.usersend}</td>
+                                    <td>{comment.publication.title}</td>
+                                    <td>{comment.usersend.name}</td>
                                     <td className='text-center'>
                                         {<CommentFunc commentId={comment._id} />}
                                     </td>
