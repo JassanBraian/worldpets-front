@@ -1,31 +1,55 @@
 import CategoriesContext from "./CategoriesContext";
-import { useState, useEffect } from "react";
+import clientAxios from "../../config/axios";
 
-
+const categoryList = {
+  'up for adoption': {
+    title: 'En adopción',
+    urlFriendlyId: 'up-for-adoption',
+  },
+  'lost': {
+    title: 'Se perdió',
+  },
+  'found': {
+    title: 'Lo encontramos',
+  }
+}
 const CategoriesProvider = ({children}) => {
-    const API_URL = 'http://localhost:5000/publications'
-    const [categoriesList, setCategoriesList] = useState([]);
-       const getPostsCategory = async category => {
+       const getCategories = async () => {
          try {
-            const response = await fetch(API_URL);
-            const data = await response.json();
-            const categoriesList = data.filter(post => post.category === category);
-            setCategoriesList(categoriesList);
+            const response = await clientAxios.get(`http://localhost:4000/api/v1/publication`);
+            const posts = response.data.publications;
+            return Object.values( posts.reduce((memo, post) => {
+              if (!memo[post.category]) {
+                  memo[post.category] = {
+                    ...categoryList[post.category], 
+                    id:post.category, 
+                    urlFriendlyId: categoryList[post.category] ?? post.category, 
+                    posts: []
+                  };
+              }
+              memo[post.category].posts.push(post);
+              return memo;
+          }, {}));
             } catch (error) {
                 throw error;
             }
-        }
+        };
+      
+        const getCategoryById = async (categoryId) => {
+          const categories = await getCategories()
+          console.log(categories)
+          return categories.find(x => x.id === categoryId)
 
-    useEffect(() => {
-      getPostsCategory('se perdio')
-    }, []);
-   
-    
+        }
+        
+      
   return (
 
-        <CategoriesContext.Provider value={{ 
-            getPostsCategory
-            }}>
+        <CategoriesContext.Provider value={
+         { getCategories,
+        getCategoryById}
+          
+        }>
             {children}
         </CategoriesContext.Provider>
       

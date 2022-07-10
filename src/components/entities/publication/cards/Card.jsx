@@ -6,6 +6,7 @@ import { useContext } from "react";
 import FavoriteContext from "../../../../context/favorites/FavoriteContext";
 
 
+
 const Card = (props) => {
   const {addToFavorites, removeFromFavorites, isFavorite} = useContext(FavoriteContext);
   

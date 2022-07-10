@@ -1,7 +1,7 @@
 
 import ParentContext from './context/ParentContext';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Category from './pages/Category';
+import CategoryPage from './pages/CategoryPage';
 import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -33,7 +33,7 @@ function App() {
         <Route path="/single-product" element={<SinglePublication/>}/>         
         <Route path='/user' element={<UserPage />}/>
         <Route path='/publications-page' element={ <PublicationsPage /> }/>
-        <Route path='/Category' element={<Category/>} title= 'Destacadas'/>
+        <Route path='/category/:categoryId' element={<CategoryPage/>} title= 'Destacadas'/>
         </Routes> 
       </Layout>
     </ParentContext>

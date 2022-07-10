@@ -15,3 +15,7 @@ section{
  margin-right: 50px;
  
 }
+.seeMoreButton:hover{
+    transform: skew(-5deg);
+    
+}
