@@ -1,16 +1,16 @@
-.Hamburger{
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    background: rgba(0, 0, 0, 0.2);
-    width: 100%;
-    transition: 0.15s;
-    z-index: 300000;
+.Hamburger {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  transition: 0.15s;
+  z-index: 300000;
 }
 
-.Hamburger .hamburgerMenu{
+.Hamburger .hamburgerMenu {
   position: fixed;
   transition: 0.10s;
   width: 96%;
@@ -21,9 +21,10 @@
   background-color: #fff;
   padding: 0px 10px;
 }
-.Hamburger .hamburgerMenu .cancel{
+
+.Hamburger .hamburgerMenu .cancel {
   position: absolute;
-  top:10px;
+  top: 10px;
   right: 10px;
   background-color: red;
   color: #fff;
@@ -36,18 +37,36 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.Hamburger .hamburgerMenu .link{
-    text-decoration: none;
-    color: #000;
-}
-.Hamburger .hamburgerMenu p{
-    width: 100%;
-    padding: 14px;
-    border-radius: 5px;
-    text-decoration: none;
+
+.Hamburger .hamburgerMenu .link {
+  text-decoration: none;
+  color: #000;
 }
 
-.Hamburger .hamburgerMenu p:hover{
-    background-color: #ddd;
-    cursor: pointer;
+.Hamburger .hamburgerMenu p {
+  width: 100%;
+  padding: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.Hamburger .hamburgerMenu p:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+hr.solid {
+  border-top: 4px solid #bbb;
+}
+
+
+.Hamburger .hamburgerMenu .link-home {
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  margin-top: 50px;
+}
+
+.home-icon {
+  margin-top: 18px;
 }

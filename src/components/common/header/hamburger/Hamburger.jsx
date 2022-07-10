@@ -1,27 +1,39 @@
 import { Link } from 'react-router-dom';
 import '../../../../css/common/header/hamburger.css';
+import * as FaIcons from "react-icons/fa";
 import React from 'react';
+import { AiFillHome } from "react-icons/ai";
 
 const Hamburger = (props) => {
     return (
         <>
-            <div className='Hamburger' onClick={props.cancel}>
+            <div className='Hamburger'>
                 <div className='hamburgerMenu'>
                     <span className='cancel' onClick={props.cancel}>x</span>
 
+                    <Link to={'/'} className='link-home'>
+                        <AiFillHome className='home-icon' />
+                        <p onClick={props.cancel}>Home</p>
+                    </Link>
+
+                    <h6>Categorias</h6>
+                    <hr className='solid'></hr>
                     <Link to={'/Found'} className='link'>
-                        <p style={{ marginTop: "50px" }} onClick={props.cancel}>Found</p>
+                        <p onClick={props.cancel}>Encontrado</p>
                     </Link>
                     <Link to={'/UpForAdoption'} className='link'>
-                        <p onClick={props.cancel}>Up For Adoption</p>
+                        <p onClick={props.cancel}>En adopción</p>
                     </Link>
-                    {/* Missing */}
                     <Link to={'/Missing'} className='link'>
-                        <p onClick={props.cancel}>Missing</p>
+                        <p onClick={props.cancel}>Perdido</p>
                     </Link>
-                    {/* pettoys */}
-                    <Link to={'/pettoys'} className='link'>
-                        <p onClick={props.cancel}>Pet Toys</p>
+                    <h6 className='divider'>Administración</h6>
+                    <hr className='solid'></hr>
+                    <Link to={'/CommentPage'} className='link'>
+                        <p onClick={props.cancel}>Comentarios</p>
+                    </Link>
+                    <Link to={'/user'} className='link'>
+                        <p onClick={props.cancel}>Usuarios</p>
                     </Link>
                 </div>
             </div>
