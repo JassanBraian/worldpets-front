@@ -36,7 +36,11 @@ function App() {
           </PrivateRoute>
         }/>
         <Route path='/profile-image'element={<ProfileImage/>}/>
-        <Route path="/single-product" element={<SinglePublication/>}/>         
+        <Route path="/single-product" element={
+
+          <SinglePublication/>
+
+        }/>         
         <Route path='/user' element={<UserPage />}/>
         <Route path='/publications-page' element={ <PublicationsPage /> }/>
         <Route path='/Category' element={<Category/>} title= 'Destacadas'/>

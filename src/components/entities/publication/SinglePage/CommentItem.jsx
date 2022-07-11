@@ -23,7 +23,7 @@ const CommentItem = ({
         activeComment.id === comment._id
 
     useEffect(() => {
-        console.log('a2', comment);
+        /* console.log('a2', comment); */
     }, [comment])
 
 

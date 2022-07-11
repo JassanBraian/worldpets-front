@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import clientAxios from '../config/axios';
 import "../css/common/SearchBar/SearchPage.css"
 import { Link } from 'react-router-dom';
 import Spinner from '../components/common/spinner/Spinner';
-
+import PublicationContext from '../context/publication/PublicationContext';
 
 
 const SearchPage = () => {
@@ -13,6 +13,7 @@ const SearchPage = () => {
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
     const [loading, setLoading] = useState(false);
+    const {publicationSearch} = useContext(PublicationContext)
 
     const handleFilter = (event) => {
         const searchWord = event.target.value;
@@ -45,6 +46,7 @@ const getPublications = async () =>{
 
     useEffect(() => {
         getPublications()
+
     }, [])
 
     if(loading){
