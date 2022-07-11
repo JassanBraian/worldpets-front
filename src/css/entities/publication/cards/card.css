@@ -11,6 +11,9 @@
     margin: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(190, 196, 81, 0.468), 0 6px 20px 0 rgba(199, 194, 55, 0.19);
+}
 .favouriteButton{
     background-color: #D3B72A;
     color:black;

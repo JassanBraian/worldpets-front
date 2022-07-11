@@ -3,7 +3,7 @@ import FavoriteReducer from "./FavoriteReducer";
 import FavoriteContext from "./FavoriteContext";
 import { useEffect } from "react";
 import clientAxios from "../../config/axios";
-import { ADD_TO_FAVORITES, CLEAR_FAVORITES_LIST, REMOVE_FROM_FAVORITES, SET_FAVORITES} from "../../types/favorites/index"
+import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES, SET_FAVORITES} from "../../types/favorites/index"
 
 
 
@@ -93,7 +93,7 @@ const FavoriteProvider = ({children}) => {
    const isFavorite = (userId, postId) => {
     return state.favorites.indexOf(postId) >= 0;
    };
-   const clearFavorites = (userId)=>{dispatch({type: SET_FAVORITES, payload: []})};
+   
 
   return (
     <FavoriteContext.Provider value={{
@@ -102,7 +102,7 @@ const FavoriteProvider = ({children}) => {
         addToFavorites,
         removeFromFavorites,
         isFavorite,
-        clearFavorites
+        
     }}>
         {children}
     </FavoriteContext.Provider>

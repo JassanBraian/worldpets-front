@@ -1,7 +1,7 @@
 
 import ParentContext from './context/ParentContext';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Category from './pages/Category';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CategoryPage from './pages/CategoryPage';
 import CommentPage from './pages/CommentPage';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -20,21 +20,21 @@ function App() {
   return (
     <ParentContext>
       <Layout>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/comment' element={<CommentPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgotPassword" element={<ForgotPassword />} />
-          <Route path="/resetPassword/:token" element={<ResetPassword />} /> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
-          <Route path="/search-page" element={<SearchII />} />
-          <Route path="/user-menu" element={<UserMenu />} /> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
-          <Route path='/profile-image' element={<ProfileImage />} />
-          <Route path="/single-publication" element={<SinglePublication />} />
-          <Route path='/user' element={<UserPage />} />
-          <Route path='/publication' element={<PublicationsPage />} />
-          <Route path='/Category' element={<Category />} title='Destacadas' />
-        </Routes>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/comment' element={<CommentPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/resetPassword/:token" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
+        <Route path="/search-page" element={<SearchII/>}/>
+        <Route path="/user-menu" element={<UserMenu/>}/> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
+        <Route path='/profile-image'element={<ProfileImage/>}/>
+        <Route path="/single-product" element={<SinglePublication/>}/>         
+        <Route path='/user' element={<UserPage />}/>
+        <Route path='/publications-page' element={ <PublicationsPage /> }/>
+        <Route path='/category/:categoryId' element={<CategoryPage/>} title= 'Destacadas'/>
+        </Routes> 
       </Layout>
     </ParentContext>
   )
