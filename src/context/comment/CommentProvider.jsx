@@ -15,8 +15,7 @@ const CommentProvider = ({ children }) => {
 
     const initialState = {
         comments: [],
-        comment: {},
-        commentsPubli: []
+        comment: {}
     }
     const [state, dispatch] = useReducer(CommentReducer, initialState);
 
@@ -33,7 +32,7 @@ const CommentProvider = ({ children }) => {
     const getCommentsByPubliId = async publiId => {
         try {
             const res = await clientAxios.get('http://localhost:4000/api/v1/comment/', { params: { publiId: publiId } });
-            res && dispatch({ type: GET_COMMENTS_PUBLI, payload: res.data.comments });
+            res && dispatch({ type: GET_COMMENTS, payload: res.data.comments });
         } catch (error) {
             throw error;
         }
