@@ -11,27 +11,14 @@ import PublicationContext from '../context/publication/PublicationContext';
 const SearchPage = () => {
     const [publications, setPublications] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
-    const [wordEntered, setWordEntered] = useState("");
+/*     const [wordEntered, setWordEntered] = useState(""); */
     const [loading, setLoading] = useState(false);
-    const {publicationSearch} = useContext(PublicationContext)
-
-    const handleFilter = (event) => {
-        const searchWord = event.target.value || publicationSearch;
-        setWordEntered(searchWord);
-        const newFilter = publications.filter((value) => {
-          return value.title.toLowerCase().includes(searchWord.toLowerCase());
-        });
-        if (searchWord === "") {
-            setFilteredData([]);
-          } else {
-            setFilteredData(newFilter);
-          }
-        };
-
-        const clearInput = () => {
-            setFilteredData([]);
-            setWordEntered("");
-          };
+    const {publicationSearch, setPublicationSearch} = useContext(PublicationContext)
+    
+    const clearInput = () => {
+        setFilteredData([]);
+        setPublicationSearch("");
+    };
     
 const getPublications = async () =>{
         try{
@@ -42,11 +29,26 @@ const getPublications = async () =>{
         } catch (error){
             throw error
         }
-    };
+    }; //Aqui unicamente esta la peticion de axios
 
     useEffect(() => {
         getPublications()
+        publicationSearch ? setPublicationSearch(publicationSearch) : setPublicationSearch('')
+        setFilteredData(publications)
     }, [])
+
+    useEffect(() => {
+        const newFilter = publications.filter((publication) => {
+            return publication.title.toLowerCase().includes(publicationSearch.toLowerCase());
+        });
+        if (publicationSearch === "") {
+            setFilteredData([]);
+        } else {
+            setFilteredData(newFilter);
+        }
+    }, [publicationSearch])
+    
+
 
     if(loading){
         return <Spinner />
@@ -60,8 +62,8 @@ const getPublications = async () =>{
                     type="text"
                     placeholder='Search your movies'
                     className="input p-2 mt-3"
-                    value={wordEntered}
-                    onChange={handleFilter}
+                    value={publicationSearch ? publicationSearch : ''}
+                    onChange={(e) => {setPublicationSearch(e.target.value)}}
                 />
             </div>
             <div className="searchIcon mt-3"> 

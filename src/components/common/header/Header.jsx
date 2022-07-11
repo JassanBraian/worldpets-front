@@ -7,10 +7,12 @@ import Profile from "./profile/Profile";
 import Hamburger from "./hamburger/Hamburger";
 import PublicationContext from "../../../context/publication/PublicationContext";
 import SearchBar from "./searchbar/SearchBar";
+import { useNavigate } from "react-router-dom";
 // import { profile } from "console";
 
 const Header = () => {
   const {setPublicationSearch} = useContext(PublicationContext)
+  const navigate = useNavigate();
   //   show login signup and profile 
 
   const [showLogin, setIsShowLogin] = useState(true);
@@ -26,7 +28,7 @@ const Header = () => {
     setSidebar(false);
   }
 
-// SearchBar
+// Search de navbar
 
 const [searchText, setSearchText] = useState('')
 
@@ -38,12 +40,10 @@ const handleInput = (e) => {
 const handleEnterKeyPressed = (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
-    setPublicationSearch(searchText) //Al apretar enter, envio el searchText, pero QUIERO ENVIAR COMO PROPS
-    console.log(setPublicationSearch(searchText))
+    setPublicationSearch(searchText)
+    navigate('/search-page')
   }
 }
-
-
 
 
   return (

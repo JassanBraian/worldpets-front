@@ -4,8 +4,8 @@ import "../css/entities/publication/SingleProduct.css"
 import CommentList from "../components/entities/publication/SinglePage/CommentList";
 import PublicationContext from "../context/publication/PublicationContext";
 import { getDownloadURL, ref } from '@firebase/storage';
-import {app, storage} from '../firebase/FireBaseConfig'
-import { FirebaseError } from "firebase/app";
+import {storage} from '../firebase/FireBaseConfig'
+
 
 export default function SinglePublication() {
 
@@ -26,34 +26,12 @@ export default function SinglePublication() {
 /*   const [currentImg, setCurrentImg] = useState({}); */
   const myRef = useRef();
 
-/*   const listAllSongs = () => {
-    listAll("id1/")
+  const storageRef = ref(storage, '/userProfilePic');
+
+  const getImage = async (bannerImage) => {
+    const url = await storageRef.child(bannerImage).getDownloadURL();
+    return url
   }
-
-  function listAll (folder) {
-    const storageRef = app.storage().ref();
-    var listRef =storageRef.child(folder);
-
-    listRef
-      .listAll()
-      .then((res) => {
-        res.prefixes.forEach((folderRef) => {
-
-        });
-        res.item.forEach((itemRef) => {
-          console.log("item ref:" + itemRef)
-          itemRef.getDownloadURL().then((url) => {
-            console.log("download url:" + url);
-          });
-        });
-      })
-    .catch((error) => {
-      console.log(error)
-    });
-  } */
-
-  /* FirebaseError.initializeApp(firebaseConfig) */
-
 
   useEffect(() => {
     getPublication("62c5e6abb4ef5f01a437d2b0");
@@ -95,10 +73,10 @@ export default function SinglePublication() {
 
             <div className="thumb" ref={myRef}>
             <img src={image} alt="" />
-              {/* {photos.map((item, index) => (
+{/*               {photos.map((item, index) => (
                 <img
                   key={index}
-                  src={item.img}
+                  src={getImage(item.bannerImage)}
                   alt=""
                   onClick={() => setCurrentImg(item.img)}
                 />
