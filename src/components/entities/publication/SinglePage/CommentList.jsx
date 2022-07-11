@@ -13,7 +13,7 @@ import PublicationContext from '../../../../context/publication/PublicationConte
 
 const CommentList = () => {
 
-    const { commentsPubli, getCommentsByPubliId, createComment } = useContext(CommentContext);
+    const { comments, getCommentsByPubliId, createComment } = useContext(CommentContext);
     const { publication } = useContext(PublicationContext);
 
     useEffect(() => {
@@ -92,7 +92,7 @@ const CommentList = () => {
                 <CommentForm submitLabel='Enviar' handleSubmit={addComment} />
             </div>
             <div className="comments-container">
-                {commentsPubli.map((comment, index) => (  /* Con esto hago un .map para traer a los comentarios padres que indique en rootComments */
+                {comments.map((comment, index) => (  /* Con esto hago un .map para traer a los comentarios padres que indique en rootComments */
                     <CommentItem
                         key={index + 1}
                         comment={comment}
