@@ -19,7 +19,7 @@ const Footer = () => {
                             <img src={insta} alt="facebook logo" />
                         </a>
                     </div>
-                    <p>All rights reserved</p>
+                    <p>Todos los derechos reservados</p>
                 </div>
             </div>
         </>

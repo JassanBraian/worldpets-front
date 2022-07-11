@@ -36,7 +36,7 @@ function App() {
           </PrivateRoute>
         }/>
         <Route path='/profile-image'element={<ProfileImage/>}/>
-        <Route path="/single-product" element={
+        <Route path="/single-publication" element={
 
           <SinglePublication/>
 
