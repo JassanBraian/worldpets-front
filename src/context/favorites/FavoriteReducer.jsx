@@ -15,8 +15,6 @@ const FavoriteReducer = (state, action) =>{
             };
         case SET_FAVORITES:
             return { favorites: action.payload };
-        case CLEAR_FAVORITES_LIST: 
-           return [];
         default:
             return state;
     }
