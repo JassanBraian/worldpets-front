@@ -10,12 +10,12 @@ import PublicationContext from '../../../../context/publication/PublicationConte
 
 
 const ListaCards = () => {
-    const {publications} = useContext(PublicationContext);
+    const {publications, getPublications} = useContext(PublicationContext);
     const [loading, setLoading] = useState(false);
 
-    //   useEffect(()=>{
-    //     getPublications();
-    // }, []);
+      useEffect(()=>{
+        getPublications();
+    }, []);
 
   if(loading){
       return <Spinner />
