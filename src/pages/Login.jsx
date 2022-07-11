@@ -20,8 +20,10 @@ const Login = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate('/user-menu');
-    }, [isAuth]);
+        if (isAuth) {
+            navigate('/user-menu')
+        }
+    }, [isAuth])
 
     return (
         <>

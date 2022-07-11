@@ -32,13 +32,14 @@ const [searchText, setSearchText] = useState('')
 
 const handleInput = (e) => {
   const text = e.target.value;
-  setPublicationSearch(text)
+  setSearchText(text)
 }
 
 const handleEnterKeyPressed = (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
-    console.log(searchText) //Al apretar enter, envio el searchText, pero QUIERO ENVIAR COMO PROPS
+    setPublicationSearch(searchText) //Al apretar enter, envio el searchText, pero QUIERO ENVIAR COMO PROPS
+    console.log(setPublicationSearch(searchText))
   }
 }
 

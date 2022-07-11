@@ -16,7 +16,7 @@ const SearchPage = () => {
     const {publicationSearch} = useContext(PublicationContext)
 
     const handleFilter = (event) => {
-        const searchWord = event.target.value;
+        const searchWord = event.target.value || publicationSearch;
         setWordEntered(searchWord);
         const newFilter = publications.filter((value) => {
           return value.title.toLowerCase().includes(searchWord.toLowerCase());
@@ -46,7 +46,6 @@ const getPublications = async () =>{
 
     useEffect(() => {
         getPublications()
-
     }, [])
 
     if(loading){
