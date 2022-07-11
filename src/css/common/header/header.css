@@ -1,29 +1,36 @@
-.header__top{
-    border: 1px solid red;
-    padding: 15px 5%;
+.header__top {
+  padding: 15px 5%;
+  background-color: #fff;
 }
-.header__top .header_inner .left{
+
+.header__top .header_inner .left {
   display: flex;
   align-items: center;
   /* border: 1px solid red; */
 }
 
-.header__top .header_inner .left .iconMenu{
+.header__top .header_inner .left .iconMenu {
   width: 30px;
   cursor: pointer;
 }
-.header__top .header_inner{
+
+.header__top .header_inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header__top .header_inner .right{
+
+.header__top .header_inner .right {
   display: flex;
   align-items: center;
 }
-.header__top .header_inner .right button{
-    padding: 7px 15px;
-    margin-left: 10px;
-    cursor: pointer;
-    border: none;
+
+.header__top .header_inner .right button {
+  padding: 0px 30px;
+  margin-left: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+  font-weight: 500;
+  border-radius: 20px;
+  background-color: white;
 }

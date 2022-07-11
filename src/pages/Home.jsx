@@ -4,6 +4,8 @@ import '../css/common/pages/home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import Category from './Category';
+import BootstrapCarousel from '../components/common/heroslider/BootstrapCarousel';
+
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -27,6 +29,35 @@ const Home = () => {
     }
     return (
         <div>
+            <BootstrapCarousel />
+            <section>
+                <Category title='Destacadas' />
+                <button className='seeMoreButton'>
+                    <FontAwesomeIcon icon={faCirclePlus} />
+                    Ver más
+                </button>
+            </section>
+            <section>
+                <Category title='En adopcion' />
+                <button className='seeMoreButton'>
+                    <FontAwesomeIcon icon={faCirclePlus} />
+                    Ver más
+                </button>
+            </section>
+            <section>
+                <Category title='Se perdio' />
+                <button className='seeMoreButton'>
+                    <FontAwesomeIcon icon={faCirclePlus} />
+                    Ver más
+                </button>
+            </section>
+            <section>
+                <Category title='Lo encontramos' />
+                <button className='seeMoreButton'>
+                    <FontAwesomeIcon icon={faCirclePlus} />
+                    Ver más
+                </button>
+            </section>
             <FavoriteList />
             {publications.map((publication, index) => {
                 return (

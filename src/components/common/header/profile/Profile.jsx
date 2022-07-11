@@ -23,13 +23,13 @@ const Profile = () => {
                     showProfileMenu &&
                     <div className='dropdown'>
                         <Link to={'./editprofile'} onClick={hideHandler} className='Link'>
-                            <p>Edit Profile</p>
+                            <p>Editar Perfil</p>
                         </Link>
                         <Link to={'./mypurchases'} onClick={hideHandler} className='Link'>
-                            <p>My Purchases</p>
+                            <p>Mis compras</p>
                         </Link>
 
-                        <p>Logout</p>
+                        <p>Salir</p>
                     </div>
                 }
             </div>
