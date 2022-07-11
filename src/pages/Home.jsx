@@ -24,7 +24,7 @@ const Home = () => {
     useEffect(() => {
         async function doGetCategories(){
             const categories = await getCategories();
-            console.log(categories)
+            console.log(categories[0].posts)
             setCategories(categories)
         }
         doGetCategories()
@@ -46,34 +46,6 @@ const Home = () => {
     return (
         <div>
             <BootstrapCarousel />
-            <section>
-                <Category title='Destacadas' />
-                <button className='seeMoreButton'>
-                    <FontAwesomeIcon icon={faCirclePlus} />
-                    Ver más
-                </button>
-            </section>
-            <section>
-                <Category title='En adopcion' />
-                <button className='seeMoreButton'>
-                    <FontAwesomeIcon icon={faCirclePlus} />
-                    Ver más
-                </button>
-            </section>
-            <section>
-                <Category title='Se perdio' />
-                <button className='seeMoreButton'>
-                    <FontAwesomeIcon icon={faCirclePlus} />
-                    Ver más
-                </button>
-            </section>
-            <section>
-                <Category title='Lo encontramos' />
-                <button className='seeMoreButton'>
-                    <FontAwesomeIcon icon={faCirclePlus} />
-                    Ver más
-                </button>
-            </section>
             <FavoriteList />
             {categories.map((category, index) => {
                 return (
