@@ -58,7 +58,7 @@
   .form-header {
     display: flex;
     justify-content: center;
-    /* padding-left: 26px; */ }
+ }
     
     .form-header .avartar {
       width: 60.75%; }
