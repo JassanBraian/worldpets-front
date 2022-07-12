@@ -1,8 +1,9 @@
-.buttonContainer{
+.buttonContainer {
     display: flex;
     justify-content: space-around;
 }
-.categoryButton{
+
+.categoryButton {
     height: 200px;
     width: 300px;
     margin: 50px 30px;
@@ -10,7 +11,19 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: #D3B72A;
 }
-.title{
+
+.title {
     font-family: 'Poppins';
     font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+    .categoryButton {
+        width: 150px;
+        height: 120px;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
 }
