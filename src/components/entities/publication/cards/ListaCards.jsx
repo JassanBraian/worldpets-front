@@ -25,7 +25,7 @@ const ListaCards = () => {
   return (
     <section className='container-fluid'>
         <div className='row'>
-                 {publications.map((post, index) => <Card key={index} title= {post.title} description={post.description} postId={post.id} image={post.image} isHighlighted={post.isHighlighted}/>)}    
+                 {publications.map((post, index) => <Card key={index} title= {post.title} description={post.description} postId={post._id} image={post.image} isHighlighted={post.isHighlighted}/>)}    
         </div>
     </section>
   )
