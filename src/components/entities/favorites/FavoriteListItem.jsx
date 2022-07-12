@@ -8,14 +8,13 @@ const FavoriteListItem = ({data}) => {
 
     console.log(data)
   const {removeFromFavorites } = useContext(FavoriteContext);
-  let{_id, publication, title} = data;
+  let{_id, publication, title, photos} = data;
   return (
     <div className="listItemContainer">
-        <h3>{title}</h3>
         <p>{title}id del Usuario</p>
         <p>{publication.title}</p>
-        <p>{publication.description} es el id del Post</p>
-        {/* <div>{publication.photos}</div> */}
+        <p>{publication.description} </p>
+         {/* <div>{publication.photos[0]}</div>   */}
 
         
         <button className="removeBtn" onClick={() => removeFromFavorites(_id)}>

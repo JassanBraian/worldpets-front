@@ -1,17 +1,22 @@
 .header__top {
-  padding: 15px 5%;
-  background-color: #fff;
+  margin:0px;
+  padding: 0px 15px;
+  background-color: #D3B72A;
+}
+.header_inner{
+  margin: 0;
 }
 
 .header__top .header_inner .left {
   display: flex;
-  align-items: center;
-  /* border: 1px solid red; */
+  align-items: flex-start;
 }
 
 .header__top .header_inner .left .iconMenu {
-  width: 30px;
+  /* width: 30px; */
   cursor: pointer;
+  margin-right: 60px;
+  align-self: flex-start;
 }
 
 .header__top .header_inner {
@@ -23,14 +28,23 @@
 .header__top .header_inner .right {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .header__top .header_inner .right button {
-  padding: 0px 30px;
+  /* padding: 0px 30px; */
   margin-left: 10px;
   cursor: pointer;
-  border: 1px solid black;
-  font-weight: 500;
-  border-radius: 20px;
-  background-color: white;
+  /* border: 1px solid black; */
+  /* font-weight: 500;*/
+  border-radius: 20px; 
+  /* background-color: white; */
+  align-self: flex-end;
+  padding: 10px;
+  background-color: #D3B72A;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    justify-content: space-between;
+    font-family: 'Poppins' !important;
+    font-weight: bold;
+    border: 3px solid black;
 }

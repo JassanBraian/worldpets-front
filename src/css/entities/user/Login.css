@@ -38,6 +38,40 @@
     linear-gradient(to right, #D1A12A 1px, #e5e5f7 1px);
     background-size: 20px 20px;
   }
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; }
+
+  .title{
+    font-family: 'Pacifico';
+    font-size: 80px;
+    padding:0px 20px 00px 20px;
+    margin-top: 20px;
+    color: #D3B72A;
+    text-shadow: 4px 4px #9999;
+  }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    
+  
+  .text-center h2{
+    font-family: 'Poppins', sans-serif;
+    background-color: #D3B72A;
+    }
+  
+
+  img {
+    max-width: 100%;
+    vertical-align: middle; }
+  
+
   .wrapper {
     height: auto;
     display: block; }
@@ -59,15 +93,70 @@
   }
 
   .form-header {
-    display: block; }
-  .form-header .avartar {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* padding-left: 26px; */ }
+    
+    .form-header .avartar {
+      width: 60.75%; 
+      color:#D3B72A
+}
+      .form-header .avartar a {
+        display: block; }
+    .form-header .form-group {
+      width: 66.25%; }
+  .form-holder label {
+    font-family: 'Pacifico';
+    font-size: 20px;
+  }
+  
+  .form-holder {
+    position: relative;
+    padding-left: 26px;
     margin-bottom: 25px; }
-  .form-header .form-group {
-    width: 100%; } }
- 
-@media (max-width: 540px) {
+    .form-holder:before {
+      margin-top: 17px;
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0px;
+      width: 10px;
+      height: 10px;
+      border: 2px solid #D3B72A;
+      border-radius: 50%;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+    .form-holder.active:before {
+      background: #D3B72A; }
+  
+  .form-control {
+    height: 46px;
+    border: none;
+    background: #f7f7f7;
+    width: 100%;
+    padding: 0 25px;
+    border-radius: 23px;
+    color: #333; }
+  
+  button.submit-button {
+    padding: 20px;
+    background-color: #D3B72A;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    justify-content: space-between;
+    font-family: 'Poppins' !important;
+    font-weight: bold;
+    border: 3px solid black;
+    padding: 0rem 1rem; 
+    border-radius: 3px;
+  }
+  
+  .submit-button:hover {
+    background-color: #f1d12f;
+    border: 3px solid black;
+  }
+  
   .forgot-link {
     margin-right: 20px;
   }
