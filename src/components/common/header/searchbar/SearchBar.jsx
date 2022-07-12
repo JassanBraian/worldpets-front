@@ -62,7 +62,6 @@ const SearchBar = () => {
               value={publicationSearch ? publicationSearch : ''}
               onChange={(e) => { 
                 setPublicationSearch(e.target.value) 
-                console.log("v1")
               }}
               onKeyPress={handleEnterKeyPressed} 
             />
