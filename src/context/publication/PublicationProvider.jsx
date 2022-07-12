@@ -8,6 +8,7 @@ const PublicationProvider = ({ children }) => {
     publications: [],
     publication: {},
     publicationSearch: "",
+    filteredData: []
 /*     publicationResults: [] */
   }
 
@@ -24,6 +25,10 @@ const PublicationProvider = ({ children }) => {
 
   const setPublicationSearch = title => {
     setValues({...values, publicationSearch: title})
+  }
+
+  const setFilteredData = filtered => {
+    setValues({ ...values, filteredData: filtered })
   }
 
   /* const setSearchResults = results => {
@@ -65,6 +70,7 @@ const PublicationProvider = ({ children }) => {
       updatePublication,
       deletePublication,
       setPublicationSearch,
+      setFilteredData
 /*       setSearchResults */
     }}>
       {children}

@@ -1,9 +1,11 @@
 .input {
-  width: 250px;
+  width: 150px;
   height: 45px;
-  border: white;
   outline: none;
+  border: 2px solid black;
+  border-right:none;
 }
+
 
 .searchIcon {
   background-color: white;
@@ -12,6 +14,8 @@
   width: 40px;
   padding-left: 8px;
   cursor: pointer;
+  border: 2px solid black;
+  border-left: none;
 }
 
 .no-results {
