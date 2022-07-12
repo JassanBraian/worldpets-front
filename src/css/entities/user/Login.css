@@ -29,6 +29,10 @@
 .login-submit-button:hover {
   background-color: #f1d12f;
 }
+
+.login-submit-button:disabled{
+  background-color: #dddddd;
+}
   
 @media (max-width: 767px) {
   body{

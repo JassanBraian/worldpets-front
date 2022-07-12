@@ -12,12 +12,30 @@ const Login = () => {
     });
     const { email, password } = form;
 
+    const [loginErrors, setLoginErrors] = useState({});
+
     const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleOnSubmit = e => {
         e.preventDefault();
         login(form);
     }
+
+    const handleOnBlur = (e) => {
+        if (e.target.value === "") {
+            setLoginErrors({
+            ...loginErrors,
+            [e.target.name]: "Campo obligatorio"
+          });
+        } else {
+            setLoginErrors({
+            ...loginErrors,
+            [e.target.name]: ``,
+          });
+    
+        }
+    
+      };
 
     useEffect(() => {
         if (isAuth) {
@@ -51,7 +69,10 @@ const Login = () => {
                                     onChange={handleOnChange}
                                     placeholder="email@email.com"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                    
+                                    <p id='paragraph-styles'>{loginErrors.email}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Password</label>
@@ -62,13 +83,19 @@ const Login = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese una contraseña segura"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                    <p id='paragraph-styles'>{loginErrors.password}</p>
                             </div>
                                     
                         </div>
                         <div className='d-flex justify-content-between align-items-center'>
                             <Link to='/register' className='login-forgot-link'> ¿No tiene cuenta? </Link>
-                            <button type="submit" className='login-submit-button'>Iniciar sesion</button>
+                            <button
+                                disabled={Object.values(form).some((value) => value === "")} 
+                                type="submit" 
+                                className='login-submit-button'
+                            >Iniciar sesion</button>
                         </div>
                     </section>
                     </div>

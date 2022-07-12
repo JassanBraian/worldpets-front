@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth/AuthContext';
 import '../css/entities/user/Register.css'
 
+
 const Register = () => {
     const navigate = useNavigate();
     const { registerUser, isAuth } = useContext(AuthContext);
@@ -13,14 +14,49 @@ const Register = () => {
         password: '',
         passwordConfirm: ''
     });
-    const { name, surname, email, password, confirmPassword } = form;
+    const { name, surname, email, password, passwordConfirm } = form;
+    const [registerErrors, setRegisterErrors] = useState({});
 
     const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleOnSubmit = e => {
         e.preventDefault();
+        if(password !== passwordConfirm) {
+            setRegisterErrors({
+              ...registerErrors,
+              "password": 'Contraseñas no coinciden',
+              "passwordConfirm" : 'Contraseñas no coinciden'
+            });
+            return;
+          }
         registerUser(form);
     }
+    
+    const validarEmail = input => {
+        const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regEx.test(input.value) ? true : false;
+    }
+
+    const handleOnBlur = (e) =>{
+        if(e.target.value === "") {
+            setRegisterErrors({
+            ...registerErrors,
+            [e.target.name] : "Campo obligatorio"
+          });
+        } else if (e.target.name === "email" && !validarEmail(e.target)) {
+            setRegisterErrors({
+                ...registerErrors,
+                [e.target.name] : `Email no válido`
+              });
+        }
+        else { 
+            setRegisterErrors({
+            ...registerErrors,
+            [e.target.name] : "",
+          });
+        } 
+      };
+
 
     useEffect(() => {
         isAuth && navigate('/user-menu');
@@ -52,7 +88,9 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese su nombre"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                <p id='paragraph-styles'>{registerErrors.name}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Apellido</label>
@@ -63,7 +101,9 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese su nombre apellido"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                <p id='paragraph-styles'>{registerErrors.surname}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Email</label>
@@ -74,7 +114,9 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="email@email.com"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                <p id='paragraph-styles'>{registerErrors.email}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Contraseña</label>
@@ -85,23 +127,32 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese una contraseña segura"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                <p id='paragraph-styles'>{registerErrors.password}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Confirme su contraseña</label>
                                 <input
                                     type="password"
                                     name="passwordConfirm"
-                                    value={confirmPassword}
+                                    value={passwordConfirm}
                                     onChange={handleOnChange}
                                     placeholder="Repita la contraseña ingresada anteriormente"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                <p id='paragraph-styles'>{registerErrors.passwordConfirm}</p>
                             </div>
                         </div>
                         <div className='d-flex justify-content-between align-items-center'>
                                 <Link to='/forgotPassword' className='forgot-link'> ¿Olvido su contraseña? </Link>
-                                <button type="submit" className='submit-button'>Enviar</button>
+                                <button 
+                                    disabled={Object.values(form).some((value) => value === "")}
+                                    type="submit" 
+                                    className='register-submit-button'
+                                >Enviar</button>
+
                         </div>
                     </section>
             </div>
