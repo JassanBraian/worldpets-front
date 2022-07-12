@@ -29,7 +29,7 @@ const Login = () => {
 
     return (
         <>
-            <div className='title'>Login</div>
+            {/* <div className='title'>Login</div> */}
             <div className='wrapper'>
                 <form onSubmit={handleOnSubmit}>
                     <div id="wizard">

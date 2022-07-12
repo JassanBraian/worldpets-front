@@ -30,7 +30,7 @@ const Register = () => {
 
     return (
         <>
-            <div className='title'>Registrate</div>
+            {/* <div className='title'>Registrate</div> */}
 
         <div className='wrapper'>
             <form onSubmit={handleOnSubmit}>

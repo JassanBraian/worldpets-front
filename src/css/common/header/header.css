@@ -48,3 +48,6 @@
     font-weight: bold;
     border: 3px solid black;
 }
+.header__top .header_inner .right button:hover{
+  background-color: #f1d12f;
+}
