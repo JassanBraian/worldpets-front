@@ -13,13 +13,14 @@ const Footer = () => {
                 <div className='footer_inner'>
                     <div className='social__icons'>
                         <a href="https://www.facebook.com/">
-                        <span className="icono">
+                            <span className="icono">
                                 <FontAwesomeIcon icon={faF} size="5x" />
                             </span>
                             {/* <img src={facebook} alt="facebook logo" /> */}
+                            {/* <img src={facebook} alt="facebook logo" /> */}
                         </a>
                         <a href="https://www.facebook.com/">
-                        <span className="icono">
+                            <span className="icono">
                                 <FontAwesomeIcon icon={faDove} size="5x" />
                             </span>
                             {/* <img src={twitter} alt="facebook logo" /> */}
@@ -28,14 +29,14 @@ const Footer = () => {
                             <span className="icono">
                                 <FontAwesomeIcon icon={faCameraRetro} size="5x" />
                             </span>
-                         {/* <img src={insta} alt="facebook logo" /> */}
+                            {/* <img src={insta} alt="facebook logo" /> */}
                         </a>
                     </div>
                     <span>
-                    <p className="derechos">
-                    <FontAwesomeIcon icon={faCopyright} size="2x" />
-                        Todos los derechos reservados
-                    </p>
+                        <p className="derechos">
+                            <FontAwesomeIcon icon={faCopyright} size="2x" />
+                            Todos los derechos reservados
+                        </p>
                     </span>
                 </div>
             </div>
