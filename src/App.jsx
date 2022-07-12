@@ -17,6 +17,7 @@ import UserPage from './pages/UserPage';
 import PublicationsPage from './pages/PublicationsPage';
 import PrivateRoute from './context/PrivatesRoutes/PrivateRoute';
 import AdminRoute from './context/PrivatesRoutes/AdminRoute';
+import PublicationNew from './pages/PublicationNew';
 
 function App() {
   return (
