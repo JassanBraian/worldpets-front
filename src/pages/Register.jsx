@@ -23,16 +23,17 @@ const Register = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate('/private');
+        isAuth && navigate('/user-menu');
     }, [isAuth])
 
     return (
         <>
-            <h1>Register  </h1>
+            
 
         <div className='wrapper'>
             <form onSubmit={handleOnSubmit}>
             <div id="wizard">
+            <h1 className='text-center register-title'>Register  </h1>
             <Link to='/' className='forgot-link'> Volver a inicio </Link>
                     <section>
                         <div className="form-header">
@@ -98,9 +99,9 @@ const Register = () => {
                                 />
                             </div>
                         </div>
-                        <div className='d-flex justify-content-between'>
-                                <button type="submit" className='submit-button'>Enviar</button>
+                        <div className='d-flex justify-content-between align-items-center'>
                                 <Link to='/forgotPassword' className='forgot-link'> ¿Olvido su contraseña? </Link>
+                                <button type="submit" className='submit-button'>Enviar</button>
                         </div>
                     </section>
             </div>

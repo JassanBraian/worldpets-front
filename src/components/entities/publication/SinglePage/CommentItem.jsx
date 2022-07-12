@@ -15,9 +15,15 @@ const CommentItem = ({ comment, activeComment, setActiveComment, parentId = null
     const canDelete = emailUser === usersend.email;
     const createdAt = new Date(comment.createdAt).toLocaleDateString(); /* Para mostrar mejor la fecha que esta en la API, pero igual esto se puede acomodar mejor desde la API */
 
-    const isEditing = activeComment
-        && activeComment.type === 'editing'
-        && activeComment.id === comment._id;
+    const isEditing =
+        activeComment &&
+        activeComment.type === 'editing' &&
+        activeComment.id === comment._id
+
+    // useEffect(() => {
+    //     /* console.log('a2', comment); */
+    // }, [comment])
+
 
     return (
         <div className='comment'>

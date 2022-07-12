@@ -1,22 +1,8 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
 
-body{
-    background-color: #e5e5f7;
-    opacity: 1;
-    background-image: linear-gradient(#D1A12A 1px, transparent 1px), 
-   linear-gradient(to right, #D1A12A 1px, #e5e5f7 1px);
-    background-size: 20px 20px;
-    font-family: 'Poppins', sans-serif;
-   }
+.fav-single-pub-btn {
+    margin-top: 15px;
+}
+
 .app {
     max-width: 1200px;
     width: 100%;
@@ -91,7 +77,6 @@ body{
 .thumb{
     width: 100%;
     height: 100px;
-    display: flex;
     cursor: pointer;
     margin: 10px 0;
     

@@ -8,13 +8,15 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
-import SearchII from "./pages/SearchII";
+import SearchPage from "./pages/SearchPage";
 import UserMenu from './pages/UserMenu';
 import SinglePublication from './pages/SinglePublication';
 import ProfileImage from './pages/ProfileImage';
 import Layout from './components/common/layout/Layout';
 import UserPage from './pages/UserPage';
 import PublicationsPage from './pages/PublicationsPage';
+import PrivateRoute from './context/PrivatesRoutes/PrivateRoute';
+import AdminRoute from './context/PrivatesRoutes/AdminRoute';
 
 function App() {
   return (
@@ -26,11 +28,19 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/resetPassword/:token" element={<ResetPassword/>}/> {/* El path es asi path="/reset/:token" pero le saco lo del :token para poder trabajar con el diseño ahsta que este el backend*/}
-        <Route path="/search-page" element={<SearchII/>}/>
-        <Route path="/user-menu" element={<UserMenu/>}/> {/* Creo que hay que envolver a user-menu en PrivateRoute */}
+        <Route path="/resetPassword/:token" element={<ResetPassword/>}/>
+        <Route path="/search-page" element={<SearchPage/>}/>
+        <Route path="/user-menu" element={
+          <PrivateRoute>
+            <UserMenu/>
+          </PrivateRoute>
+        }/>
         <Route path='/profile-image'element={<ProfileImage/>}/>
-        <Route path="/single-publication" element={<SinglePublication/>}/>         
+        <Route path="/single-publication/:id" element={
+
+          <SinglePublication/>
+
+        }/>         
         <Route path='/user' element={<UserPage />}/>
         <Route path='/publications-page' element={ <PublicationsPage /> }/>
         <Route path='/category/:categoryId' element={<CategoryPage/>} title= 'Destacadas'/>
