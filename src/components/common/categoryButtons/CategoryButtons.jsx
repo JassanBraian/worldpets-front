@@ -14,17 +14,17 @@ const CategoryButtons = () => {
     };
   return (
     <div className='buttonContainer container-fluid row'>
-        <button onClick={() => goToCategory('up for adoption')} className='categoryButton col-lg-4 col-sm-12'>
-            <FontAwesomeIcon icon={faDog} size="6x"/>
-            <div className='title'>En Adopción</div>  
+        <button onClick={() => goToCategory('up for adoption')} className='categoryButton col-lg-3  col-sm-12'>
+            <FontAwesomeIcon icon={faDog} size="5x"/>
+            <div className='button-title'>En Adopción</div>  
         </button>
-        <button onClick={() => goToCategory('lost')} className='categoryButton col-lg-4 col-sm-12'>
-            <FontAwesomeIcon icon={faPaw} size="6x" />
-            <div className='title'>Se perdió</div>
+        <button onClick={() => goToCategory('lost')} className='categoryButton col-lg-3  col-sm-12'>
+            <FontAwesomeIcon icon={faPaw} size="5x" />
+            <div className='button-title'>Se perdió</div>
         </button>
-        <button onClick={() => goToCategory('found')} className='categoryButton col-lg-4 col-sm-12'>
-            <FontAwesomeIcon icon={faShieldDog} size="6x"/>
-            <div className='title'>Lo encontramos</div>
+        <button onClick={() => goToCategory('found')} className='categoryButton col-lg-3 col-sm-12'>
+            <FontAwesomeIcon icon={faShieldDog} size="5x"/>
+            <div className='button-title'>Lo encontramos</div>
         </button>
 
     </div>

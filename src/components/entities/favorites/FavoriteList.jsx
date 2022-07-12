@@ -33,16 +33,13 @@ const FavoriteList = () => {
             </span>
             </button>
         {isActive && (
-        <div className="dropdown-content">
-        <ul>
+        <div className="dropdown-content container-fluid row">
                 {
                     favorites.map((item, index) =>
-                     <li className='dropdown-item'>
+                     <div className='dropdown-item container-fluid'>
                         <FavoriteListItem key={index} data={item} />
-                    </li>)
+                    </div>)
                  }
-        </ul>
-
         </div>
         )}
     </div>

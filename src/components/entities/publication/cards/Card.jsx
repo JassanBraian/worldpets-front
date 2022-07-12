@@ -19,7 +19,7 @@ const Card = (props) => {
   };
   return (
     <>
-    <div className='col-lg-3 col-sm-6'>
+    <div className='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
     <div className= {props.isHighlighted ? "destacada" :"card"}>
         <img src= {props.image} className="card-img-top img-fluid" alt= '' />
         <div className="card-body">
