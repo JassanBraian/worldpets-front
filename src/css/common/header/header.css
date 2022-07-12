@@ -1,9 +1,10 @@
 .header__top {
-  margin:0px;
+  margin: 0px;
   padding: 0px 15px;
   background-color: #D3B72A;
 }
-.header_inner{
+
+.header_inner {
   margin: 0;
 }
 
@@ -32,22 +33,60 @@
 }
 
 .header__top .header_inner .right button {
-  /* padding: 0px 30px; */
   margin-left: 10px;
   cursor: pointer;
-  /* border: 1px solid black; */
-  /* font-weight: 500;*/
-  border-radius: 20px; 
-  /* background-color: white; */
+  border-radius: 20px;
   align-self: flex-end;
   padding: 10px;
   background-color: #D3B72A;
-    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-    justify-content: space-between;
-    font-family: 'Poppins' !important;
-    font-weight: bold;
-    border: 3px solid black;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  justify-content: space-between;
+  font-family: 'Poppins' !important;
+  font-weight: bold;
+  border: 3px solid black;
 }
-.header__top .header_inner .right button:hover{
-  background-color: #f1d12f;
+
+@media (max-width: 576px) {
+  .header__top .header_inner .right button {
+    padding: 0px 10px;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Cart__top img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header__top .header_inner .right button {
+    padding: 0px 12px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__top .header_inner .right button {
+    padding: 0px 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__top .header_inner .right button {
+    padding: 0px 20px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .header__top .header_inner .right button {
+    padding: 0px 30px;
+  }
+
+  .header__top .header_inner .right button:hover {
+    background-color: #f1d12f;
+  }
 }

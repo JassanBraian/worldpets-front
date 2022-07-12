@@ -7,20 +7,22 @@ import Profile from "./profile/Profile";
 import Hamburger from "./hamburger/Hamburger";
 import PublicationContext from "../../../context/publication/PublicationContext";
 import SearchBar from "./searchbar/SearchBar";
+import AuthContext from "../../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import FavoriteList from "../../entities/favorites/FavoriteList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 // import { profile } from "console";
 
-const Header = () => {  
+const Header = () => {
   //   show login signup and profile 
 
-  const [showLogin, setIsShowLogin] = useState(true);
-
-  //  const loginButtonHndler = () => {
-  //    setIsShowLogin(false)
-  //  }
+  const { logout, isAuth } = useContext(AuthContext);
+  const [showLogin, setIsShowLogin] = useState(!isAuth);
+  const loginButtonHandler = () => {
+    setIsShowLogin(!showLogin)
+    logout()
+  }
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -36,22 +38,22 @@ const Header = () => {
 
         <div className='left'>
           <span onClick={showSidebar} className='iconMenu' >
-          <FontAwesomeIcon icon={faPaw} size="3x" />
+            <FontAwesomeIcon icon={faPaw} size="3x" />
           </span>
         </div>
-        
+
         <div className='center'></div>
         <SearchBar />
         <div className='right'>
-          
-          
+
+
 
           {/* <Link to={"/CartPublications"}>
             <Cart />
           </Link> */}
           {showLogin &&
             <>
-            <FavoriteList/>
+              <FavoriteList />
               <Link to={"/login"}>
                 <button>Ingresá</button>
               </Link>
@@ -64,10 +66,10 @@ const Header = () => {
           {
             !showLogin &&
             <>
-            <FavoriteList/>
-            <Profile />
+              <FavoriteList />
+              <Profile loginButtonHandler={loginButtonHandler} />
             </>
-            
+
           }
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import bgImg from "../../../assets/img/heroimg2.jpg";
+import "../../../css/common/header/BootsrtapCarousel.css"
 import '../../../css/common/header/BootsrtapCarousel.css'
 
 export default function BootstrapCarousel() {
