@@ -1,30 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ButtonGroup, Button, Form } from 'react-bootstrap';
+import PublicationContext from '../../../../context/publication/PublicationContext';
 
 const PubliFormCreate = () => {
+
+    const { publiPreview, setPublicationPreview, createPublication } = useContext(PublicationContext);
+
+    const { title, description, ubication, category } = publiPreview;
 
     const initialState = {
         title: '',
         description: '',
         ubication: '',
-        category: '',
-        user: 0
+        category: ''
     }
-    const [formPubli, setFormPubli] = useState(initialState);
-    const { title, description, ubication, category, user } = formPubli;
 
     const [error, setError] = useState([]);
 
+    useEffect(() => {
+        setPublicationPreview(initialState);
+    }, [])
+
+
     const handleOnChange = e => {
-        setFormPubli({
-            ...formPubli,
+        setPublicationPreview({
+            ...publiPreview,
             [e.target.name]: [e.target.value]
         })
     }
 
     const handleOnSubmit = e => {
         e.preventDefault();
-        // importar PublicationContext y traer createPublication (metodo axios para post)
+
+        createPublication(publiPreview);
     }
 
     return (
@@ -63,19 +71,12 @@ const PubliFormCreate = () => {
                     <Form.Select
                         name="category"
                         value={category}
+                        onChange={handleOnChange}
                     >
                         <option value={'missing'}>Missing</option>
                         <option value={'found'}>Found</option>
                         <option value={'up for adoption'}>Up for adoption</option>
                     </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>User</Form.Label>
-                    <Form.Control
-                        name="user"
-                        type="text"
-                        value={user}
-                        onChange={handleOnChange} />
                 </Form.Group>
                 <div>
                     {
