@@ -1,4 +1,5 @@
 .header__top {
+  margin:0px;
   padding: 0px 15px;
   background-color: #D3B72A;
 }
@@ -9,7 +10,6 @@
 .header__top .header_inner .left {
   display: flex;
   align-items: flex-start;
-  /* border: 1px solid red; */
 }
 
 .header__top .header_inner .left .iconMenu {
