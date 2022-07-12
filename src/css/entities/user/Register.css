@@ -45,6 +45,28 @@ button.submit-button{
     vertical-align: middle; }
   
 
+.register-forgot-link:hover {
+  text-decoration: none;
+  color: #f1d12f;
+}
+
+.register-submit-button {
+  background-color: #D3B72A;
+  color: black;
+  border: #D3B72A;
+  width: 110px;
+  height: 40px;
+  font-weight: bold;
+}
+  
+.register-submit-button:hover {
+  background-color: #f1d12f;
+}
+
+.register-submit-button:disabled{
+  background-color: #dddddd;
+}
+
   @media (max-width: 767px) {
     body{
       background-color: #e5e5f7;
