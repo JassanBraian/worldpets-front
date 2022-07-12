@@ -3,14 +3,22 @@ import '../css/entities/publication/comments.css'
 import "../css/entities/publication/SingleProduct.css"
 import CommentList from "../components/entities/publication/SinglePage/CommentList";
 import PublicationContext from "../context/publication/PublicationContext";
-import { getDownloadURL, ref } from '@firebase/storage';
-import {app, storage} from '../firebase/FireBaseConfig'
-import { FirebaseError } from "firebase/app";
+import { getDownloadURL, ref, listAll } from '@firebase/storage';
+import {storage} from '../firebase/FireBaseConfig'
+import Spinner from "../components/common/spinner/Spinner";
+import FavoriteContext from "../context/favorites/FavoriteContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { useParams } from "react-router";
 
-export default function SinglePublication() {
 
+
+export default function SinglePublication(props) {
+  const {id} = useParams()
+  console.log("este es el id -->", id)
   const { publication, getPublication } = useContext(PublicationContext);
-  const [image, setImage] = useState([])
+  const [images3, setImages3] = useState([])
+  const [loading, setLoading] = useState(false);
 
   const initialValues = {
     _id: 0,
@@ -22,57 +30,58 @@ export default function SinglePublication() {
   }
   const [publiData, setPubliData] = useState(initialValues);
   const { title, photos, ubication, description, category } = publiData;
+  const [currentImg, setCurrentImg] = useState(images3[0]);
+  const {addToFavorites, removeFromFavorites, isFavorite} = useContext(FavoriteContext);
 
-/*   const [currentImg, setCurrentImg] = useState({}); */
   const myRef = useRef();
 
-/*   const listAllSongs = () => {
-    listAll("id1/")
-  }
+  //---------------------------Favourites
 
-  function listAll (folder) {
-    const storageRef = app.storage().ref();
-    var listRef =storageRef.child(folder);
+  const onToggleFavorite = ()=>{
+    if(isFavorite(1234, props.postId)){
+      removeFromFavorites(1234, props.postId)//traer el user id del usuario logueado del userContext
+    } else{
+      addToFavorites(1234, props.postId)//traer el user id del usuario logueado del userContext
+    }
+  };
 
-    listRef
-      .listAll()
-      .then((res) => {
-        res.prefixes.forEach((folderRef) => {
+  //--------------------------------------------------
 
-        });
-        res.item.forEach((itemRef) => {
-          console.log("item ref:" + itemRef)
-          itemRef.getDownloadURL().then((url) => {
-            console.log("download url:" + url);
-          });
-        });
-      })
-    .catch((error) => {
+  //---------------------------Single Publication Photos
+
+  const getImages = async (id) => {
+    try {
+      setLoading(true)
+      const imagesRef = ref(storage, `publications/${id}`); // En '62c5e6abb4ef5f01a437d2b0' iria publicationId
+     const response = await listAll(imagesRef)
+     const res = []
+         for(let item of response.items){
+           const url = await getDownloadURL(item);
+/*            console.log(url); */
+           res.push(url)
+         }
+         setImages3(res)
+         setCurrentImg(res[0])
+         setLoading(false)
+    } catch (error) {
       console.log(error)
-    });
-  } */
+    }
+  };
 
-  /* FirebaseError.initializeApp(firebaseConfig) */
-
-
-  useEffect(() => {
-    getPublication("62c5e6abb4ef5f01a437d2b0");
+//-----------------------------------------------------------
+  
+useEffect(() => {
+    getPublication(id);
+    getImages(id); //Id tiene que ser dinamico
   }, []);
 
   useEffect(() => {
     setPubliData(publication);
   }, [publication]);
 
-  const imageRef = ref(storage, `id1/822.jpg`);
-  console.log(imageRef)
-
-  useEffect(() => {
-    getDownloadURL(imageRef)
-      .then((url) => {
-        setImage([url])
-      })
-  }, [])
-
+  if(loading){
+    return <Spinner />
+  }
 
 
   return (
@@ -81,7 +90,7 @@ export default function SinglePublication() {
 
         <div className="details">
           <div className="big-img">
-            <img src={image} alt="" />
+            <img src={currentImg} alt="" />
           </div>
 
           <div className="box">
@@ -93,20 +102,27 @@ export default function SinglePublication() {
 
             <p>{description}</p>
 
-            <div className="thumb" ref={myRef}>
-            <img src={image} alt="" />
-              {/* {photos.map((item, index) => (
-                <img
-                  key={index}
-                  src={item.img}
-                  alt=""
-                  onClick={() => setCurrentImg(item.img)}
+            <div className="thumb d-flex justify-content-center" ref={myRef}>
+               {images3.map((item, index) => (
+              <img
+                src={item} 
+                alt="" 
+                key={index}
+                onClick={() => setCurrentImg(item)}
                 />
-              ))} */}
+                ))}
             </div>
-            <button className="cart ">
-              Seguir publicacion
-            </button>
+            <div className="d-flex justify-content-center fav-single-pub">
+              {!isFavorite(1234, props.postId) ? 
+              <button className="favouriteButton fav-single-pub-btn" onClick={onToggleFavorite}>
+              <FontAwesomeIcon icon={faStar} />
+                  Marcar como favorito
+              </button>
+              : <button className="submit-button" onClick={onToggleFavorite}>
+              <FontAwesomeIcon icon={faTrashCan} />
+                  Eliminar de mis favoritos
+              </button>}
+            </div>
           </div>
         </div>
       </div>

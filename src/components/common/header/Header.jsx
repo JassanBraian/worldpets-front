@@ -7,10 +7,10 @@ import Profile from "./profile/Profile";
 import Hamburger from "./hamburger/Hamburger";
 import PublicationContext from "../../../context/publication/PublicationContext";
 import SearchBar from "./searchbar/SearchBar";
+import { useNavigate } from "react-router-dom";
 // import { profile } from "console";
 
-const Header = () => {
-  const {setPublicationSearch} = useContext(PublicationContext)
+const Header = () => {  
   //   show login signup and profile 
 
   const [showLogin, setIsShowLogin] = useState(true);
@@ -26,25 +26,6 @@ const Header = () => {
     setSidebar(false);
   }
 
-// SearchBar
-
-const [searchText, setSearchText] = useState('')
-
-const handleInput = (e) => {
-  const text = e.target.value;
-  setPublicationSearch(text)
-}
-
-const handleEnterKeyPressed = (e) => {
-  if (e.key === 'Enter') {
-    e.preventDefault();
-    console.log(searchText) //Al apretar enter, envio el searchText, pero QUIERO ENVIAR COMO PROPS
-  }
-}
-
-
-
-
   return (
     <div className='header__top'>
       <div className='header_inner'>
@@ -53,15 +34,7 @@ const handleEnterKeyPressed = (e) => {
         <div className='left'>
           <img onClick={showSidebar} className='iconMenu' src={menuIcon} alt="menu"></img>
         </div>
-        <div className="form-outline">
-          <input 
-            type="text" 
-            placeholder="¿Que estas buscando?" 
-            className="form-control"
-            value={searchText} 
-            onChange={handleInput}
-            onKeyPress={handleEnterKeyPressed} />
-        </div>
+        
         <div className='center'></div>
         <SearchBar />
         <div className='right'>

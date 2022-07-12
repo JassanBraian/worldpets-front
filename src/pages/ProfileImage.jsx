@@ -54,9 +54,10 @@ const ProfileImage = () => {
     if(!file) return;
     const extension = file.name.split(".")[1]; // tomo la extension de la imagen
     console.log("Extension:" , extension); // imprimo la extension del archivo
-
     const storageRef = ref(storage, `/userProfilePic/${imageName}.${extension}`); // cambio el nombre de la imagen que quiero guardar con la extension
     console.log(file.name); // este es el nombre del archivo
+    const carpetaDeArchivos = ref(storage, "/userProfilePic")
+    console.log(carpetaDeArchivos)
     const uploadTask = uploadBytesResumable(storageRef, file);
     console.log(uploadTask)
     
@@ -69,6 +70,7 @@ const ProfileImage = () => {
     ()=>{
       getDownloadURL(uploadTask.snapshot.ref)
         .then((url) => {
+          console.log(url)
           setImage([url])
         }) /* console.log("url de la imagen -->", url) */
     }
