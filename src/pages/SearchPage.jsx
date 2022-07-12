@@ -6,11 +6,15 @@ import "../css/common/SearchBar/SearchPage.css"
 import { Link } from 'react-router-dom';
 import Spinner from '../components/common/spinner/Spinner';
 import PublicationContext from '../context/publication/PublicationContext';
+import { getDownloadURL, ref, listAll } from '@firebase/storage';
+import {storage} from '../firebase/FireBaseConfig'
 
 
 const SearchPage = () => {
     const [publications, setPublications] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [images3, setImages3] = useState([])
+    const [currentImg, setCurrentImg] = useState(images3[0]);
 /*     const [wordEntered, setWordEntered] = useState(""); */
     const [loading, setLoading] = useState(false);
     const {publicationSearch, setPublicationSearch} = useContext(PublicationContext)
@@ -48,7 +52,33 @@ const getPublications = async () =>{
         }
     }, [publicationSearch])
     
+// CARDS IMAGES--------------------------------------------
 
+const getImages = async (publicationId) => {
+    try {
+      setLoading(true)
+      const imagesRef = ref(storage, 'id1'); // En 'id1' iria publicationId
+     const response = await listAll(imagesRef)
+     const res = []
+         for(let item of response.items){
+           const url = await getDownloadURL(item);
+/*            console.log(url); */
+           res.push(url)
+         }
+         setImages3(res)
+         setCurrentImg(res[0])
+         setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  };
+    /* useEffect( async ()=>{
+      await getImages()
+    },[]) */
+    useEffect( ()=>{
+        getImages()
+      },[])
+//--------------------------------------------
 
     if(loading){
         return <Spinner />
@@ -85,7 +115,7 @@ const getPublications = async () =>{
                         return (
                         <div className='col-11 col-md-6 col-lg-3 card m-3 p-0'>
                         <div key={publication._id}>        
-                            <img src="https://i.pinimg.com/originals/aa/64/1c/aa641c2b927cba0e99b9dcbad59e7b14.jpg" className="card-img-top img-fluid" alt= '' />
+                            <img src={currentImg} className="card-img-top img-fluid" alt= '' />
                             <div className="card-body">
                                 <h1 className="card-title">{publication.title}</h1>  
                                 <p className="card-text">{publication.description}</p>
