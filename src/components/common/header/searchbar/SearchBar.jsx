@@ -1,8 +1,11 @@
 import React, { useEffect, useContext } from "react";
 import PublicationContext from "../../../../context/publication/PublicationContext";
+import '../../../../css/common/SearchBar/SearchBar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router";
+import { MDBCol } from "mdbreact";
+
 
 
 const SearchBar = () => {
@@ -47,28 +50,31 @@ const SearchBar = () => {
 
   const clearInput = () => setPublicationSearch("");
 
-  return (
-    <div className='d-flex justify-content-center'>
-      <div className="control">
-        <input
-          type="text"
-          placeholder='¿Que estas buscando?'
-          className="input p-2 mt-3"
-          value={publicationSearch ? publicationSearch : ''}
-          onChange={(e) => { setPublicationSearch(e.target.value) }}
-          onKeyPress={handleEnterKeyPressed} 
-        />
-      </div>
-      <div className="searchIcon mt-3">
-        {filteredData.length === 0 ? (
-          <SearchIcon />
-        ) : (
-          <CloseIcon id="clearBtn" onClick={clearInput} />
-        )}
-      </div>
+  return (      
+    
+    <MDBCol md="6">
+        <div className='d-flex justify-content-center'>
+          <div className="control">
+            <input
+              type="text"
+              placeholder='¿Que estas buscando?'
+              className="search-bar-input p-2 mt-3"
+              value={publicationSearch ? publicationSearch : ''}
+              onChange={(e) => { setPublicationSearch(e.target.value) }}
+              onKeyPress={handleEnterKeyPressed} 
+            />
+          </div>
+          <div className="searchIcon mt-3">
+            {filteredData.length === 0 ? (
+              <SearchIcon />
+            ) : (
+              <CloseIcon id="clearBtn" onClick={clearInput} />
+            )}
+          </div>
+        </div>
 
-
-    </div>
+    </MDBCol>
+    
 
 
   );
