@@ -17,23 +17,26 @@ import PublicationContext from '../context/publication/PublicationContext';
 import CategoriesContext from '../context/categories/CategoriesContext';
 
 const Home = () => {
-    const {publications} = useContext(PublicationContext);
-    const {getCategories} = useContext(CategoriesContext);
+    
+    const {getCategories, getHighlightedPosts} = useContext(CategoriesContext);
     const[categories, setCategories] = useState([]);
+   
 
     useEffect(() => {
         async function doGetCategories(){
             const categories = await getCategories();
-            console.log(categories[0].posts)
+            console.log(categories)
             setCategories(categories)
         }
         doGetCategories()
     }, [])
 
     
+    
+    
 
     const [loading, setLoading] = useState(false);
-    console.log(publications)
+    
 
     const navigate = useNavigate();
     const goToCategory = (categoryId) => {
@@ -46,11 +49,10 @@ const Home = () => {
     return (
         <div>
             <BootstrapCarousel />
-            <FavoriteList />
             {categories.map((category, index) => {
                 return (
                     <section>
-                        <Category key={index} title={category.title} posts={category.posts} />
+                        <Category key={category} title={category.title} posts={category.posts} />
                         <button onClick={() => goToCategory(category.id)} className='seeMoreButton'>
                             <FontAwesomeIcon icon={faCirclePlus} />
                             Ver todos

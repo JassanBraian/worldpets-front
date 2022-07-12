@@ -14,7 +14,9 @@ const ListaCards = () => {
     const [loading, setLoading] = useState(false);
 
       useEffect(()=>{
-        getPublications();
+        setLoading(true)
+        getPublications()
+        setLoading(false)
     }, []);
 
   if(loading){

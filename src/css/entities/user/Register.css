@@ -10,18 +10,16 @@
       height: auto;
     }
   
+    .title{
+      font-family: 'Pacifico';
+      font-size: 80px;
+      padding:0px 10px 00px 10px;
+      margin-top: 20px;
+      color: #D3B72A;
+      text-shadow: 4px 4px #9999;
+    }
   
-    body{
-      background-color: #e5e5f7;
-      opacity: 1;
-      background-image:  linear-gradient(#D1A12A 1px, transparent 1px), 
-  linear-gradient(to right, #D1A12A 1px, #e5e5f7 1px);
-      background-size: 20px 20px;
-      max-width: 100%;
-      overflow-x: hidden
-  }
-  
-  h2 {
+  .text-center h2 {
     font-family: 'Poppins', sans-serif;
     }
   
