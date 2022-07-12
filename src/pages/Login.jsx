@@ -2,6 +2,8 @@ import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth/AuthContext';
 import '../css/entities/user/Login.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser} from '@fortawesome/free-regular-svg-icons';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -27,7 +29,7 @@ const Login = () => {
 
     return (
         <>
-            
+            {/* <div className='title'>Login</div> */}
             <div className='wrapper'>
                 <form onSubmit={handleOnSubmit}>
                     <div id="wizard">
@@ -36,7 +38,8 @@ const Login = () => {
                     <section>
                         <div className="form-header">
                             <div className="avartar mb-2 d-flex justify-content-center">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjpcIyJM88HMVZzl4QEIUmiv9Yh2n75PQwnw&usqp=CAU" alt="logo"/>
+                            <FontAwesomeIcon icon={faUser} size='8x'/>
+                                {/* <img src={registerImg} alt="logo" /> */}
                             </div>
                         </div>
                         <div className="form-group">

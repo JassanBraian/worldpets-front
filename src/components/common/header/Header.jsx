@@ -8,6 +8,9 @@ import Hamburger from "./hamburger/Hamburger";
 import PublicationContext from "../../../context/publication/PublicationContext";
 import SearchBar from "./searchbar/SearchBar";
 import { useNavigate } from "react-router-dom";
+import FavoriteList from "../../entities/favorites/FavoriteList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 // import { profile } from "console";
 
 const Header = () => {  
@@ -27,33 +30,44 @@ const Header = () => {
   }
 
   return (
-    <div className='header__top'>
+    <div className='header__top container-fluid'>
       <div className='header_inner'>
         {sidebar && <Hamburger cancel={closeSideBar} />}
 
         <div className='left'>
-          <img onClick={showSidebar} className='iconMenu' src={menuIcon} alt="menu"></img>
+          <span onClick={showSidebar} className='iconMenu' >
+          <FontAwesomeIcon icon={faPaw} size="3x" />
+          </span>
         </div>
         
         <div className='center'></div>
         <SearchBar />
         <div className='right'>
+          
+          
 
-          <Link to={"/CartPublications"}>
+          {/* <Link to={"/CartPublications"}>
             <Cart />
-          </Link>
+          </Link> */}
           {showLogin &&
             <>
+            <FavoriteList/>
               <Link to={"/login"}>
                 <button>Ingresá</button>
               </Link>
               <Link to={"/register"}>
                 <button>Registrate</button>
               </Link>
+
             </>
           }
           {
-            !showLogin && <Profile />
+            !showLogin &&
+            <>
+            <FavoriteList/>
+            <Profile />
+            </>
+            
           }
         </div>
       </div>
