@@ -60,7 +60,10 @@ const SearchBar = () => {
               placeholder='¿Que estas buscando?'
               className="search-bar-input p-2 mt-3"
               value={publicationSearch ? publicationSearch : ''}
-              onChange={(e) => { setPublicationSearch(e.target.value) }}
+              onChange={(e) => { 
+                setPublicationSearch(e.target.value) 
+                console.log("v1")
+              }}
               onKeyPress={handleEnterKeyPressed} 
             />
           </div>

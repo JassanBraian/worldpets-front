@@ -34,8 +34,14 @@ const getImages = async (id) => {
 /*          setLoading(false) */
     } catch (error) {
       console.log(error)
-    }
+    }   
   };
+
+  useEffect(() => {
+    console.log('v3')
+  }, [filteredData])
+  
+
     /* useEffect( async ()=>{
       await getImages()
     },[]) */
@@ -57,12 +63,12 @@ const getImages = async (id) => {
                     filteredData.length != 0 ? 
                     filteredData.map((publication, index) => {
                     /*const currentImg = ref(storage, publication._id); */
-                    /*getImages(publication._id)
-                    console.log(publication._id) */
+                    /* getImages(publication._id) */
+                    /* console.log(index) */
                             return (
                             <div className='col-11 col-md-6 col-lg-3 card m-3 p-0' key={index}>
                             <div>        
-                                <img src={currentImg} className="card-img-top img-fluid" alt= '' />
+                                <img src="https://estaticos-cdn.prensaiberica.es/clip/1fa3b0c5-a0ba-46e4-a69a-7609feb0f9f7_16-9-aspect-ratio_default_0.jpg" className="card-img-top img-fluid" alt= '' />
                                 <div className="card-body">
                                     <h1 className="card-title">{publication.title}</h1>  
                                     <p className="card-text">{publication.description}</p>
