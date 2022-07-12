@@ -9,11 +9,13 @@ import Spinner from "../components/common/spinner/Spinner";
 import FavoriteContext from "../context/favorites/FavoriteContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { useParams } from "react-router";
 
 
 
 export default function SinglePublication(props) {
-
+  const {id} = useParams()
+  console.log("este es el id -->", id)
   const { publication, getPublication } = useContext(PublicationContext);
   const [images3, setImages3] = useState([])
   const [loading, setLoading] = useState(false);
@@ -47,10 +49,10 @@ export default function SinglePublication(props) {
 
   //---------------------------Single Publication Photos
 
-  const getImages = async (publicationId) => {
+  const getImages = async (id) => {
     try {
       setLoading(true)
-      const imagesRef = ref(storage, `id1`); // En 'id1' iria publicationId
+      const imagesRef = ref(storage, `publications/${id}`); // En '62c5e6abb4ef5f01a437d2b0' iria publicationId
      const response = await listAll(imagesRef)
      const res = []
          for(let item of response.items){
@@ -65,13 +67,12 @@ export default function SinglePublication(props) {
       console.log(error)
     }
   };
-    useEffect(()=>{
-      getImages()
-    },[])
+
 //-----------------------------------------------------------
   
 useEffect(() => {
-    getPublication("62c5e6abb4ef5f01a437d2b0"); //Id tiene que ser dinamico
+    getPublication(id);
+    getImages(id); //Id tiene que ser dinamico
   }, []);
 
   useEffect(() => {

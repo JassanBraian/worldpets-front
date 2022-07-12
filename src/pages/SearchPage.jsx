@@ -17,7 +17,7 @@ const SearchPage = () => {
     const [currentImg, setCurrentImg] = useState(images3[0]);
 /*     const [wordEntered, setWordEntered] = useState(""); */
     const [loading, setLoading] = useState(false);
-    const {publicationSearch, setPublicationSearch} = useContext(PublicationContext)
+    const {publicationSearch, setPublicationSearch, getPublication} = useContext(PublicationContext)
     
     const clearInput = () => {
         setFilteredData([]);
@@ -29,6 +29,7 @@ const getPublications = async () =>{
         setLoading(true)
         const response = await clientAxios.get('http://localhost:4000/api/v1/publication/');
         setPublications(response.data.publications);
+        console.log(response.data.publications)
         setLoading(false)
         } catch (error){
             throw error
@@ -121,7 +122,8 @@ const getImages = async (publicationId) => {
                                 <p className="card-text">{publication.description}</p>
                             </div>
                         </div>
-                        <Link to="/single-product" className="stretched-link"></Link>
+                        <Link to={`/single-publication/${publication._id}`} className="stretched-link"></Link>
+                        {/* <Link to="/single-publication#{publication._id}" className="stretched-link"></Link> */}
                         </div>
                         );
                         })
