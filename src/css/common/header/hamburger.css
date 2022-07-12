@@ -9,6 +9,16 @@
   transition: 0.15s;
   z-index: 300000;
 }
+p.menu-title{
+  font-size: 30px;
+  padding: 0px;
+}
+.menu-title{
+  font-family: 'Pacifico';
+  font-size: 20px;
+  color: #D3B72A;
+  
+}
 
 .Hamburger .hamburgerMenu {
   position: fixed;
@@ -26,7 +36,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: red;
+  background-color: #D3B72A;
   color: #fff;
   cursor: pointer;
   width: 30px;
@@ -57,12 +67,13 @@
 
 hr.solid {
   border-top: 4px solid #bbb;
+  
 }
 
 
 .Hamburger .hamburgerMenu .link-home {
   text-decoration: none;
-  color: #000;
+  color: black;
   display: flex;
   margin-top: 50px;
 }

@@ -31,3 +31,21 @@ section {
         margin-right: 10px;
     }
 }
+
+.seeMoreButton {
+    background-color: #D3B72A;
+    height: 50px;
+    width: 250px;
+    font-family: 'Pacifico';
+    font-size: 2rem;
+    box-shadow: 10px 10px gray;
+    border-radius: 2px;
+    align-self: flex-end;
+    margin-right: 50px;
+
+}
+
+.seeMoreButton:hover {
+    transform: skew(-5deg);
+
+}

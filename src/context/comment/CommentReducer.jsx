@@ -14,11 +14,6 @@ const CommentReducer = (state, action) => {
                 ...state,
                 comments: action.payload,
             }
-        case GET_COMMENTS_PUBLI:
-            return {
-                ...state,
-                commentsPubli: action.payload,
-            }
         case GET_COMMENT:
             return {
                 ...state,

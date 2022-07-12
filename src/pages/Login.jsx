@@ -2,6 +2,8 @@ import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth/AuthContext';
 import '../css/entities/user/Login.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser} from '@fortawesome/free-regular-svg-icons';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -20,20 +22,24 @@ const Login = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate('/private');
-    }, [isAuth]);
+        if (isAuth) {
+            navigate('/user-menu')
+        }
+    }, [isAuth])
 
     return (
         <>
-            <h1>Login</h1>
+            {/* <div className='title'>Login</div> */}
             <div className='wrapper'>
                 <form onSubmit={handleOnSubmit}>
                     <div id="wizard">
+                    <h1 className='text-center login-title'>Login</h1>
                     <Link to='/' className='forgot-link'> Volver a inicio </Link>
                     <section>
                         <div className="form-header">
                             <div className="avartar mb-2 d-flex justify-content-center">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjpcIyJM88HMVZzl4QEIUmiv9Yh2n75PQwnw&usqp=CAU" alt="logo"/>
+                            <FontAwesomeIcon icon={faUser} size='8x'/>
+                                {/* <img src={registerImg} alt="logo" /> */}
                             </div>
                         </div>
                         <div className="form-group">
@@ -63,9 +69,9 @@ const Login = () => {
                             </div>
                                     
                         </div>
-                        <div className='d-flex justify-content-between'>
-                            <button type="submit" className='submit-button'>Iniciar sesion</button>
-                            <Link to='/register' className='forgot-link'> ¿No tiene cuenta? </Link>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <Link to='/register' className='login-forgot-link'> ¿No tiene cuenta? </Link>
+                            <button type="submit" className='login-submit-button'>Iniciar sesion</button>
                         </div>
                     </section>
                     </div>

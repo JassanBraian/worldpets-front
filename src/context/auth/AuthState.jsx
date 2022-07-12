@@ -22,7 +22,7 @@ const AuthState = ({ children }) => {
   const initialState = {
     token: localStorage.getItem('token'),
     isAuth: false,
-    user: null,
+    user: {},
     loading: true,
     successMsg: ''
   }
@@ -41,8 +41,10 @@ const AuthState = ({ children }) => {
   const getUser = async () => {
     try {
       const token = localStorage.getItem('token');
+      console.log(token)
       if (token) { authToken(token); }
-      const response = await clientAxios.get('/api/v1/auth/user');
+      const response = await clientAxios.get('http://localhost:4000/api/v1/user/userbytoken');
+      console.log(response.data)
       dispatch({ type: GET_USER, payload: response.data })
     } catch (error) {
       throw error;
@@ -50,8 +52,9 @@ const AuthState = ({ children }) => {
   }
   const updateUser = async (data) => {
     try {
-      const response = await clientAxios.put('/api/v1/users', data);
-      dispatch({ type: UPDATE_SUCCESS, payload: response.data.data });
+        const response = await clientAxios.put('http://localhost:4000/api/v1/user', data);
+        console.log(response.data)
+        dispatch({type: UPDATE_SUCCESS, payload: response.data.data});
     } catch (error) {
       throw error;
     }
@@ -93,7 +96,7 @@ const AuthState = ({ children }) => {
 
   const getPublication = async () => {
     try {
-      const response = await clientAxios.get('/api/v1/'); /* COMPLETAR */
+      const response = await clientAxios.get('http://localhost:4000/api/v1/'); /* COMPLETAR */
       dispatch({ type: GET_PUBLICATION, payload: response.data })
     } catch (error) {
       throw error;
@@ -102,7 +105,7 @@ const AuthState = ({ children }) => {
 
   const getPublications = async () => {
     try {
-      const response = await clientAxios.get('/api/v1/'); /* COMPLETAR */
+      const response = await clientAxios.get('http://localhost:4000/api/v1/'); /* COMPLETAR */
       dispatch({ type: GET_PUBLICATIONS, payload: response.data })
     } catch (error) {
       throw error;

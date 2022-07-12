@@ -6,7 +6,10 @@ const PublicationProvider = ({ children }) => {
   
   const initialValue = {
     publications: [],
-    publication: {}
+    publication: {},
+    publicationSearch: "",
+    filteredData: []
+/*     publicationResults: [] */
   }
 
   const [values, setValues] = useState(initialValue);
@@ -19,6 +22,18 @@ const PublicationProvider = ({ children }) => {
         throw error;
     }
   }
+
+  const setPublicationSearch = title => {
+    setValues({...values, publicationSearch: title})
+  }
+
+  const setFilteredData = filtered => {
+    setValues({ ...values, filteredData: filtered })
+  }
+
+  /* const setSearchResults = results => {
+    setValues({...values, publicationResults: results })
+  } */
 
   const getPublication = async publicationId => {
     try {
@@ -53,7 +68,10 @@ const PublicationProvider = ({ children }) => {
       getPublications,
       getPublication,
       updatePublication,
-      deletePublication
+      deletePublication,
+      setPublicationSearch,
+      setFilteredData
+/*       setSearchResults */
     }}>
       {children}
     </PublicationContext.Provider>

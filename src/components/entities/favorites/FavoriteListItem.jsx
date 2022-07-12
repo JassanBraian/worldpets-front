@@ -5,13 +5,17 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import '../../../css/entities/favorites/favoriteList.css'
 
 const FavoriteListItem = ({data}) => {
+
+    console.log(data)
   const {removeFromFavorites } = useContext(FavoriteContext);
-  let{_id, user, publication, petName, petDescription} = data;
+  let{_id, publication, title, photos} = data;
   return (
     <div className="listItemContainer">
-        <h3>{_id}Id de la publicacion</h3>
-        <p>{user}id del Usuario</p>
-        <p>{publication}id del Post</p>
+        <p>{title}id del Usuario</p>
+        <p>{publication.title}</p>
+        <p>{publication.description} </p>
+         {/* <div>{publication.photos[0]}</div>   */}
+
         
         <button className="removeBtn" onClick={() => removeFromFavorites(_id)}>
             <FontAwesomeIcon icon={faTrashCan} />

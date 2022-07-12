@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 	                    </div>
 						<div className="form-group">
                                 <h2 className='text-center'>¿Olvido su contraseña?</h2>
-							<div className="form-holder">
+							<div className="forgot-form-holder">
                               <label>Ingrese su email</label>
                                 <input 
                                     type="email"
@@ -43,9 +43,9 @@ const ForgotPassword = () => {
 							</div>
 	                    </div>
 
-                        <div className='d-flex justify-content-between'>
-                             <button type="submit" className='submit-button'>Enviar</button>
+                        <div className='d-flex justify-content-between align-items-center'>
                                 <Link to='/' className='forgot-link'> Volver a inicio </Link>
+                             <button type="submit" className='submit-button'>Enviar</button>
                         </div>
         	        </section>      				
                 </div>

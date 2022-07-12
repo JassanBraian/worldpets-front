@@ -59,9 +59,9 @@ const ResetPassword = () => {
                             </div>
 	                    </div>
 
-                        <div className='d-flex justify-content-between'>
-                             <button type="submit" className='submit-button'>Enviar</button>
+                        <div className='d-flex justify-content-between align-items-center'>
                                 <Link to='/' className='forgot-link'> Volver a inicio </Link>
+                             <button type="submit" className='submit-button'>Enviar</button>
                         </div>
         	        </section>      				
                 </div>

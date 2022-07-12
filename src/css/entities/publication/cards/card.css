@@ -11,6 +11,9 @@
     margin: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(190, 196, 81, 0.468), 0 6px 20px 0 rgba(199, 194, 55, 0.19);
+}
 .favouriteButton{
     background-color: #D3B72A;
     color:black;
@@ -19,14 +22,18 @@
     font-weight: 500;
 }
 
-.card-title{
+h1.card-title{
     font-family: 'Pacifico';
-    margin: 0px;
+    margin-bottom: 40px;
+    padding:20px;
     font-size: 40px;
+    height: 120px;
+    text-align:justify, center;
 }
 .card-text{
     font-family: 'Poppins';
-    margin: 0px 3px 8px;
+    padding:10px;
+    margin-top: 40px;
     font-size: 0.8 rem;
     
 } 

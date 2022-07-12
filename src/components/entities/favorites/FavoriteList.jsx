@@ -1,6 +1,6 @@
 
 import FavoriteListItem from './FavoriteListItem'
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from 'react';
 import FavoriteContext from "../../../context/favorites/FavoriteContext";
 import '../../../css/entities/favorites/favoriteList.css'
@@ -9,16 +9,22 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const FavoriteList = () => {
     const [isActive, setIsActive] = useState(false);
-    // const handleOnClick = e => {
-    //     getFavorites()
-    // }
-
-  const {favorites, clearFavorites, getFavorites} = useContext(FavoriteContext);
+    const hideDropdown = () =>{setIsActive(false)}
+    useEffect(() => {
+        document.addEventListener('click', hideDropdown, false);
+        return () => {
+         document.removeEventListener('click', hideDropdown, false);
+        };
+       }, []);
+    
+  const {favorites, getFavorites} = useContext(FavoriteContext);
   return (
     <div className="dropdown">
         <button className="dropdown-btn" onClick={(e) =>{ 
+                e.stopPropagation()
                 setIsActive(!isActive)
                 getFavorites()
+                
         }}
                 >
             <span>
@@ -27,18 +33,13 @@ const FavoriteList = () => {
             </span>
             </button>
         {isActive && (
-        <div className="dropdown-content">
-        <ul>
+        <div className="dropdown-content container-fluid row">
                 {
                     favorites.map((item, index) =>
-                     <li className='dropdown-item'>
+                     <div className='dropdown-item container-fluid'>
                         <FavoriteListItem key={index} data={item} />
-                    </li>)
+                    </div>)
                  }
-                
-            <button onClick={clearFavorites}>Limpiar mi lista de favoritos</button>
-        </ul>
-
         </div>
         )}
     </div>

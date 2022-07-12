@@ -2,10 +2,11 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import bgImg from "../../../assets/img/heroimg2.jpg";
 import "../../../css/common/header/BootsrtapCarousel.css"
+import '../../../css/common/header/BootsrtapCarousel.css'
 
 export default function BootstrapCarousel() {
   return (
-    <div>
+    <>
       <Carousel>
         <Carousel.Item>
           <img
@@ -13,6 +14,7 @@ export default function BootstrapCarousel() {
             src={bgImg}
 
             alt="First slide"
+            height={100}
           />
 
         </Carousel.Item>
@@ -37,7 +39,7 @@ export default function BootstrapCarousel() {
 
         </Carousel.Item>
       </Carousel>
-    </div>
+    </>
   )
 }
 // export default SimpleSlider;

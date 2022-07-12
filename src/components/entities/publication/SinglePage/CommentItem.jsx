@@ -1,20 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import CommentContext from '../../../../context/comment/CommentContext';
 
 import CommentForm from './CommentForm';
 
-const CommentItem = ({
-    comment,
-    currentUserId,
-    deleteComment,
-    updateComment,
-    activeComment,
-    setActiveComment,
-    parentId = null
-}) => {
+const CommentItem = ({ comment, activeComment, setActiveComment, parentId = null }) => {
+
+    const { updateComment, deleteComment } = useContext(CommentContext);
+
     const { description, isprivate, usersend } = comment;
 
-    const canEdit = currentUserId === usersend.userid;  /* Por eso es que colocamos userId dentro de comment para comparar ambos y si son iguales entonces que pueda editar el comment */
-    const canDelete = currentUserId === usersend.userid;
+    const emailUser = localStorage.getItem('emailUser');
+
+    const canEdit = emailUser === usersend.email;  /* Por eso es que colocamos userId dentro de comment para comparar ambos y si son iguales entonces que pueda editar el comment */
+    const canDelete = emailUser === usersend.email;
     const createdAt = new Date(comment.createdAt).toLocaleDateString(); /* Para mostrar mejor la fecha que esta en la API, pero igual esto se puede acomodar mejor desde la API */
 
     const isEditing =
@@ -22,9 +20,9 @@ const CommentItem = ({
         activeComment.type === 'editing' &&
         activeComment.id === comment._id
 
-    useEffect(() => {
-        console.log('a2', comment);
-    }, [comment])
+    // useEffect(() => {
+    //     /* console.log('a2', comment); */
+    // }, [comment])
 
 
     return (
@@ -43,7 +41,10 @@ const CommentItem = ({
                         submitLabel="Aceptar"
                         hasCancelButton
                         initialText={description}
-                        handleSubmit={(text) => updateComment(text, comment._id)} /* Le pasamos el id para que el backend sepa cual comentario estamos manejando */
+                        handleSubmit={(text) => {
+                            updateComment({ ...comment, description: text });
+                            setActiveComment(null);
+                        }} /* Le pasamos el id para que el backend sepa cual comentario estamos manejando */
                         handleCancel={() => setActiveComment(null)}
                     />
                 )}
