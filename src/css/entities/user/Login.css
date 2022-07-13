@@ -17,7 +17,7 @@
   color: #f1d12f;
 }
 
-.login-submit-button {
+.form-submit-button {
   padding: 20px;
     background-color: #D3B72A;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
@@ -29,8 +29,12 @@
     border-radius: 3px;
 }
   
-.login-submit-button:hover {
+.form-submit-button:hover {
   background-color: #f1d12f;
+}
+
+.form-submit-button:disabled{
+  background-color: #dddddd;
 }
   
 @media (max-width: 767px) {

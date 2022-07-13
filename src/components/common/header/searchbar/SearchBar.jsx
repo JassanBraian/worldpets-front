@@ -58,16 +58,15 @@ const SearchBar = () => {
           <input
             type="text"
             placeholder='¿Que estas buscando?'
-            className="search-bar-input p-2 "
+            className="search-bar-input p-2 mt-3"
             value={publicationSearch ? publicationSearch : ''}
             onChange={(e) => {
               setPublicationSearch(e.target.value)
-              console.log("v1")
             }}
             onKeyPress={handleEnterKeyPressed}
           />
         </div>
-        <div className="searchIcon ">
+        <div className="searchIcon mt-3">
           {filteredData.length === 0 ? (
             <SearchIcon />
           ) : (
@@ -75,8 +74,14 @@ const SearchBar = () => {
           )}
         </div>
       </div>
-
-    </MDBCol>
+      <div className="searchIcon ">
+        {filteredData.length === 0 ? (
+          <SearchIcon />
+        ) : (
+          <CloseIcon id="clearBtn" onClick={clearInput} />
+        )}
+      </div>
+    </MDBCol >
 
 
 

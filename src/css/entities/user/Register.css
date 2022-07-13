@@ -45,6 +45,13 @@ button.submit-button{
     vertical-align: middle; }
   
 
+.register-forgot-link:hover {
+  text-decoration: none;
+  color: #f1d12f;
+}
+
+
+
   @media (max-width: 767px) {
     body{
       background-color: #e5e5f7;

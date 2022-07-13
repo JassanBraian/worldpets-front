@@ -5,6 +5,7 @@ import '../css/entities/user/Register.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare} from '@fortawesome/free-regular-svg-icons';
 
+
 const Register = () => {
     const navigate = useNavigate();
     const { registerUser, isAuth } = useContext(AuthContext);
@@ -15,14 +16,49 @@ const Register = () => {
         password: '',
         passwordConfirm: ''
     });
-    const { name, surname, email, password, confirmPassword } = form;
+    const { name, surname, email, password, passwordConfirm } = form;
+    const [registerErrors, setRegisterErrors] = useState({});
 
     const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleOnSubmit = e => {
         e.preventDefault();
+        if(password !== passwordConfirm) {
+            setRegisterErrors({
+              ...registerErrors,
+              "password": 'Contraseñas no coinciden',
+              "passwordConfirm" : 'Contraseñas no coinciden'
+            });
+            return;
+          }
         registerUser(form);
     }
+    
+    const emailValidation = input => {
+        const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regEx.test(input.value) ? true : false;
+    }
+
+    const handleOnBlur = (e) =>{
+        if(e.target.value === "") {
+            setRegisterErrors({
+            ...registerErrors,
+            [e.target.name] : "Campo obligatorio"
+          });
+        } else if (e.target.name === "email" && !emailValidation(e.target)) {
+            setRegisterErrors({
+                ...registerErrors,
+                [e.target.name] : `Email no válido`
+              });
+        }
+        else { 
+            setRegisterErrors({
+            ...registerErrors,
+            [e.target.name] : "",
+          });
+        } 
+      };
+
 
     useEffect(() => {
         isAuth && navigate('/user-menu');
@@ -35,7 +71,7 @@ const Register = () => {
         <div className='wrapper'>
             <form onSubmit={handleOnSubmit}>
             <div id="wizard">
-            <h1 className='text-center register-title'>Register  </h1>
+            <h1 className='text-center register-title'>Registrarse  </h1>
             <Link to='/' className='forgot-link'> Volver a inicio </Link>
                     <section>
                         <div className="form-header">
@@ -54,7 +90,9 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese su nombre"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                <p>{registerErrors.name}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Apellido</label>
@@ -65,7 +103,9 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese su nombre apellido"
                                     className="form-control mt-2"
+                                    onBlur={handleOnBlur}
                                 />
+                                <p>{registerErrors.surname}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Email</label>
@@ -76,7 +116,10 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="email@email.com"
                                     className="form-control mt-2"
+                                    maxLength='30'
+                                    onBlur={handleOnBlur}
                                 />
+                                <p>{registerErrors.email}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Contraseña</label>
@@ -87,23 +130,34 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese una contraseña segura"
                                     className="form-control mt-2"
+                                    minLength='8'
+                                    onBlur={handleOnBlur}
                                 />
+                                <p>{registerErrors.password}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Confirme su contraseña</label>
                                 <input
                                     type="password"
                                     name="passwordConfirm"
-                                    value={confirmPassword}
+                                    value={passwordConfirm}
                                     onChange={handleOnChange}
                                     placeholder="Repita la contraseña ingresada anteriormente"
                                     className="form-control mt-2"
+                                    minLength='8'
+                                    onBlur={handleOnBlur}
                                 />
+                                <p>{registerErrors.passwordConfirm}</p>
                             </div>
                         </div>
                         <div className='d-flex justify-content-between align-items-center'>
                                 <Link to='/forgotPassword' className='forgot-link'> ¿Olvido su contraseña? </Link>
-                                <button type="submit" className='submit-button'>Enviar</button>
+                                <button 
+                                    disabled={Object.values(form).some((value) => value === "")}
+                                    type="submit" 
+                                    className='form-submit-button'
+                                >Enviar</button>
+
                         </div>
                     </section>
             </div>
