@@ -1,7 +1,7 @@
-import BraianPic from '../assets/img/members/BraianJassan.png'
-import JonathanPic from '../assets/img/members/JonathanArriazu.png'
-import LucianoPic from '../assets/img/members/LucianoColin.jpg'
-import ElisaPic from '../assets/img/members/ElisaSocolsky.jpeg'
+// import BraianPic from '../assets/img/members/BraianJassan.png'
+// import JonathanPic from '../assets/img/members/JonathanArriazu.png'
+// import LucianoPic from '../assets/img/members/LucianoColin.jpg'
+// import ElisaPic from '../assets/img/members/ElisaSocolsky.jpeg'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import MemberCard from '../components/entities/members/MemberCard';
@@ -10,24 +10,24 @@ import '../css/entities/members/memberCard.css'
 const membersList = [
     {
         name: 'Braian Jassán',
-        picture: {BraianPic},
+        picture: '../assets/img/members/BraianJassan.png',
         id:1
 
         
     },
     {
         name: 'Luciano Colin',
-        picture: {LucianoPic},
+        // picture: {LucianoPic},
         id:2
     },
     {
         name: 'Jonathan Arriazu',
-        picture: {JonathanPic},
+        // picture: {JonathanPic},
         id:3
     },
     {
         name: 'Elisa Socolsky',
-        picture:{ ElisaPic},
+        // picture:{ ElisaPic},
         id:4
     },
     {
