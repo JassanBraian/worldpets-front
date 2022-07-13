@@ -50,33 +50,32 @@ const SearchBar = () => {
 
   const clearInput = () => setPublicationSearch("");
 
-  return (      
-    
-    <MDBCol md="6">
-        <div className='d-flex justify-content-center'>
-          <div className="control">
-            <input
-              type="text"
-              placeholder='¿Que estas buscando?'
-              className="search-bar-input p-2 mt-3"
-              value={publicationSearch ? publicationSearch : ''}
-              onChange={(e) => { 
-                setPublicationSearch(e.target.value) 
-              }}
-              onKeyPress={handleEnterKeyPressed} 
-            />
-          </div>
-          <div className="searchIcon mt-3">
-            {filteredData.length === 0 ? (
-              <SearchIcon />
-            ) : (
-              <CloseIcon id="clearBtn" onClick={clearInput} />
-            )}
-          </div>
-        </div>
+  return (
 
-    </MDBCol>
-    
+    <MDBCol md="6">
+      <div className='d-flex justify-content-center'>
+        <div className="control">
+          <input
+            type="text"
+            placeholder='¿Que estas buscando?'
+            className="search-bar-input p-2"
+            value={publicationSearch ? publicationSearch : ''}
+            onChange={(e) => {
+              setPublicationSearch(e.target.value)
+            }}
+            onKeyPress={handleEnterKeyPressed}
+          />
+        </div>
+        <div className="searchIcon">
+          {filteredData.length === 0 ? (
+            <SearchIcon />
+          ) : (
+            <CloseIcon id="clearBtn" onClick={clearInput} />
+          )}
+        </div>
+      </div>
+    </MDBCol >
+
 
 
   );

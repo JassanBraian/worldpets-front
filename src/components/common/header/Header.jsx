@@ -19,6 +19,7 @@ const Header = () => {
 
   const { logout, isAuth } = useContext(AuthContext);
   const [showLogin, setIsShowLogin] = useState(!isAuth);
+
   const loginButtonHandler = () => {
     setIsShowLogin(!showLogin)
     logout()
@@ -41,7 +42,7 @@ const Header = () => {
             <FontAwesomeIcon icon={faPaw} size="3x" />
           </span>
         </div>
-
+        <FavoriteList />
         <div className='center'></div>
         <SearchBar />
         <div className='right'>
@@ -53,7 +54,7 @@ const Header = () => {
           </Link> */}
           {showLogin &&
             <>
-              <FavoriteList />
+
               <Link to={"/login"}>
                 <button>Ingresá</button>
               </Link>
