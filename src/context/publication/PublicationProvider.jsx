@@ -15,11 +15,11 @@ const PublicationProvider = ({ children }) => {
   const [values, setValues] = useState(initialValue);
 
   const setPublicationSearch = title => {
-    setValues({ ...values, publicationSearch: title })
+    setValues({ ...values, publicationSearch: title });
   }
 
   const setFilteredData = filtered => {
-    setValues({ ...values, filteredData: filtered })
+    setValues({ ...values, filteredData: filtered });
   }
 
   const setPublicationPreview = publipre => {

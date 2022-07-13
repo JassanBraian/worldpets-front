@@ -25,14 +25,14 @@ const PubliFormCreate = () => {
     const handleOnChange = e => {
         setPublicationPreview({
             ...publiPreview,
-            [e.target.name]: [e.target.value]
+            [e.target.name]: e.target.value
         })
     }
 
     const handleOnSubmit = e => {
         e.preventDefault();
 
-        createPublication(publiPreview);
+        createPublication(publiPreview);    
     }
 
     return (
