@@ -5,7 +5,7 @@ import { Link /* useNavigate */ } from 'react-router-dom';
 /* import AuthContext from '../context/auth/AuthContext' */ /* PARA TRAER AL USER EN LUGAR DE USAR INITIAL VALUES Y USESTATE DE USERINFO */
 import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage';
 import {storage} from '../firebase/FireBaseConfig'
-
+import defaultImg from '../assets/img/register.jpg'
 
 const ProfileImage = () => {
 
@@ -54,7 +54,7 @@ const ProfileImage = () => {
     if(!file) return;
     const extension = file.name.split(".")[1]; // tomo la extension de la imagen
     console.log("Extension:" , extension); // imprimo la extension del archivo
-    const storageRef = ref(storage, `/userProfilePic/${imageName}.${extension}`); // cambio el nombre de la imagen que quiero guardar con la extension
+    const storageRef = ref(storage, `/userProfilePic/${imageName}.jpg`); // cambio el nombre de la imagen que quiero guardar con la extension
     console.log(file.name); // este es el nombre del archivo
     const carpetaDeArchivos = ref(storage, "/userProfilePic")
     console.log(carpetaDeArchivos)
@@ -93,7 +93,8 @@ const ProfileImage = () => {
     <div className="wrapper">
       <form /* onSubmit={handleSubmit} */ onSubmit={formHandler}>
         <div id="wizard">
-	        <h1>Foto de usuario</h1>
+        <Link to='/' className='forgot-link'> Ir a inicio </Link>
+	        <h1 className='text-center mb-4'>Foto de usuario</h1>
 	        <section>
 	            <div className="form-header">
 	             	<div className="avartar mb-5">
@@ -105,7 +106,7 @@ const ProfileImage = () => {
                         } */}
                         {/* <img src="https://firebasestorage.googleapis.com/v0/b/fir-9-3d634.appspot.com/o/userProfilePic%2Fvale.alexis18%40gmail.com.jpg?alt=media&token=fe5552ae-d727-4fc5-80d1-9648f284751d"/> */}
                         <div className='d-flex justify-content-center'>
-
+                        {/* {image ? <img className='rounded-circle' src={image} alt="" /> : <img className='rounded-circle' src={defaultImg} alt="" />} */}
                         <img className='rounded-circle' src={image} alt="" />
                         </div>
                         <div className="avartar-picker d-flex justify-content-center">
@@ -120,15 +121,15 @@ const ProfileImage = () => {
                             />
                             <label htmlFor="file-1">
                                 <i className="zmdi zmdi-camera"></i>
-                                <span>Choose Picture</span>
+                                <span>Elegir imagen de perfil</span>
                             </label>
                         </div>
-      <h3 className='text-center'>Uploaded {progress}%</h3>
 				    </div>
                 </div>
-                <div className='d-flex justify-content-between'>
-                    <button type="submit" className='submit-button'>Enviar</button>
-                    <Link to='/' className='forgot-link'> Volver a inicio </Link>
+                <h3 className='text-center mb-5'>Porcentaje de subida: {progress}%</h3>
+                <div className='d-flex justify-content-between align-items-center'>
+                    <Link to='/user-menu' className='forgot-link'> Ir a datos de usuario </Link>
+                    <button type="submit" className='submit-button'>Actualizar</button>
                 </div>
 
 	        </section>            			

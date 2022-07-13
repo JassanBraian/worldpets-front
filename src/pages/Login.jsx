@@ -18,6 +18,12 @@ const Login = () => {
 
     const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
+    const emailValidation = input => {
+        const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regEx.test(input.value) ? true : false;
+    }
+
+
     const handleOnSubmit = e => {
         e.preventDefault();
         login(form);
@@ -29,6 +35,11 @@ const Login = () => {
             ...loginErrors,
             [e.target.name]: "Campo obligatorio"
           });
+        } else if (e.target.name === "email" && !emailValidation(e.target)) {
+            setLoginErrors({
+                ...loginErrors,
+                [e.target.name] : `Email no válido`
+              });
         } else {
             setLoginErrors({
             ...loginErrors,
@@ -51,7 +62,7 @@ const Login = () => {
             <div className='wrapper'>
                 <form onSubmit={handleOnSubmit}>
                     <div id="wizard">
-                    <h1 className='text-center login-title'>Login</h1>
+                    <h1 className='text-center login-title'>Iniciar sesión</h1>
                     <Link to='/' className='forgot-link'> Volver a inicio </Link>
                     <section>
                         <div className="form-header">
@@ -75,10 +86,10 @@ const Login = () => {
                                     onBlur={handleOnBlur}
                                 />
                                     
-                                    <p id='paragraph-styles'>{loginErrors.email}</p>
+                                    <p>{loginErrors.email}</p>
                             </div>
                             <div className='form-holder'>
-                                <label>Password</label>
+                                <label>Contraseña</label>
                                 <input
                                     type="password"
                                     name="password"
@@ -86,9 +97,10 @@ const Login = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese una contraseña segura"
                                     className="form-control mt-2"
+                                    minLength="8"
                                     onBlur={handleOnBlur}
                                 />
-                                    <p id='paragraph-styles'>{loginErrors.password}</p>
+                                    <p>{loginErrors.password}</p>
                             </div>
                                     
                         </div>
@@ -97,7 +109,7 @@ const Login = () => {
                             <button
                                 disabled={Object.values(form).some((value) => value === "")} 
                                 type="submit" 
-                                className='login-submit-button'
+                                className='form-submit-button'
                             >Iniciar sesion</button>
                         </div>
                     </section>
