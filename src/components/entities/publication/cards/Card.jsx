@@ -5,6 +5,7 @@ import { faStar, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from "react";
 import FavoriteContext from "../../../../context/favorites/FavoriteContext";
 import AuthContext from '../../../../context/auth/AuthContext';
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,6 +26,7 @@ const Card = (props) => {
     <div className= {props.isHighlighted ? "card-destacada" :"card"}>
         <img src= {props.image} className="card-img-top img-fluid" alt= '' />
         <div className="card-body">
+        <img src="https://estaticos-cdn.prensaiberica.es/clip/1fa3b0c5-a0ba-46e4-a69a-7609feb0f9f7_16-9-aspect-ratio_default_0.jpg" className="card-img-top img-fluid" alt= '' />
             <h1 className="card-title">{props.title}</h1>  
             <p className="card-text">{props.description}</p>
         </div>
@@ -41,6 +43,7 @@ const Card = (props) => {
             </button>}
         </div>
         } 
+        <Link to={`/single-publication/${props.postId}`} className="stretched-link"></Link>
     </div>
     </div>
     </>

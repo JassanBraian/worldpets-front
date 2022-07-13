@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-const Profile = () => {
+const Profile = (props) => {
     const [showProfileMenu, setIsShowProfileMenu] = useState(false);
 
     const showProfileMenuHandler = () => {
-        // setIsShowProfileMenu(true);
+        //setIsShowProfileMenu(true);
         setIsShowProfileMenu(prevCheck => !prevCheck);
     }
     const hideHandler = () => {
@@ -29,7 +29,7 @@ const Profile = () => {
                             <p>Mis compras</p>
                         </Link>
 
-                        <p>Salir</p>
+                        <p onClick={props.loginButtonHandler} >Salir</p>
                     </div>
                 }
             </div>

@@ -1,9 +1,10 @@
 .header__top {
-  margin:0px;
+  margin: 0px;
   padding: 0px 15px;
   background-color: #D3B72A;
 }
-.header_inner{
+
+.header_inner {
   margin: 0;
 }
 
@@ -14,14 +15,16 @@
 
 .header__top .header_inner .left .iconMenu {
   cursor: pointer;
-  margin-right: 60px;
+  /*margin-right: 60px;*/
   align-self: flex-start;
+  padding: 0 20px;
 }
 
 .header__top .header_inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 5px;
 }
 
 .header__top .header_inner .right {
@@ -35,11 +38,68 @@
   cursor: pointer;
   border-radius: 20px; 
   align-self: flex-end;
-  padding: 10px;
+  padding: 0 10px;
   background-color: #D3B72A;
   box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
   justify-content: space-between;
   font-family: 'Poppins' !important;
   font-weight: bold;
   border: 3px solid black;
+}
+
+
+@media screen and (max-width: 360px) {
+  .header__top .header_inner {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header__top .header_inner .right button {
+    padding: 0px 2px;
+    width: 80px;
+    font-size: 12px;
+  }
+
+  .header__top .header_inner .left .iconMenu {
+    padding: 0 5px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
+  .Cart__top img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header__top .header_inner .right button {
+    padding: 0px 3px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__top .header_inner .right button {
+    padding: 0px 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__top .header_inner .right button {
+    padding: 0px 20px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .header__top .header_inner .right button {
+    padding: 0px 30px;
+  }
+
+  .header__top .header_inner .right button:hover {
+    background-color: #f1d12f;
+  }
 }

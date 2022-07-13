@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom"
 import AuthContext from "../auth/AuthContext"
 
 const PrivateRoute = ({children}) => {
-    const {isAuth, loading, getUser} = useContext(AuthContext);
+    const {isAuth, loading, getUser, token} = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
-      if (!isAuth /* && token */) {
-        getUser();
+      if(!isAuth && token) {
+        getUser()
       }
     }, [])
+
     
 
     useEffect(() => {

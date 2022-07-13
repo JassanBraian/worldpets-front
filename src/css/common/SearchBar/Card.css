@@ -2,12 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  img {
+}
+
+img {
     max-width: 100%;
     height: auto;
-  }
+}
 
 
 .card {
@@ -26,7 +26,7 @@ p {
     height: 100%
 }
 
-.card-title{
+.card-title {
     height: 70px;
     font-size: 45px;
 }
