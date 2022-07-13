@@ -2,6 +2,8 @@ import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth/AuthContext';
 import '../css/entities/user/Login.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser} from '@fortawesome/free-regular-svg-icons';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -16,6 +18,12 @@ const Login = () => {
 
     const handleOnChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
+    const emailValidation = input => {
+        const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regEx.test(input.value) ? true : false;
+    }
+
+
     const handleOnSubmit = e => {
         e.preventDefault();
         login(form);
@@ -27,6 +35,11 @@ const Login = () => {
             ...loginErrors,
             [e.target.name]: "Campo obligatorio"
           });
+        } else if (e.target.name === "email" && !emailValidation(e.target)) {
+            setLoginErrors({
+                ...loginErrors,
+                [e.target.name] : `Email no válido`
+              });
         } else {
             setLoginErrors({
             ...loginErrors,
@@ -45,16 +58,17 @@ const Login = () => {
 
     return (
         <>
-            
+            {/* <div className='title'>Login</div> */}
             <div className='wrapper'>
                 <form onSubmit={handleOnSubmit}>
                     <div id="wizard">
-                    <h1 className='text-center login-title'>Login</h1>
+                    <h1 className='text-center login-title'>Iniciar sesión</h1>
                     <Link to='/' className='forgot-link'> Volver a inicio </Link>
                     <section>
                         <div className="form-header">
                             <div className="avartar mb-2 d-flex justify-content-center">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjpcIyJM88HMVZzl4QEIUmiv9Yh2n75PQwnw&usqp=CAU" alt="logo"/>
+                            <FontAwesomeIcon icon={faUser} size='8x'/>
+                                {/* <img src={registerImg} alt="logo" /> */}
                             </div>
                         </div>
                         <div className="form-group">
@@ -72,10 +86,10 @@ const Login = () => {
                                     onBlur={handleOnBlur}
                                 />
                                     
-                                    <p id='paragraph-styles'>{loginErrors.email}</p>
+                                    <p>{loginErrors.email}</p>
                             </div>
                             <div className='form-holder'>
-                                <label>Password</label>
+                                <label>Contraseña</label>
                                 <input
                                     type="password"
                                     name="password"
@@ -85,7 +99,7 @@ const Login = () => {
                                     className="form-control mt-2"
                                     onBlur={handleOnBlur}
                                 />
-                                    <p id='paragraph-styles'>{loginErrors.password}</p>
+                                    <p>{loginErrors.password}</p>
                             </div>
                                     
                         </div>
