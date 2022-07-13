@@ -21,6 +21,7 @@ const CategoryPage = () => {
   
   return (
     <>
+    
       <ListaCards title={category.title} posts={category.posts} />
     </>
   )

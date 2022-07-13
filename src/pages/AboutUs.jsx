@@ -25,6 +25,14 @@ const membersList = [
     {
         name: 'Elisa Socolsky',
         id:4
+    },
+    {
+        name: 'Emanuel Rojas',
+        id:5
+    },
+    {
+        name: 'Alexis Vale',
+        id:6
     }
 ];
 

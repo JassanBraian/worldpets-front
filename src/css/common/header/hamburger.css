@@ -30,6 +30,8 @@ p.menu-title{
   bottom: 0px;
   background-color: #fff;
   padding: 0px 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .Hamburger .hamburgerMenu .cancel {

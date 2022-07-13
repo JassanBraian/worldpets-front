@@ -25,6 +25,8 @@ const Card = (props) => {
         <div className="card-body">
             <h1 className="card-title">{props.title}</h1>  
             <p className="card-text">{props.description}</p>
+        </div>
+        <div className='button-container'>
              {!isFavorite(1234, props.postId) ? 
             <button className="favouriteButton" onClick={onToggleFavorite}>
             <FontAwesomeIcon icon={faStar} />

@@ -30,7 +30,7 @@ const Register = () => {
 
     return (
         <>
-            <div className='title'>Registrate</div>
+            {/* <div className='title'>Registrate</div> */}
 
         <div className='wrapper'>
             <form onSubmit={handleOnSubmit}>
@@ -43,7 +43,7 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <h2 className='text-center'>Ingrese sus datos</h2>
+                            <h2 className='text-center'>Registrate</h2>
                             <div className='form-holder'>
                                 <label>Nombre</label>
                                 <input

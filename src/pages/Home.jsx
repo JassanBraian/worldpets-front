@@ -12,6 +12,7 @@ import Spinner from '../components/common/spinner/Spinner';
 import CategoryButtons from '../components/common/categoryButtons/CategoryButtons';
 import CategoriesContext from '../context/categories/CategoriesContext';
 import ListaCards from '../components/entities/publication/cards/ListaCards';
+import { sampleSize } from 'lodash';
 
 const Home = () => {
     
@@ -26,8 +27,8 @@ const Home = () => {
             const categories = await getCategories();
             setLoading(false);
             setCategories(categories);
+            
         }
-        
         doGetCategories()
     }, [])
 
@@ -48,7 +49,7 @@ const Home = () => {
             categories.map(category => {
                 return (
                     <section>
-                        <ListaCards key={category.id} title={category.title} posts={category.posts} isHighlighted={category.isHighlighted}/>
+                        <ListaCards key={category.id} title={category.title} posts={sampleSize(category.posts, 4)} isHighlighted={category.isHighlighted} />
                         <button onClick={() => goToCategory(category.id)} className='seeMoreButton'>
                             <FontAwesomeIcon icon={faCirclePlus} />
                             Ver todos

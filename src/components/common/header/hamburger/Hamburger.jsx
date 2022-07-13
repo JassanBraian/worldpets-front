@@ -47,6 +47,9 @@ const Hamburger = (props) => {
                     <Link to={'/fav'} className='link'>
                         <p onClick={props.cancel}>Favoritos</p>
                     </Link>
+                    <Link to={'/AboutUs'} className='link'>
+                        <p onClick={props.cancel}>Nosotros</p>
+                    </Link>
                 </div>
             </div>
         </>

@@ -36,12 +36,9 @@
     
 }
 .dropdown .dropdown-content .dropdown-item{
-    
-    /* padding: 10px; */
     cursor: pointer;
     transition: all 0.2s;
     border-top: 4px solid #bbb;
-    /* border-bottom:2px dotted black ; */
     font-family: 'Poppins' !important;
     font-weight: 300 !important;
     font-size: 15px;

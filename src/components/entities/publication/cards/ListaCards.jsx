@@ -4,7 +4,6 @@ import Card from './Card';
 
 
 const ListaCards = ({title, posts, isHighlighted}) => {
-
   posts = posts ?? [];
   return (
     <>
