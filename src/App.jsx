@@ -15,6 +15,8 @@ import ProfileImage from './pages/ProfileImage';
 import Layout from './components/common/layout/Layout';
 import UserPage from './pages/UserPage';
 import PublicationsPage from './pages/PublicationsPage';
+import AboutUs from './pages/AboutUs';
+
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
         <Route path='/user' element={<UserPage />}/>
         <Route path='/publications-page' element={ <PublicationsPage /> }/>
         <Route path='/category/:categoryId' element={<CategoryPage/>} title= 'Destacadas'/>
+        <Route path='/aboutUs' element={<AboutUs/>}/>
         </Routes> 
       </Layout>
     </ParentContext>

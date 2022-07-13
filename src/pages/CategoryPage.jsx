@@ -20,12 +20,8 @@ const CategoryPage = () => {
 }, [])
   
   return (
-    
     <>
-    <h2 className='titulo'>{category.title}</h2>
-    <div className='card-group'>
-      <ListaCards  posts={category.posts} />
-    </div>
+      <ListaCards title={category.title} posts={category.posts} />
     </>
   )
 }

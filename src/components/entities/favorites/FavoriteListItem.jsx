@@ -6,7 +6,6 @@ import '../../../css/entities/favorites/favoriteList.css'
 
 const FavoriteListItem = ({data}) => {
 
-    console.log(data)
   const {removeFromFavorites } = useContext(FavoriteContext);
   let{_id, publication, title, photos} = data;
   return (
