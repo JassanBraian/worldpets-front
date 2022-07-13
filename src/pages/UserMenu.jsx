@@ -24,7 +24,8 @@ const UserMenu = () => {
 
 
   const {user, updateUser, getUser} = useContext(AuthContext) /* PARA TRAER LOS DATOS DEL USER EN LUGAR DE USAR INITAIL VALUES Y USESTATE DE user --¿Seria user o getuser? ---*/
-  
+  const [userMenuErrors, setUserMenuErrors] = useState({});
+
   const InitialValues = {
     email: '',
     name: '',
@@ -34,6 +35,11 @@ const UserMenu = () => {
   const [form, setForm] = useState(InitialValues)
   
   const {name, surname, email} = form
+
+  const emailValidation = input => {
+    const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return regEx.test(input.value) ? true : false;
+  }
 
   useEffect(() => {
     getUser()
@@ -48,13 +54,29 @@ const UserMenu = () => {
 
   const handleChange = e => setForm({...form, [e.target.name]: e.target.value});
 
+  const handleOnBlur = (e) =>{
+    if(e.target.value === "") {
+      setUserMenuErrors({
+        ...userMenuErrors,
+        [e.target.name] : "Campo obligatorio"
+      });
+    } else if (e.target.name === "email" && !emailValidation(e.target)) {
+      setUserMenuErrors({
+            ...userMenuErrors,
+            [e.target.name] : `Email no válido`
+          });
+    }
+    else { 
+      setUserMenuErrors({
+        ...userMenuErrors,
+        [e.target.name] : "",
+      });
+    } 
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    /* const formData = new FormData();
-    formData.append('name', name);
-    formData.append('surname', surname);
-    formData.append('email', email); */
-    console.log(form);
+
     updateUser(form)
   }
 
@@ -63,6 +85,7 @@ const UserMenu = () => {
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
         <div id="wizard">
+        <Link to='/' className='forgot-link'> Ir a inicio </Link>
 	        <h1 className='text-center'>Datos de usuario</h1>
 	          <section>
 						  <div className="form-group">
@@ -74,7 +97,9 @@ const UserMenu = () => {
                     value={name}
                     name='name'  
                     className="form-control"
+                    onBlur={handleOnBlur}
 								  />
+                  <p>{userMenuErrors.name}</p>
 							  </div>
 							  <div className="form-holder">
                   <label>Apellido:</label>
@@ -84,7 +109,9 @@ const UserMenu = () => {
                     value={surname}
                     name='surname' 
                     className="form-control"
+                    onBlur={handleOnBlur}
                   />
+                  <p>{userMenuErrors.surname}</p>
 							  </div>
 						
 	              <div className="form-holder">
@@ -95,12 +122,14 @@ const UserMenu = () => {
                     value={email}
                     name='email' 
                     className="form-control"
+                    onBlur={handleOnBlur}
                   />
+                  <p>{userMenuErrors.email}</p>
 							  </div>
 						  </div>
 
-              <div className='d-flex justify-content-end'>
-
+              <div className='d-flex justify-content-between align-items-center'>
+              <Link to='/profile-image' className='forgot-link'> Ir a foto de perfil </Link>
                 <button type="submit" className='submit-button'>Enviar</button>
 
 

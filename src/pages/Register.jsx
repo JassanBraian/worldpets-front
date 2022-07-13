@@ -116,6 +116,7 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="email@email.com"
                                     className="form-control mt-2"
+                                    maxLength='30'
                                     onBlur={handleOnBlur}
                                 />
                                 <p>{registerErrors.email}</p>
@@ -129,6 +130,7 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese una contraseña segura"
                                     className="form-control mt-2"
+                                    minLength='8'
                                     onBlur={handleOnBlur}
                                 />
                                 <p>{registerErrors.password}</p>
@@ -142,6 +144,7 @@ const Register = () => {
                                     onChange={handleOnChange}
                                     placeholder="Repita la contraseña ingresada anteriormente"
                                     className="form-control mt-2"
+                                    minLength='8'
                                     onBlur={handleOnBlur}
                                 />
                                 <p>{registerErrors.passwordConfirm}</p>
@@ -152,7 +155,7 @@ const Register = () => {
                                 <button 
                                     disabled={Object.values(form).some((value) => value === "")}
                                     type="submit" 
-                                    className='register-submit-button'
+                                    className='form-submit-button'
                                 >Enviar</button>
 
                         </div>

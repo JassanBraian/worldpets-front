@@ -79,7 +79,7 @@ const ForgotPassword = () => {
                                 <button
                                 disabled={Object.values(form).some((value) => value === "")} 
                                 type="submit" 
-                                className='forgot-submit-button'
+                                className='form-submit-button'
                             >Enviar</button>
                         </div>
         	        </section>      				

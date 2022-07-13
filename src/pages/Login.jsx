@@ -97,6 +97,7 @@ const Login = () => {
                                     onChange={handleOnChange}
                                     placeholder="Ingrese una contraseña segura"
                                     className="form-control mt-2"
+                                    minLength="8"
                                     onBlur={handleOnBlur}
                                 />
                                     <p>{loginErrors.password}</p>
@@ -108,7 +109,7 @@ const Login = () => {
                             <button
                                 disabled={Object.values(form).some((value) => value === "")} 
                                 type="submit" 
-                                className='login-submit-button'
+                                className='form-submit-button'
                             >Iniciar sesion</button>
                         </div>
                     </section>

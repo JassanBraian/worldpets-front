@@ -67,9 +67,10 @@ const ResetPassword = () => {
                                     name='password'
                                     value={password}
                                     onChange={handleOnChange}
+                                    onBlur={handleOnBlur}
+                                    minLength='8'
                                     placeholder="Nueva contraseña"
                                     className="form-control mt-2"
-                                    onBlur={handleOnBlur}
                                 />
                                 <p>{resetPasswordErrors.password}</p>
                             </div>
@@ -81,6 +82,7 @@ const ResetPassword = () => {
                                     value={passwordConfirm}
                                     onChange={handleOnChange}
                                     onBlur={handleOnBlur}
+                                    minLength='8'
                                     placeholder="Repita su nueva contraseña"
                                     className="form-control mt-2"
                                 />
@@ -93,7 +95,7 @@ const ResetPassword = () => {
                                 <button
                                     disabled={Object.values(form).some((value) => value === "")} 
                                     type="submit" 
-                                    className='forgot-submit-button'
+                                    className='form-submit-button'
                                 >Enviar</button>
                         </div>
         	        </section>      				
