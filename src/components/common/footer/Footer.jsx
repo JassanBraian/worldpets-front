@@ -4,12 +4,14 @@ import twitter from "../../../assets/img/icons8-twitter-30.png"
 import insta from "../../../assets/img/icons8-instagram-30.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCameraRetro, faDove, faF, faCopyright } from "@fortawesome/free-solid-svg-icons";
+import SearchBar from "../header/searchbar/SearchBar";
 
 
 const Footer = () => {
     return (
         <>
             <div className='footer__top'>
+                <SearchBar />
                 <div className='footer_inner'>
                     <div className='social__icons'>
                         <a href="https://www.facebook.com/">
