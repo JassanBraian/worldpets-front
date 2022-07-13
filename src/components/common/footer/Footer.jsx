@@ -11,7 +11,6 @@ const Footer = () => {
     return (
         <>
             <div className='footer__top'>
-                <SearchBar />
                 <div className='footer_inner'>
                     <div className='social__icons'>
                         <a href="https://www.facebook.com/">
