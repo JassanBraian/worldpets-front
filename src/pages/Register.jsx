@@ -34,7 +34,7 @@ const Register = () => {
         registerUser(form);
     }
     
-    const validarEmail = input => {
+    const emailValidation = input => {
         const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         return regEx.test(input.value) ? true : false;
     }
@@ -45,7 +45,7 @@ const Register = () => {
             ...registerErrors,
             [e.target.name] : "Campo obligatorio"
           });
-        } else if (e.target.name === "email" && !validarEmail(e.target)) {
+        } else if (e.target.name === "email" && !emailValidation(e.target)) {
             setRegisterErrors({
                 ...registerErrors,
                 [e.target.name] : `Email no válido`
@@ -71,7 +71,7 @@ const Register = () => {
         <div className='wrapper'>
             <form onSubmit={handleOnSubmit}>
             <div id="wizard">
-            <h1 className='text-center register-title'>Register  </h1>
+            <h1 className='text-center register-title'>Registrarse  </h1>
             <Link to='/' className='forgot-link'> Volver a inicio </Link>
                     <section>
                         <div className="form-header">
@@ -92,7 +92,7 @@ const Register = () => {
                                     className="form-control mt-2"
                                     onBlur={handleOnBlur}
                                 />
-                                <p id='paragraph-styles'>{registerErrors.name}</p>
+                                <p>{registerErrors.name}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Apellido</label>
@@ -105,7 +105,7 @@ const Register = () => {
                                     className="form-control mt-2"
                                     onBlur={handleOnBlur}
                                 />
-                                <p id='paragraph-styles'>{registerErrors.surname}</p>
+                                <p>{registerErrors.surname}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Email</label>
@@ -118,7 +118,7 @@ const Register = () => {
                                     className="form-control mt-2"
                                     onBlur={handleOnBlur}
                                 />
-                                <p id='paragraph-styles'>{registerErrors.email}</p>
+                                <p>{registerErrors.email}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Contraseña</label>
@@ -131,7 +131,7 @@ const Register = () => {
                                     className="form-control mt-2"
                                     onBlur={handleOnBlur}
                                 />
-                                <p id='paragraph-styles'>{registerErrors.password}</p>
+                                <p>{registerErrors.password}</p>
                             </div>
                             <div className='form-holder'>
                                 <label>Confirme su contraseña</label>
@@ -144,7 +144,7 @@ const Register = () => {
                                     className="form-control mt-2"
                                     onBlur={handleOnBlur}
                                 />
-                                <p id='paragraph-styles'>{registerErrors.passwordConfirm}</p>
+                                <p>{registerErrors.passwordConfirm}</p>
                             </div>
                         </div>
                         <div className='d-flex justify-content-between align-items-center'>
