@@ -17,6 +17,7 @@ import UserPage from './pages/UserPage';
 import PublicationsPage from './pages/PublicationsPage';
 import PrivateRoute from './context/PrivatesRoutes/PrivateRoute';
 import AdminRoute from './context/PrivatesRoutes/AdminRoute';
+import PublicationNew from './pages/PublicationNew';
 
 function App() {
   return (
@@ -42,7 +43,8 @@ function App() {
 
         }/>         
         <Route path='/user' element={<UserPage />}/>
-        <Route path='/publications-page' element={ <PublicationsPage /> }/>
+        <Route path='/publication' element={ <PublicationsPage /> }/>
+        <Route path='/publication-new' element={<PublicationNew />} />
         <Route path='/category/:categoryId' element={<CategoryPage/>} title= 'Destacadas'/>
         </Routes> 
       </Layout>
