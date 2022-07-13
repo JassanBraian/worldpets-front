@@ -15,6 +15,8 @@ import ProfileImage from './pages/ProfileImage';
 import Layout from './components/common/layout/Layout';
 import UserPage from './pages/UserPage';
 import PublicationsPage from './pages/PublicationsPage';
+import AboutUs from './pages/AboutUs';
+
 import PrivateRoute from './context/PrivatesRoutes/PrivateRoute';
 import AdminRoute from './context/PrivatesRoutes/AdminRoute';
 import PublicationNew from './pages/PublicationNew';
@@ -46,6 +48,7 @@ function App() {
         <Route path='/publication' element={ <PublicationsPage /> }/>
         <Route path='/publication-new' element={<PublicationNew />} />
         <Route path='/category/:categoryId' element={<CategoryPage/>} title= 'Destacadas'/>
+        <Route path='/aboutUs' element={<AboutUs/>}/>
         </Routes> 
       </Layout>
     </ParentContext>

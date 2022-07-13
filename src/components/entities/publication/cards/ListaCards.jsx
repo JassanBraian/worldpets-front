@@ -1,33 +1,22 @@
 
 import React, { useContext } from 'react';
 import Card from './Card';
-import { useState, useEffect } from 'react';
-import Spinner from '../../../common/spinner/Spinner';
-import clientAxios from '../../../../config/axios';
-import PublicationContext from '../../../../context/publication/PublicationContext';
 
 
-
-
-const ListaCards = () => {
-    const {publications, getPublications} = useContext(PublicationContext);
-    const [loading, setLoading] = useState(false);
-
-      useEffect(()=>{
-        setLoading(true)
-        getPublications()
-        setLoading(false)
-    }, []);
-
-  if(loading){
-      return <Spinner />
-  }
+const ListaCards = ({title, posts, isHighlighted}) => {
+  posts = posts ?? [];
   return (
-    <section className='container-fluid'>
+    <>
+    <h2 className='titulo'>{title}</h2>
+  {posts.length > 0 ? <div className='card-group'>
+   <section className='container-fluid'>
         <div className='row'>
-                 {publications.map((post, index) => <Card key={index} title= {post.title} description={post.description} postId={post._id} image={post.image} isHighlighted={post.isHighlighted}/>)}    
+                 {posts.map((post) => <Card key={post.id} title= {post.title} description={post.description} postId={post.id} image={post.image} isHighlighted={isHighlighted}/>)}    
         </div>
     </section>
-  )
+  </div> 
+  : <div className='subtitulo'>Todavia no hay publicaciones en esta categoría</div>}
+  </>)
+  
 }
 export default ListaCards;

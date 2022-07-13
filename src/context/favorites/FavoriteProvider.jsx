@@ -65,9 +65,7 @@ const FavoriteProvider = ({children}) => {
             throw error
         }
     }
-    // useEffect(()=>{
-    //     getFavorites();
-    // }, []);
+    
 
     
    const addToFavorites = async (postId)=>{

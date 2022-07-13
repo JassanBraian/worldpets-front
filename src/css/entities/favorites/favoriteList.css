@@ -49,14 +49,10 @@
     align-items: flex-end;
     width: 200px;
 }
-
-.dropdown .dropdown-content .dropdown-item {
-
-    /* padding: 10px; */
+.dropdown .dropdown-content .dropdown-item{
     cursor: pointer;
     transition: all 0.2s;
     border-top: 4px solid #bbb;
-    /* border-bottom:2px dotted black ; */
     font-family: 'Poppins' !important;
     font-weight: 300 !important;
     font-size: 15px;
@@ -69,9 +65,13 @@
 .dropdown .dropdown-content .dropdown-item:hover {
     background-color: #ddd;
 
+}  
+.post-title{
+    font-family: 'Pacifico';
+    font-weight: bold;
+    font-size: 30px;
 }
-
-button.removeBtn {
+button.removeBtn{
     background-color: #D3B72A;
     border-color: #D3B72A;
     padding: 10px;

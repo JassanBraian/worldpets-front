@@ -3,7 +3,6 @@ import '../components/entities/publication/cards/ListaCards'
 import '../css/common/pages/home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
-import Category from './Category';
 import BootstrapCarousel from '../components/common/heroslider/BootstrapCarousel';
 
 import { useNavigate } from 'react-router-dom';
@@ -11,31 +10,28 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Spinner from '../components/common/spinner/Spinner';
 import CategoryButtons from '../components/common/categoryButtons/CategoryButtons';
-import FavoriteList from '../components/entities/favorites/FavoriteList';
-import clientAxios from '../config/axios';
-import PublicationContext from '../context/publication/PublicationContext';
 import CategoriesContext from '../context/categories/CategoriesContext';
+import ListaCards from '../components/entities/publication/cards/ListaCards';
+import { sampleSize } from 'lodash';
 
 const Home = () => {
     
-    const {getCategories, getHighlightedPosts} = useContext(CategoriesContext);
-    const[categories, setCategories] = useState([]);
+    const {getCategories} = useContext(CategoriesContext);
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(false);
    
 
     useEffect(() => {
+        setLoading(true)
         async function doGetCategories(){
             const categories = await getCategories();
-            console.log(categories)
-            setCategories(categories)
+            setLoading(false);
+            setCategories(categories);
+            
         }
         doGetCategories()
     }, [])
 
-    
-    
-    
-
-    const [loading, setLoading] = useState(false);
     
 
     const navigate = useNavigate();
@@ -49,10 +45,11 @@ const Home = () => {
     return (
         <div>
             <BootstrapCarousel />
-            {categories.map((category, index) => {
+            {loading ? <Spinner /> :
+            categories.map(category => {
                 return (
                     <section>
-                        <Category key={category} title={category.title} posts={category.posts} />
+                        <ListaCards key={category.id} title={category.title} posts={sampleSize(category.posts, 4)} isHighlighted={category.isHighlighted} />
                         <button onClick={() => goToCategory(category.id)} className='seeMoreButton'>
                             <FontAwesomeIcon icon={faCirclePlus} />
                             Ver todos

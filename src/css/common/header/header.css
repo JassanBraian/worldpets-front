@@ -14,7 +14,6 @@
 }
 
 .header__top .header_inner .left .iconMenu {
-  /* width: 30px; */
   cursor: pointer;
   /*margin-right: 60px;*/
   align-self: flex-start;
@@ -35,9 +34,9 @@
 }
 
 .header__top .header_inner .right button {
-  margin-left: 5px;
+  margin-left: 10px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 20px; 
   align-self: flex-end;
   padding: 0 10px;
   background-color: #D3B72A;
