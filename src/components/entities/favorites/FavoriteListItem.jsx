@@ -10,8 +10,7 @@ const FavoriteListItem = ({data}) => {
   let{_id, publication, title, photos} = data;
   return (
     <div className="listItemContainer">
-        <p>{title}id del Usuario</p>
-        <p>{publication.title}</p>
+        <p className="post-title">{publication.title}</p>
         <p>{publication.description} </p>
          {/* <div>{publication.photos[0]}</div>   */}
 

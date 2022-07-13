@@ -26,6 +26,7 @@ const Card = (props) => {
             <h1 className="card-title">{props.title}</h1>  
             <p className="card-text">{props.description}</p>
         </div>
+        {/* { isLogged && */}
         <div className='button-container'>
              {!isFavorite(1234, props.postId) ? 
             <button className="favouriteButton" onClick={onToggleFavorite}>
@@ -37,6 +38,7 @@ const Card = (props) => {
                 Eliminar de mis favoritos
             </button>}
         </div>
+        {/* } */}
     </div>
     </div>
     </>

@@ -51,6 +51,11 @@
     background-color: #ddd;
 
 }  
+.post-title{
+    font-family: 'Pacifico';
+    font-weight: bold;
+    font-size: 30px;
+}
 button.removeBtn{
     background-color: #D3B72A;
     border-color:  #D3B72A;
